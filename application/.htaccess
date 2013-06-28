@@ -1,0 +1,2 @@
+RewriteCond $1 !^(index\.php|images|robots\.txt|css)
+RewriteRule ^(application|system) - [F,L]
