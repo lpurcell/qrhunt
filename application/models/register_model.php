@@ -2,10 +2,10 @@
 
 class Register_model extends CI_Model {
 
-	public function __construct()
-	{
-		$this->load->database();
-	}
+    public function __construct()
+    {
+        $this->load->database();
+    }
 
 	public function register(){
 
@@ -19,8 +19,15 @@ class Register_model extends CI_Model {
 			'Participant_Picture' => $this->input->post('userfile')
 			);
 
-		return $this->db->insert('participant', $data);
-	}
+		    return $this->db->insert('participant', $data);
+    }
+
+    public function find_by_id($participant_id){
+        $this->db->select('Participant_ID, Event_ID, Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
+        $this->db->from('participant');
+        $this->db->where('Participant_Id', $participant_id);
+        return $this->db->get()->result()[0];
+    }
 
     public function get_participants($slug = FALSE){
 
@@ -36,4 +43,11 @@ class Register_model extends CI_Model {
         $this->db->where('QRCode', $slug);
         return $this->db->get()->result();
     }
+
+    public function update($data){
+
+        $this->db->where('Participant_Id', $data['Participant_ID']);
+        $this->db->update('participant', $data);
+    }
 }
+

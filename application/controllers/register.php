@@ -92,6 +92,44 @@ class Register extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function edit($slug){
+        $participant = $this->register_model->find_by_id($slug);
+        $data['Participant'] = $participant;
+        $original_picture = $participant -> Participant_Picture;
+
+        $data['title'] = 'Edit Your Profile';
+
+        if ($this->form_validation->run() === FALSE){
+            $this->load->view('templates/header', $data);
+            $this->load->view('register/edit', $data);
+            $this->load->view('templates/footer');
+
+        }else{
+            $new_data = array(
+                'Participant_ID' => $this->input->post('Participant_ID'),
+                'Event_ID' => $this ->input->post('Event_ID'),
+                'Participant_LName' => $this->input->post('Participant_LName'),
+                'Participant_FName' => $this->input->post('Participant_FName'),
+                'Participant_Email' => $this->input->post('Participant_Email'),
+                'QRCode' => $this->input->post('QRCode'),
+                'Participant_Website' => $this->input->post('Participant_Website')
+            );
+
+            $new_picture = $this->input->post('userfile');
+            echo "np=".$new_picture;
+            if ($new_picture === "0" || $new_picture == ""){
+                $new_data['Participant_Picture'] = $original_picture;
+            }else{
+                $new_data['Participant_Picture'] = $new_picture;
+            }
+
+            $this->register_model->update($new_data);
+            $this->load->view('news/success');
+
+        }
+
+    }
+
 
 
 }

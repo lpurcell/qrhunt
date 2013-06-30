@@ -37,7 +37,10 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['participant_edit/(:any)']= 'register/edit/$1';
+//view one participant with qrcode
 $route['participant/(:any)'] = 'register/view/$1';
+//view all participants in the table
 $route['participants_all'] = 'register/index';
 $route['css/get'] = 'css/get';
 $route['register/create'] = 'register/create';
