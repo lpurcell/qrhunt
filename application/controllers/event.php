@@ -5,15 +5,14 @@ class Event extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('event_model');
-        $this->load->helper('url');
-    }
-
-    public function create()
-    {
-        $this->load->helper('form');
+        $this->load->helper(array('form', 'html', 'file'));
         $this->load->library('form_validation');
 
-        $data['title'] = 'Register Your Event';
+        $config['upload_path']   = './assets/images/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['remove_spaces'] = TRUE;
+
+        $this->load->library('upload', $config);
 
         $this->form_validation->set_rules('Organization_ID', 'Organization_ID', 'required');
         $this->form_validation->set_rules('Event_Name', 'Event Name:', 'required');
@@ -21,10 +20,16 @@ class Event extends CI_Controller {
         $this->form_validation->set_rules('Event_Date', 'Date of Event:', 'required');
         $this->form_validation->set_rules('Event_Coordinator', 'Coordinator Name:', 'required');
         $this->form_validation->set_rules('Event_Email', 'Coordinator Email:', 'required');
-        $this->form_validation->set_rules('Event_Logo', 'Logo for Event');
+        $this->form_validation->set_rules('Event_Logo', 'Logo for Event', 'callback_handle_upload');
         $this->form_validation->set_rules('Event_Maincolor', 'Main Color: ');
         $this->form_validation->set_rules('Event_Textcolor', 'Text Color:');
         $this->form_validation->set_rules('Event_Headercolor', 'Header Color:');
+
+    }
+
+    public function create()
+    {
+        $data['title'] = 'Register Your Event';
 
         if ($this->form_validation->run() === FALSE)
         {
@@ -36,6 +41,40 @@ class Event extends CI_Controller {
         else{
             $this->event_model->event();
             $this->load->view('news/success');
+        }
+    }
+
+    function handle_upload(){
+
+        if (isset($_FILES['userfile']) && $_FILES['userfile']['error']!= 4){
+
+            if ($this->upload->do_upload('userfile')){
+                // set a $_POST value for 'image' that we can use later
+                $upload_data    = $this->upload->data();
+                $_POST['userfile'] = $upload_data['file_name'];
+
+                //resize the image and replace
+                $config2['image_library'] = 'gd2';
+                $config2['source_image'] = $this->upload->upload_path.$this->upload->file_name;;
+                $config2['maintain_ratio'] = TRUE;
+                $config2['width'] = 215;
+                $config2['height'] = 194;
+                $config2['overwrite'] = TRUE;
+
+                $this->load->library('image_lib', $config2);
+                $this->image_lib->resize();
+
+                echo "done";
+                return true;
+
+            }else{
+                // possibly do some clean up ... then throw an error
+                $this->form_validation->set_message('handle_upload', $this->upload->display_errors());
+                return false;
+            }
+        }else{
+            // return true because nothing was uploaded
+            return true;
         }
     }
 

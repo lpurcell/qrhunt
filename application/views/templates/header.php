@@ -4,7 +4,7 @@
 
     <title><?php echo $title ?> QR Hunt</title>
 
-<link rel="stylesheet" type="text/css" media="screen" href="/codetut/index.php/css/get"/>
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
 </head>
 <body>
     <div class="wrap">

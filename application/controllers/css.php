@@ -5,6 +5,7 @@ class Css extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('css_model');
+
     }
 
      public function get(){

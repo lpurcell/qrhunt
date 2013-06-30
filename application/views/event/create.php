@@ -2,7 +2,7 @@
 
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('event/create') ?>
+<?php echo form_open_multipart('event/create') ?>
 
 <!--HARDCODED--><input type ="hidden" name="Organization_ID" value='456'>
 
@@ -21,7 +21,7 @@
 <label for="Event_Email">Coordinator Email:</label>
 <input type="input" name="Event_Email" /><br />
 
-<label id="fileUpload" for="Event_Logo">Event Logo:</label>
+<label for="Event_Logo">Event Logo:</label>
 <input type="file" name="userfile" /><br />
 
 <div id=>

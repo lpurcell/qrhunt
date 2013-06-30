@@ -28,7 +28,17 @@
 
         }
         .logo{
-        background-image:url('<?=$Event_Logo?>');
+        background-image:url('<?php
+                if ($Event_Logo === "0"){
+                    echo base_url()?>assets/images/default_logo.jpg');
+                <?php
+                }else{
+                echo base_url()?>assets/images/<?= $Event_Logo?>');
+                <?php
+                }
+                ?>
+
+
         background-repeat:no-repeat;
         margin-left:30px;
 

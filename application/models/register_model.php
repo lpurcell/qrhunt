@@ -27,10 +27,13 @@ class Register_model extends CI_Model {
         if($slug === FALSE){
             $this->db->select('Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
             $this->db->from('participant');
+            //need to filter data
+            //$this->db->where('')
             return $this->db->get()->result();
         }
-
-        $query = $this->db->get_where('participant', array('QRCode' => $slug));
-        return $query->row_array();
+        $this->db->select('Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
+        $this->db->from('participant');
+        $this->db->where('QRCode', $slug);
+        return $this->db->get()->result();
     }
 }

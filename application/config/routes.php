@@ -37,7 +37,8 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-$route['participant/index'] = 'register/index';
+$route['participant/(:any)'] = 'register/view/$1';
+$route['participants_all'] = 'register/index';
 $route['css/get'] = 'css/get';
 $route['register/create'] = 'register/create';
 $route['organization/create']= 'organization/create';

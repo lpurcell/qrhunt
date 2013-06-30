@@ -10,7 +10,7 @@
 
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery.minicolors.js"></script>
     <link rel="stylesheet" media="screen" type="text/css" href="<?php echo base_url()?>assets/css/jquery.minicolors.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="/codetut/index.php/css/get"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
 
     <script type="text/javascript">
         $(function() {
