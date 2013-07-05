@@ -5,7 +5,7 @@ class Register extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('register_model');
-        $this->load->helper(array('form', 'html', 'file'));
+        $this->load->helper(array('form', 'html', 'file', 'url'));
         $this->load->library('form_validation');
 
         $config['upload_path']   = './uploads/';
@@ -27,15 +27,16 @@ class Register extends CI_Controller {
     {
         $data['title'] = 'Register Your Profile';
 
-         if ($this->form_validation->run() === FALSE){
+        /* if ($this->form_validation->run() === FALSE){
             $this->load->view('templates/header', $data);
             $this->load->view('register/create');
             $this->load->view('templates/footer');
         }else{
             $this->register_model->register();
             $this->load->view('news/success');
-        }
-
+        }*/
+        $this->register_model->register();
+        $this->load->view('news/success');
     }
 
     function handle_upload(){
@@ -73,7 +74,7 @@ class Register extends CI_Controller {
         $data['participant'] = $this->register_model->get_participants();
         $data['title'] = 'List of Participants';
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('templates/header_tables', $data);
         $this->load->view('register/index', $data);
         $this->load->view('templates/footer');
 
@@ -116,7 +117,7 @@ class Register extends CI_Controller {
             );
 
             $new_picture = $this->input->post('userfile');
-            echo "np=".$new_picture;
+
             if ($new_picture === "0" || $new_picture == ""){
                 $new_data['Participant_Picture'] = $original_picture;
             }else{
@@ -125,11 +126,15 @@ class Register extends CI_Controller {
 
             $this->register_model->update($new_data);
             $this->load->view('news/success');
-
         }
 
     }
 
+    public function delete($slug){
+        $this->register_model->delete($slug);
+        $this->load->view('news/success');
+
+    }
 
 
 }

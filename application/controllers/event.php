@@ -77,6 +77,69 @@ class Event extends CI_Controller {
             return true;
         }
     }
+    public function index(){
+        $data['event'] = $this->event_model->get_events();
+        $data['title'] = 'List of Events';
 
+        $this->load->view('templates/header', $data);
+        $this->load->view('event/index', $data);
+        $this->load->view('templates/footer');
 
-}		
+    }
+
+    public function view($slug){
+        $data['event'] = $this->event_model->get_events($slug);
+
+        if(empty($data['event'])){
+            show_404();
+        }
+        $data['title'] = 'Event_Name ' . $slug;
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('event/view', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function edit($slug){
+        $event = $this->event_model->find_by_id($slug);
+        $data['Event'] = $event;
+        $original_picture = $event -> Event_Logo;
+
+        $data['title'] = 'Edit Event';
+
+        if ($this->form_validation->run() === FALSE){
+            $this->load->view('templates/header2', $data);
+            $this->load->view('event/edit', $data);
+            $this->load->view('templates/footer');
+
+        }else{
+            $new_data = array(
+                'Event_ID' => $this->input->post('Event_ID'),
+                'Organization_ID' => $this ->input->post('Organization_ID'),
+                'Event_Name' => $this->input->post('Event_Name'),
+                'Event_Date' => $this->input->post('Event_Date'),
+                'Event_Email' => $this->input->post('Event_Email'),
+                'Event_Coordinator' => $this->input->post('Event_Coordinator'),
+                'Event_Email' => $this->input->post('Event_Email'),
+                'Event_Maincolor' => $this->input->post('Event_Maincolor'),
+                'Event_Textcolor' => $this->input->post('Event_Textcolor'),
+                'Event_Headercolor' => $this->input->post('Event_Headercolor')
+            );
+
+            $new_picture = $this->input->post('userfile');
+           
+            if ($new_picture === "0" || $new_picture == ""){
+                $new_data['Event_Logo'] = $original_picture;
+            }else{
+                $new_data['Event_Logo'] = $new_picture;
+            }
+
+            $this->event_model->update($new_data);
+            $this->load->view('news/success');
+
+        }
+
+    }
+
+}
+	

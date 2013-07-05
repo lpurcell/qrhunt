@@ -7,6 +7,7 @@ class Register_model extends CI_Model {
         $this->load->database();
     }
 
+    //register participants
 	public function register(){
 
 		$data = array(
@@ -21,18 +22,11 @@ class Register_model extends CI_Model {
 
 		    return $this->db->insert('participant', $data);
     }
-
-    public function find_by_id($participant_id){
-        $this->db->select('Participant_ID, Event_ID, Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
-        $this->db->from('participant');
-        $this->db->where('Participant_Id', $participant_id);
-        return $this->db->get()->result()[0];
-    }
-
+    //view all participants or just one by QRCode in database
     public function get_participants($slug = FALSE){
 
         if($slug === FALSE){
-            $this->db->select('Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
+            $this->db->select('Participant_ID, Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
             $this->db->from('participant');
             //need to filter data
             //$this->db->where('')
@@ -44,10 +38,24 @@ class Register_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    //edit function
     public function update($data){
 
-        $this->db->where('Participant_Id', $data['Participant_ID']);
+        $this->db->where('Participant_ID', $data['Participant_ID']);
         $this->db->update('participant', $data);
+    }
+
+    //part of edit function
+    public function find_by_id($participant_id){
+        $this->db->select('Participant_ID, Event_ID, Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
+        $this->db->from('participant');
+        $this->db->where('Participant_ID', $participant_id);
+        return $this->db->get()->result()[0];
+    }
+
+    public function delete($participant_id){
+        $this->db->delete('participant', array('Participant_ID'=>$participant_id));
+
     }
 }
 

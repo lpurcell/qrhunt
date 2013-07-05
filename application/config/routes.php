@@ -37,6 +37,15 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['organization_all']= 'organization/index';
+//code needs to be fixed
+$route['organization/(:any)']= 'organization/view/$1';
+$route['organization_edit/(:any)']= 'organization/edit/$1';
+$route['participant_edit/(:any)']= 'register/edit/$1';
+$route['event_edit/(:any)']= 'event/edit/$1';
+$route['event/(:any)'] = 'event/view/$1';
+$route['events_all'] = 'event/index';
+
 $route['participant_edit/(:any)']= 'register/edit/$1';
 //view one participant with qrcode
 $route['participant/(:any)'] = 'register/view/$1';
