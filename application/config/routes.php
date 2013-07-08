@@ -37,6 +37,7 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['scan/(:any)/(:any)'] = 'scan/insert/$1/$2';
 $route['organization_all']= 'organization/index';
 //code needs to be fixed
 $route['organization/(:any)']= 'organization/view/$1';
