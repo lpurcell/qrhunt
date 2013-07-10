@@ -51,6 +51,7 @@
         $('a.view_participant').on('click', function (e) {
             e.preventDefault();
         });
+
      } );
     </script>
 

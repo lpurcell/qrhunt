@@ -46,7 +46,7 @@ $route['participant_edit/(:any)']= 'register/edit/$1';
 $route['event_edit/(:any)']= 'event/edit/$1';
 $route['event/(:any)'] = 'event/view/$1';
 $route['events_all'] = 'event/index';
-
+$route['participant_delete/(:any)'] = 'register/delete/$1';
 $route['participant_edit/(:any)']= 'register/edit/$1';
 //view one participant with qrcode
 $route['participant/(:any)'] = 'register/view/$1';

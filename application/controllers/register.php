@@ -27,16 +27,15 @@ class Register extends CI_Controller {
     {
         $data['title'] = 'Register Your Profile';
 
-        /* if ($this->form_validation->run() === FALSE){
+         if ($this->form_validation->run() === FALSE){
             $this->load->view('templates/header', $data);
             $this->load->view('register/create');
             $this->load->view('templates/footer');
         }else{
             $this->register_model->register();
             $this->load->view('news/success');
-        }*/
-        $this->register_model->register();
-        $this->load->view('news/success');
+        }
+
     }
 
     function handle_upload(){
