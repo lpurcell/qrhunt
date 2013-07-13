@@ -1,3 +1,4 @@
+
 <script src="<?php echo base_url()?>assets/js/qrcode_SJIS.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>assets/js/qrcode.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>assets/js/generate.js" type="text/javascript"></script>
@@ -65,6 +66,5 @@
 </table>
 <br  />
 <input type="submit" name="submit" value="Register Your Profile" />
-
 
 </form>
