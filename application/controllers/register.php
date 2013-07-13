@@ -25,11 +25,15 @@ class Register extends CI_Controller {
 
     public function create()
     {
+        $CI =& get_instance();
+        $CI->load->model('event_model');
+        $event['event'] = $CI->event_model->event_names();
+
         $data['title'] = 'Register Your Profile';
 
          if ($this->form_validation->run() === FALSE){
             $this->load->view('templates/header', $data);
-            $this->load->view('register/create');
+            $this->load->view('register/create', $event);
             $this->load->view('templates/footer');
         }else{
             $this->register_model->register();
@@ -94,8 +98,9 @@ class Register extends CI_Controller {
 
     public function edit($slug){
         $participant = $this->register_model->find_by_id($slug);
+       
         $data['Participant'] = $participant;
-        $original_picture = $participant -> Participant_Picture;
+        $original_picture = $participant->Participant_Picture;
 
         $data['title'] = 'Edit Your Profile';
 

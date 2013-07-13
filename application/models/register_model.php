@@ -50,7 +50,7 @@ class Register_model extends CI_Model {
         $this->db->select('Participant_ID, Event_ID, Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
         $this->db->from('participant');
         $this->db->where('Participant_ID', $participant_id);
-        return $this->db->get()->result()[0];
+        return $this->db->get()->row(0);
     }
 
     public function delete($participant_id){

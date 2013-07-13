@@ -9,7 +9,7 @@ class Css_model extends CI_Model {
     public function get_css(){
 
         //$NAME IS HARDCODED
-            $name = "adf";
+            $name = "";
 
             $this->db->select('Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor');
             $this->db->from('event');

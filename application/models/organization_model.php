@@ -21,7 +21,7 @@ public function find_by_id($organization_id){
     $this->db->select('Organization_ID, Organization_Name, Organization_Sponsor');
     $this->db->from('organization');
     $this->db->where('Organization_ID', $organization_id);
-    return $this->db->get()->result()[0];
+    return $this->db->get()->row(0);
 }
 
 public function get_organizations($slug = FALSE){

@@ -28,8 +28,17 @@ class Event_model extends CI_Model {
         $this->db->select('Event_ID, Organization_ID, Event_Name, Event_Location, Event_Date, Event_Coordinator, Event_Email, Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor');
         $this->db->from('event');
         $this->db->where('Event_Id', $event_id);
-        return $this->db->get()->result()[0];
+        return $this->db->get()->row(0);
     }
+
+    //used in registering a participant is not in the event controller
+    public function event_names(){
+        $this->db->select('Event_ID, Event_Name');
+        $this->db->from('event');
+
+        return $this->db->get()->result();
+    }
+
 
     public function get_events($slug = FALSE){
 

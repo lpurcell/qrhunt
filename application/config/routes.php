@@ -35,31 +35,39 @@
 |
 | This route will tell the Router what URI segments to use if those provided
 | in the URL cannot be matched to a valid route.
-|
+|^(?!admin|auth|backend|shop)(:any)
 */
+
+//scans table
 $route['scan/(:any)/(:any)'] = 'scan/insert/$1/$2';
-$route['organization_all']= 'organization/index';
-//code needs to be fixed
-$route['organization/(:any)']= 'organization/view/$1';
-$route['organization_edit/(:any)']= 'organization/edit/$1';
-$route['participant_edit/(:any)']= 'register/edit/$1';
-$route['event_edit/(:any)']= 'event/edit/$1';
-$route['event/(:any)'] = 'event/view/$1';
-$route['events_all'] = 'event/index';
+
+//participant table
 $route['participant_delete/(:any)'] = 'register/delete/$1';
 $route['participant_edit/(:any)']= 'register/edit/$1';
 //view one participant with qrcode
 $route['participant/(:any)'] = 'register/view/$1';
 //view all participants in the table
 $route['participants_all'] = 'register/index';
-$route['css/get'] = 'css/get';
 $route['register/create'] = 'register/create';
+
+//organization table
+$route['organization_all']= 'organization/index';
+//code needs to be fixed
+$route['organization/(:any)']= 'organization/view/$1';
+$route['organization_edit/(:any)']= 'organization/edit/$1';
 $route['organization/create']= 'organization/create';
+
+//event table
+$route['event_edit/(:any)']= 'event/edit/$1';
+$route['event/(:any)'] = 'event/view/$1';
+$route['events_all'] = 'event/index';
 $route['event/create']= 'event/create';
+
+//other routes
+$route['css/get'] = 'css/get';
 $route['news/create'] = 'news/create';
-$route['news/(:any)'] = 'news/view/$1';
-$route['news'] = 'news';
-$route['(:any)'] = 'pages/view/$1';
+
+//Should change, but I don't know what to
 $route['default_controller'] = 'pages/view';
 
 
