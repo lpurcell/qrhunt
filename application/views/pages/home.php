@@ -4,4 +4,5 @@ echo anchor('event/create', 'Register an Event', 'title="Register an Event"') . 
 echo anchor('register/create', 'Register a Participant', 'title="Register a Participant"')."<br/>";
 echo anchor('participants_all', 'View all Participants', 'title="View all Participants"')."<br/>";
 echo anchor('organization_all', 'View all Organizations', 'title="View all Organizations"')."<br/>";
+echo anchor('events_all', 'View all Events', 'title="View all Events"')."<br/>";
 ?>

@@ -5,7 +5,7 @@ class Event extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('event_model');
-        $this->load->helper(array('form', 'html', 'file'));
+        $this->load->helper(array('form', 'html', 'file', 'date'));
         $this->load->library('form_validation');
 
         $config['upload_path']   = './assets/images/';
@@ -81,7 +81,7 @@ class Event extends CI_Controller {
         $data['event'] = $this->event_model->get_events();
         $data['title'] = 'List of Events';
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('templates/header_tables', $data);
         $this->load->view('event/index', $data);
         $this->load->view('templates/footer');
 
@@ -118,6 +118,7 @@ class Event extends CI_Controller {
                 'Organization_ID' => $this ->input->post('Organization_ID'),
                 'Event_Name' => $this->input->post('Event_Name'),
                 'Event_Date' => $this->input->post('Event_Date'),
+                'Event_Location' => $this->input->post('Event_Location'),
                 'Event_Email' => $this->input->post('Event_Email'),
                 'Event_Coordinator' => $this->input->post('Event_Coordinator'),
                 'Event_Email' => $this->input->post('Event_Email'),
@@ -136,11 +137,13 @@ class Event extends CI_Controller {
 
             $this->event_model->update($new_data);
             $this->load->view('news/success');
-
         }
-
     }
 
+    public function delete($slug){
+        $this->event_model->delete($slug);
+        $this->load->view('news/success');
+    }
 
 }
 	

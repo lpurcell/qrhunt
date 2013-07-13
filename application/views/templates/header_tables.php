@@ -52,6 +52,16 @@
             e.preventDefault();
         });
 
+        /* Init DataTables */
+        var oTable = $('#table_id').dataTable();
+
+        /* Apply the tooltips */
+        $( oTable.fnGetNodes() ).tooltip( {
+            "delay": 0,
+            "track": true,
+            "fade": 250
+        });
+
      } );
     </script>
 

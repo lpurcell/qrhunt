@@ -14,18 +14,13 @@ class Organization extends CI_Controller {
 
     public function create()
     {
-
-
         $data['title'] = 'Register Your Organization';
-        
-
 
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('templates/header', $data);
             $this->load->view('organization/create');
             $this->load->view('templates/footer');
-
         }
         else{
             $this->organization_model->organization();
@@ -33,16 +28,13 @@ class Organization extends CI_Controller {
         }
     }
 
-
-
     public function index(){
         $data['organization'] = $this->organization_model->get_organizations();
         $data['title'] = 'List of Organizations';
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('templates/header_tables', $data);
         $this->load->view('organization/index', $data);
         $this->load->view('templates/footer');
-
     }
 
     public function view($slug){
@@ -78,7 +70,12 @@ class Organization extends CI_Controller {
             );
             $this->organization_model->update($new_data);
             $this->load->view('news/success');
-    }
+        }
+     }
+
+    public function delete($slug){
+        $this->organization_model->delete($slug);
+        $this->load->view('news/success');
     }
 }
 	

@@ -55,7 +55,6 @@ class Register_model extends CI_Model {
 
     public function delete($participant_id){
         $this->db->delete('participant', array('Participant_ID'=>$participant_id));
-
     }
 }
 

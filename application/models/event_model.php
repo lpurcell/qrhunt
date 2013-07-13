@@ -39,11 +39,10 @@ class Event_model extends CI_Model {
         return $this->db->get()->result();
     }
 
-
     public function get_events($slug = FALSE){
 
         if($slug === FALSE){
-            $this->db->select('Event_Name, Event_Location, Event_Date, Event_Coordinator, Event_Email, Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor');
+            $this->db->select("Event_ID, Event_Name, Event_Location, Event_Date, Event_Coordinator, Event_Email, Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor");
             $this->db->from('event');
             //need to filter data
             //$this->db->where('')
@@ -61,5 +60,8 @@ class Event_model extends CI_Model {
         $this->db->update('event', $data);
     }
 
+    public function delete($event_id){
+        $this->db->delete('event', array('Event_ID'=>$event_id));
+    }
 
 }

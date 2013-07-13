@@ -137,7 +137,6 @@ class Register extends CI_Controller {
     public function delete($slug){
         $this->register_model->delete($slug);
         $this->load->view('news/success');
-
     }
 
 

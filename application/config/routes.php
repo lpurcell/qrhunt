@@ -51,6 +51,7 @@ $route['participants_all'] = 'register/index';
 $route['register/create'] = 'register/create';
 
 //organization table
+$route['organization_delete/(:any)']='organization/delete/$1';
 $route['organization_all']= 'organization/index';
 //code needs to be fixed
 $route['organization/(:any)']= 'organization/view/$1';
@@ -58,6 +59,7 @@ $route['organization_edit/(:any)']= 'organization/edit/$1';
 $route['organization/create']= 'organization/create';
 
 //event table
+$route['event_delete/(:any)'] = 'event/delete/$1';
 $route['event_edit/(:any)']= 'event/edit/$1';
 $route['event/(:any)'] = 'event/view/$1';
 $route['events_all'] = 'event/index';

@@ -1,5 +1,3 @@
-
-
             <div id = "main">
 
                 <a href= "" onclick="javascript:window.location.href='<?php echo site_url('register/create')?>'" class="editor_create">Create new record</a>
