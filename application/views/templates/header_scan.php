@@ -8,30 +8,14 @@
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <link type="text/css "rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
-    <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery.minicolors.js"></script>
-    <link rel="stylesheet" media="screen" type="text/css" href="<?php echo base_url()?>assets/css/jquery.minicolors.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
 
     <script type="text/javascript">
         $(function() {
             $( "#datepicker" ).datepicker({
-            dateFormat: "yy-mm-dd"
+                dateFormat: "yy-mm-dd"
             });
 
-            $('INPUT[type=minicolors_main]').minicolors({
-                    defaultValue: '#ebca0e',
-                    theme: 'no theme'
-                });
-
-            $('INPUT[type=minicolors_text]').minicolors({
-                defaultValue: '#000000',
-                theme: 'no theme'
-            });
-
-            $('INPUT[type=minicolors_header]').minicolors({
-                defaultValue: '#82817b',
-                theme: 'no theme'
-            });
         });
     </script>
 
