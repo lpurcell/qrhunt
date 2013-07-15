@@ -6,5 +6,6 @@ echo anchor('scan/create', 'Create a Scan Manually', 'title="Create a Scan Manua
 echo anchor('participants_all', 'View all Participants', 'title="View all Participants"')."<br/>";
 echo anchor('organization_all', 'View all Organizations', 'title="View all Organizations"')."<br/>";
 echo anchor('events_all', 'View all Events', 'title="View all Events"')."<br/>";
+echo anchor('scan/totals', 'View Scan Totals', 'title="View Scan Totals"')."<br/>";
 
 ?>

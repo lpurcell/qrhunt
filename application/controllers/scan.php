@@ -87,8 +87,26 @@ class Scan extends CI_Controller
 
     }
 
-    public function delete($slug){
-        $this->scan_model->delete($slug);
+    public function view_count(){
+        $data['scans'] = $this->scan_model->view_by_count();
+
+        $data['title'] = "Scan Totals";
+
+        $this->load->view('templates/header_tables', $data);
+        $this->load->view('scan/view_count', $data);
+        $this->load->view('templates/footer');
+
+    }
+
+    //delete an individual scan
+    public function delete($participant_id,$qr_scanned){
+        $this->scan_model->delete($participant_id,$qr_scanned);
+        $this->load->view('news/success');
+    }
+
+    //delete all scans made by a participant
+    public function delete_all($participant_id){
+        $this->scan_model->delete_all($participant_id);
         $this->load->view('news/success');
     }
 }

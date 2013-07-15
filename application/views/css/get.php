@@ -1,10 +1,10 @@
 <?php header("Content-type: text/css");
 
-        foreach($tests as $test){
-             $Event_Logo = $test->Event_Logo;
-             $Event_Maincolor = $test->Event_Maincolor;
-             $Event_Textcolor = $test->Event_Textcolor;
-             $Event_Headercolor = $test->Event_Headercolor;
+        foreach($event as $event_item){
+             $Event_Logo = $event_item->Event_Logo;
+             $Event_Maincolor = $event_item->Event_Maincolor;
+             $Event_Textcolor = $event_item->Event_Textcolor;
+             $Event_Headercolor = $event_item->Event_Headercolor;
         }
         ?>
         *{

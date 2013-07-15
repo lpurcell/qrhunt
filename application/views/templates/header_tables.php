@@ -3,10 +3,10 @@
 
 
     <title><?php echo $title ?> QR Hunt</title>
-    <script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>assets/js/jquery.js"></script>
-    <script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>assets/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>assets/DataTables/media/js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>assets/DataTables/media/js/jquery.dataTables.js"></script>
     <style type="text/css" title="currentStyle">
-        @import "<?php echo base_url()?>assets/css/demo_table.css";
+        @import "<?php echo base_url()?>assets/DataTables/media/css/demo_table.css";
     </style>
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
 

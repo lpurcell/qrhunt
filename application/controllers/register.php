@@ -84,12 +84,16 @@ class Register extends CI_Controller {
     }
 
     public function view($slug){
-        $data['participant'] = $this->register_model->get_participants($slug);
-
+        $participants = $this->register_model->get_participants($slug);
         if(empty($data['participant'])){
             show_404();
         }
-       $data['title'] = 'QRCode ' . $slug;
+        //TODO throw error if array size > 1 (404 as well?)
+        $data['participant']=$participants;
+
+        //$data['css'] = $participants->row(0)->Event_ID;
+        $data['title'] = 'QRCode ' . $slug;
+
 
         $this->load->view('templates/header', $data);
         $this->load->view('register/view', $data);

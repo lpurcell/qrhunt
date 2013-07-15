@@ -41,9 +41,7 @@ class Scan_model extends CI_Model
         $this->db->insert('scan', $data);
     }
 
-    public function delete($participant_id, $qr_scanned){
-        $this->db->delete('scan', array('Participant_ID'=>$participant_id, 'QR_Scanned'=>$qr_scanned));
-    }
+
 
     public function get_scans($slug = FALSE){
 
@@ -78,5 +76,24 @@ class Scan_model extends CI_Model
         $this->db->where('QR_Scanned', $qr_scanned);
 
         return $this->db->get()->row(0);
+    }
+
+    //total number of scans each participant made
+    public function view_by_count(){
+        $this->db->select("Participant_ID, count(QR_Scanned) as Number_of_Scans");
+        $this->db->from('scan');
+        $this->db->group_by("Participant_ID");
+
+        return $this->db->get()->result();
+    }
+
+    //delete individual scan
+    public function delete($participant_id, $qr_scanned){
+        $this->db->delete('scan', array('Participant_ID'=>$participant_id, 'QR_Scanned'=>$qr_scanned));
+    }
+
+    //delete all scans by a participant
+    public function delete_all($participant_id){
+        $this->db->delete('scan', array('Participant_ID'=>$participant_id));
     }
 }

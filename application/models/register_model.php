@@ -32,7 +32,7 @@ class Register_model extends CI_Model {
             //$this->db->where('')
             return $this->db->get()->result();
         }
-        $this->db->select('Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
+        $this->db->select('Event_ID, Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
         $this->db->from('participant');
         $this->db->where('QRCode', $slug);
         return $this->db->get()->result();

@@ -8,9 +8,9 @@ class Css extends CI_Controller {
 
     }
 
-     public function get(){
+     public function get($Event_ID){
 
-         $data = array('tests' => $this->css_model->get_css());
+         $data = array('event' => $this->css_model->get_css());
 
 
          $this->load->view('css/get', $data);

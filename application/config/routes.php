@@ -39,6 +39,9 @@
 */
 
 //scans table
+$route['scan_delete_all/(:any)']='scan/delete_all/$1';
+$route['scan_delete/(:any)/(:any)']='scan/delete/$1/$2';
+$route['scan/totals']='scan/view_count';
 $route['scan_edit/(:any)/(:any)']= 'scan/edit/$1/$2';
 $route['scan/(:any)']= 'scan/view/$1';
 $route['scan/create']= 'scan/create';
@@ -69,7 +72,7 @@ $route['events_all'] = 'event/index';
 $route['event/create']= 'event/create';
 
 //other routes
-$route['css/get'] = 'css/get';
+$route['css/get/(:any)'] = 'css/get/$1';
 $route['news/create'] = 'news/create';
 
 //Should change, but I don't know what to

@@ -1,7 +1,6 @@
 <html>
 <head>
 
-
     <title><?php echo $title ?> QR Hunt</title>
 
 <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
