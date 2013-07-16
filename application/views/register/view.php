@@ -1,4 +1,5 @@
 <?php
+
     foreach ($participant as $participant_item):
         echo '<h2>'.$participant_item->QRCode.'</h2>';
             if ($participant_item->Participant_Picture === "0" || $participant_item->Participant_Picture === ""){

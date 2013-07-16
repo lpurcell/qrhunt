@@ -56,5 +56,13 @@ class Register_model extends CI_Model {
     public function delete($participant_id){
         $this->db->delete('participant', array('Participant_ID'=>$participant_id));
     }
+
+    //get qrcode and event_id of person who is scanning
+    public function participant_qrcode($participant_scanning){
+        $this->db->select('QRCode, Event_ID');
+        $this->db->from('participant');
+        $this->db->where('Participant_ID', $participant_scanning);
+        return $this->db->get()->row(0);
+    }
 }
 

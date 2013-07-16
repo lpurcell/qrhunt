@@ -6,7 +6,7 @@ class Scan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('scan_model');
-        $this->load->helper(array('form', 'html', 'file', 'url'));
+        $this->load->helper(array('form', 'html', 'file', 'url', 'cookie'));
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('Participant_ID', 'Participant ID', 'required');
@@ -35,11 +35,54 @@ class Scan extends CI_Controller
     {
         //TO DO: check the data that is inserted is in the database
         //Throw an error if a person tries to scan a person more than once?
+        $CI =& get_instance();
+        $CI->load->model('register_model');
+        $data = $CI->register_model->participant_qrcode($participant_scanning);
 
-       $this->scan_model->scan($participant_scanning, $participant_scanned);
-       redirect('participant/'.$participant_scanned);
+        $scanning_qrcode = $data->QRCode;
+        $scanning_eventid = $data->Event_ID;
+
+
+
+        //if they scan their own qrcode and a cookie is not set
+        if ($scanning_qrcode == $participant_scanned && get_cookie('qrcode')!= $participant_scanned){ //&& cookie is not set
+            //set cookie
+            $cookie = array(
+              array(
+              'name' => 'qrcode',
+              'value' => $scanning_qrcode,
+              'expire' => time()+3600,
+                ),
+              array(
+                'name' => 'event_id',
+                'value' => $scanning_eventid,
+                'expire' => time()+3600,
+              )
+            );
+
+            foreach($cookie as $cookies){
+            $this->input->set_cookie($cookies);
+            }
+            $this->load->view('news/success');
+        }
+        //if they scan their own qrcode and a cookie is set, they will go to edit their profile
+        elseif ($scanning_qrcode == $participant_scanned && get_cookie('qrcode')==$participant_scanned){//&& cookie is set
+           echo  var_dump($this->input->cookie('qrcode'));
+            redirect('participant_edit/'.$participant_scanning);
+        }
+        //if they scan someone else's code before scanning theirs
+        else if ($scanning_qrcode != $participant_scanned && get_cookie('qrcode') != $scanning_qrcode) //&& cookie is not set
+        {
+            $this->load->view('templates/header');
+            $this->load->view('news/scan_notice');
+            $this->load->view('templates/footer');
+        }
+        //if their cookie is set and they scan someone
+        else{
+            $this->scan_model->scan($participant_scanning, $participant_scanned);
+            redirect('participant/'.$participant_scanned);
+        }
     }
-    //view all scans
 
     //view individual scans by participant_id
     public function view($slug){

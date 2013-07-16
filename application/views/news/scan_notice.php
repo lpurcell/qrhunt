@@ -1,0 +1,1 @@
+<h2>Please scan your QR Code first to start the game.</h2>

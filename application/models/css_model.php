@@ -6,9 +6,9 @@ class Css_model extends CI_Model {
         $this->load->database();
     }
 
-    public function get_css(){
+    public function get_css($Event_ID){
 
-            $Event_ID = '';
+
 
             $this->db->select('Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor');
             $this->db->from('event');

@@ -5,7 +5,7 @@ class Register extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('register_model');
-        $this->load->helper(array('form', 'html', 'file', 'url'));
+        $this->load->helper(array('form', 'html', 'file', 'url', 'cookie'));
         $this->load->library('form_validation');
 
         $config['upload_path']   = './uploads/';
@@ -85,15 +85,16 @@ class Register extends CI_Controller {
 
     public function view($slug){
         $participants = $this->register_model->get_participants($slug);
+
+        $data['participant']=$participants;
+
+        //TODO throw error if array size > 1 (404 as well?)
         if(empty($data['participant'])){
             show_404();
         }
-        //TODO throw error if array size > 1 (404 as well?)
-        $data['participant']=$participants;
 
         //$data['css'] = $participants->row(0)->Event_ID;
         $data['title'] = 'QRCode ' . $slug;
-
 
         $this->load->view('templates/header', $data);
         $this->load->view('register/view', $data);
