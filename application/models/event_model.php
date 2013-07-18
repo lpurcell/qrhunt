@@ -10,7 +10,7 @@ class Event_model extends CI_Model {
     public function event(){
 
         $data = array(
-            'Organization_ID' => $this ->input->post('Organization_ID'),
+            'Organization_ID' => $this->input->post('Organization_ID'),
             'Event_Name' => $this ->input->post('Event_Name'),
             'Event_Location' => $this->input->post('Event_Location'),
             'Event_Date' => $this->input->post('Event_Date'),

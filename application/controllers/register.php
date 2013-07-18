@@ -14,11 +14,11 @@ class Register extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        $this->form_validation->set_rules('Participant_LName', 'Last Name', 'required');
-        $this->form_validation->set_rules('Participant_FName', 'First Name', 'required');
-        $this->form_validation->set_rules('Participant_Email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('QRCode', 'QR Code', 'required');
-        $this->form_validation->set_rules('Participant_Website', 'Personal Website');
+        $this->form_validation->set_rules('Participant_LName', 'Last Name', 'required|max_length[45]');
+        $this->form_validation->set_rules('Participant_FName', 'First Name', 'required|max_length[45]');
+        $this->form_validation->set_rules('Participant_Email', 'Email', 'required|valid_email||is_unique[participant.Participant_Email]');
+        $this->form_validation->set_rules('QRCode', 'QR Code', 'required|is_unique[participant.QRCode]');
+        $this->form_validation->set_rules('Participant_Website', 'Personal Website','|max_length[45]');
         $this->form_validation->set_rules('Participant_Picture', 'Picture', 'callback_handle_upload');
 
     }
@@ -103,6 +103,10 @@ class Register extends CI_Controller {
 
     public function edit($slug){
         $participant = $this->register_model->find_by_id($slug);
+
+        $CI =& get_instance();
+        $CI->load->model('event_model');
+        $data['event'] = $CI->event_model->event_names();
        
         $data['Participant'] = $participant;
         $original_picture = $participant->Participant_Picture;

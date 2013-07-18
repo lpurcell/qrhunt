@@ -23,6 +23,13 @@ class Organization_model extends CI_Model {
         return $this->db->get()->row(0);
     }
 
+    //used in registering an event is not in the organization controller
+    public function organization_names(){
+        $this->db->select('Organization_ID, Organization_Name');
+        $this->db->from('organization');
+
+        return $this->db->get()->result();
+    }
     public function get_organizations($slug = FALSE){
 
         if($slug === FALSE){

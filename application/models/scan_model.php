@@ -84,6 +84,7 @@ class Scan_model extends CI_Model
         $this->db->from('scan');
         $this->db->group_by("Participant_ID");
 
+
         return $this->db->get()->result();
     }
 

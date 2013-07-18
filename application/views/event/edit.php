@@ -11,8 +11,14 @@
 </p>
 <?php echo form_open_multipart('event_edit/'.$Event->Event_ID) ?>
 
-<!--HARDCODED--><input type ="hidden" name="Event_ID" value="<?php echo $Event->Event_ID ?>">
-<input type ="hidden" name="Organization_ID" value="<?php echo $Event->Organization_ID ?>">
+<input type ="hidden" name="Event_ID" value="<?php echo $Event->Event_ID ?>">
+
+<label for="Organization_ID">Choose your Organization:</label>
+<select name="Organization_ID">
+    <?php foreach($organization as $organization_item): ?>
+        <option  value="<?php echo $organization_item->Organization_ID; ?>"><?php echo $organization_item->Organization_Name; ?></option>
+    <?php endforeach ?>
+</select><br />
 
 <label for="Event_Name">Event Name:</label>
 <input type="input" name="Event_Name" value="<?php echo $Event->Event_Name ?>"><br />
@@ -32,10 +38,9 @@
 <label for="Event_Logo">Event Logo:</label>
 <input type="file" name="userfile" value="<?php echo $Event->Event_Logo ?>"><br />
 
-<div id=>
-    <label for="Event_Maincolor">Main Color:</label>
+ <label for="Event_Maincolor">Main Color:</label>
  <input type="minicolors_main"  name="Event_Maincolor" value="<?php echo $Event->Event_Maincolor ?>"><br />
-</div>
+
 
 <label for="Event_Textcolor">Text Color:</label>
 <input type="minicolors_text" id="minicolors" name="Event_Textcolor" value="<?php echo $Event->Event_Textcolor ?>"><br />
@@ -43,6 +48,6 @@
 <label for="Event_Headercolor">Header Color:</label>
 <input type="minicolors_header" name="Event_Headercolor" value="<?php echo $Event->Event_Headercolor ?>"><br />
 
-<input type="submit" name="submit" value="Register Your Event" />
+<input type="submit" name="submit" value="Edit Your Event" />
 
 </form>

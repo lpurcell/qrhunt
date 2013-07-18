@@ -14,12 +14,12 @@ class Event extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        $this->form_validation->set_rules('Organization_ID', 'Organization_ID', 'required');
-        $this->form_validation->set_rules('Event_Name', 'Event Name:', 'required');
-        $this->form_validation->set_rules('Event_Location', 'Location', 'required');
+        $this->form_validation->set_rules('Organization_ID', 'Organization_ID', 'required ');
+        $this->form_validation->set_rules('Event_Name', 'Event Name:', 'required|max_length[45]');
+        $this->form_validation->set_rules('Event_Location', 'Location', 'required|max_length[12]');
         $this->form_validation->set_rules('Event_Date', 'Date of Event:', 'required');
-        $this->form_validation->set_rules('Event_Coordinator', 'Coordinator Name:', 'required');
-        $this->form_validation->set_rules('Event_Email', 'Coordinator Email:', 'required');
+        $this->form_validation->set_rules('Event_Coordinator', 'Coordinator Name:', 'required|max_length[45]');
+        $this->form_validation->set_rules('Event_Email', 'Coordinator Email:', 'required|valid_email');
         $this->form_validation->set_rules('Event_Logo', 'Logo for Event', 'callback_handle_upload');
         $this->form_validation->set_rules('Event_Maincolor', 'Main Color: ');
         $this->form_validation->set_rules('Event_Textcolor', 'Text Color:');
@@ -29,12 +29,15 @@ class Event extends CI_Controller {
 
     public function create()
     {
+        $CI =& get_instance();
+        $CI->load->model('organization_model');
+        $organization['organization'] = $CI->organization_model->organization_names();
         $data['title'] = 'Register Your Event';
 
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('templates/header2', $data);
-            $this->load->view('event/create');
+            $this->load->view('event/create', $organization);
             $this->load->view('templates/footer');
 
         }
@@ -101,6 +104,10 @@ class Event extends CI_Controller {
     }
 
     public function edit($slug){
+        $CI =& get_instance();
+        $CI->load->model('organization_model');
+        $data['organization'] = $CI->organization_model->organization_names();
+
         $event = $this->event_model->find_by_id($slug);
         $data['Event'] = $event;
         $original_picture = $event -> Event_Logo;

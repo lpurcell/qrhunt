@@ -4,7 +4,12 @@
 
 <?php echo form_open_multipart('event/create') ?>
 
-<!--HARDCODED--><input type ="hidden" name="Organization_ID" value='456'>
+<label for="Organization_ID">Choose your Organization:</label>
+<select name="Organization_ID">
+    <?php foreach($organization as $organization_item): ?>
+        <option  value="<?php echo $organization_item->Organization_ID; ?>"><?php echo $organization_item->Organization_Name; ?></option>
+    <?php endforeach ?>
+</select><br />
 
 <label for="Event_Name">Event Name:</label>
 <input type="input" name="Event_Name" /><br />

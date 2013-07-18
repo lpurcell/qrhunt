@@ -8,8 +8,8 @@ class Organization extends CI_Controller {
         $this->load->helper(array('form', 'html'));
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('Organization_Name', 'Organization Name', 'required');
-        $this->form_validation->set_rules('Organization_Sponsor', 'Sponsor Name', 'required');
+        $this->form_validation->set_rules('Organization_Name', 'Organization Name', 'required|max_length[12]|is_unique[organization.Organization_Name]');
+        $this->form_validation->set_rules('Organization_Sponsor', 'Sponsor Name', 'required|max_length[12]');
     }
 
     public function create()

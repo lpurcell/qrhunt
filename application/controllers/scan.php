@@ -167,7 +167,7 @@ class Scan extends CI_Controller
 
         $data['title'] = "Scan Totals";
 
-        $this->load->view('templates/header_tables', $data);
+        $this->load->view('templates/h_scan_table', $data);
         $this->load->view('scan/view_count', $data);
         $this->load->view('templates/footer');
 

@@ -1,5 +1,6 @@
 <h2>Edit your Profile</h2>
-
+<a href="<?php echo site_url('scan_view/'.$Participant->Participant_ID)?>">See Your Points</a>
+<a href="<?php echo site_url('scan/totals')?>">See Game Points</a>
 <?php echo validation_errors(); ?>
 <?php ?>
 <p>
@@ -22,6 +23,13 @@
 
 <label for="Participant_Email">Email:</label>
 <input type="input" name="Participant_Email" value="<?php echo $Participant->Participant_Email; ?>"/><br />
+
+<label for="Event_ID">Choose your Event:</label>
+<select name="Event_ID">
+    <?php foreach($event as $event_item): ?>
+        <option  value="<?php echo $event_item->Event_ID; ?>"><?php echo $event_item->Event_Name; ?></option>
+    <?php endforeach ?>
+</select><br/>
 
 <label for="QRCode">QRCode:</label>
 <input type="input" name="QRCode" value="<?php echo $Participant->QRCode; ?>"/><br />
