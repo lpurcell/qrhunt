@@ -88,12 +88,28 @@ class Scan_model extends CI_Model
     }
 
     //delete individual scan
-    public function delete($participant_id, $qr_scanned){
-        $this->db->delete('scan', array('Participant_ID'=>$participant_id, 'QR_Scanned'=>$qr_scanned));
+    public function delete($participant_id, $qrcode_scanned){
+        $this->db->delete('scan', array('Participant_ID'=>$participant_id, 'QR_Scanned'=>$qrcode_scanned));
     }
 
     //delete all scans by a participant
     public function delete_all($participant_id){
         $this->db->delete('scan', array('Participant_ID'=>$participant_id));
+    }
+
+    //check if scan is already in database
+    public function check_scan($participant_id, $qrcode_scanned){
+        $this->db->select('Participant_ID, QR_Scanned');
+        $this->db->from('scan');
+        $this->db->where('Participant_ID', $participant_id);
+        $this->db->where('QR_Scanned', $qrcode_scanned);
+
+        $result = $this->db->get()->row(0);
+
+        if ($result == NULL){
+            return false;
+        }else{
+            return true;
+        }
     }
 }
