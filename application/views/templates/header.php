@@ -3,7 +3,11 @@
 
     <title><?php echo $title ?> QR Hunt</title>
 
-<link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
+    <?php if (!get_cookie('event_id')){ ?>
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url("assets/css/default.php");?>"/>
+    <?php }else{ ?>
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
+        <?php } ?>
 </head>
 <body>
     <div class="wrap">

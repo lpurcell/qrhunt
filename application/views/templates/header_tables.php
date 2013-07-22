@@ -8,7 +8,12 @@
     <style type="text/css" title="currentStyle">
         @import "<?php echo base_url()?>assets/DataTables/media/css/demo_table.css";
     </style>
-    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
+
+    <?php if (!get_cookie('event_id')){ ?>
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url("assets/css/default.php");?>"/>
+    <?php }else{ ?>
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
+    <?php } ?>
 
     <script type="text/javascript">
     $(document).ready( function () {

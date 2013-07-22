@@ -10,7 +10,11 @@
 
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery.minicolors.js"></script>
     <link rel="stylesheet" media="screen" type="text/css" href="<?php echo base_url()?>assets/css/jquery.minicolors.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
+    <?php if (!get_cookie('event_id')){ ?>
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url("assets/css/default.php");?>"/>
+    <?php }else{ ?>
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
+    <?php } ?>
 
     <script type="text/javascript">
         $(function() {

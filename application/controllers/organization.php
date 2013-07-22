@@ -5,7 +5,7 @@ class Organization extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('organization_model');
-        $this->load->helper(array('form', 'html'));
+        $this->load->helper(array('form', 'html', 'cookie'));
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('Organization_Name', 'Organization Name', 'required|max_length[12]|is_unique[organization.Organization_Name]');

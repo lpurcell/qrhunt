@@ -15,17 +15,17 @@
 
     <tr>
         <td><label for="Participant_LName">Last Name:</label></td>
-        <td><input type="text" name="Participant_LName" /></td>
+        <td><input type="text" name="Participant_LName" value="<?php echo set_value('Participant_LName')?>"/><br /></td>
     </tr>
 
     <tr>
         <td><label for="Participant_FName">First Name:</label></td>
-        <td><input type="input" name="Participant_FName" /></td>
+        <td><input type="input" name="Participant_FName" value="<?php echo set_value('Participant_FName')?>"/><br />/td>
     </tr>
 
     <tr>
         <td><label for="Participant_Email">Email:</label></td>
-        <td><input type="input" name="Participant_Email" /></td>
+        <td><input type="input" name="Participant_Email" value="<?php echo set_value('Participant_Email')?>"/><br /></td>
     </tr>
 
     <tr>
@@ -46,7 +46,7 @@
 
     <tr>
         <td>&nbsp;</td>
-        <td><input type="input" name="QRCode" id="QRField" /></td>
+        <td><input type="input" name="QRCode" id="QRField" value="<?php echo set_value('QRCode')?>"/><br /></td>
     </tr>
 
     <tr>
@@ -56,7 +56,7 @@
 
     <tr>
         <td><label for="Participant_Website">Personal Website:</label></td>
-        <td><input type="input" name="Participant_Website" /></td>
+        <td><input type="input" name="Participant_Website" value="<?php echo set_value('Participant_Website')?>"/><br /></td>
     </tr>
 
     <tr>

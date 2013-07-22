@@ -7,14 +7,48 @@
  */
 /** Missouri Western State University **/
 
-
+//generate a single code
 var generate = function() {
     var generatedCode = randomString(10, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
     //set text field value
     document.getElementById('QRField').value= generatedCode;
+}
 
-    update_qrcode();
+//generate multiple codes
+var generateMult = function() {
+    //declare variables
+    var textField;
+    var Num = document.getElementById('NoOfCodes').value;
+    var br = document.createElement('br');
+
+    //make sure div is empty
+    document.getElementById('emptyFormDiv').innerHTML = "";
+
+    //create form
+    var form = document.createElement("form");
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', '');
+
+    //add submit button to form
+    var subForm = document.createElement("input");
+    subForm.setAttribute('type',"submit");
+    subForm.setAttribute('value',"Submit");
+    form.appendChild(subForm);
+    form.appendChild(br);
+
+    //generate codes
+    for (var i = 0; i < Num; i++ ) {
+        var generatedCode = randomString(10, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+
+        textField = document.createElement("input");
+        textField.setAttribute('type', 'text');
+        textField.setAttribute('value',generatedCode);
+        form.appendChild(textField);
+    }
+
+    //add form to page
+    document.getElementById('emptyFormDiv').appendChild(form);
 }
 
 function randomString(length, chars) {
