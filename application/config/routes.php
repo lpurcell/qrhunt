@@ -45,7 +45,7 @@ $route['scan/totals']='scan/view_count';
 $route['scan_edit/(:any)/(:any)']= 'scan/edit/$1/$2';
 $route['scan_view/(:any)']= 'scan/view/$1';
 $route['scan/create']= 'scan/create';
-$route['scan/(:any)/(:any)'] = 'scan/insert/$1/$2';
+$route['scan/(:any)'] = 'scan/insert/$1';
 
 //participant table
 //Goes to page to generate multiple codes

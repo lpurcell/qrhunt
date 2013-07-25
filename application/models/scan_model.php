@@ -10,6 +10,7 @@ class Scan_model extends CI_Model
     //regular scan
     public function scan($participant_scanning, $participant_scanned)
     {
+
         $data = array(
             'Participant_ID' => $participant_scanning,
             'QR_Scanned' => $participant_scanned,

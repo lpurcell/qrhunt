@@ -59,31 +59,17 @@ class Register_model extends CI_Model {
 
     //get qrcode and event_id of person who is scanning
     public function participant_qrcode($participant_scanning){
-        $this->db->select('QRCode, Event_ID');
+        $this->db->select('Participant_ID, QRCode, Event_ID, Participant_LName, Participant_FName');
         $this->db->from('participant');
-        $this->db->where('Participant_ID', $participant_scanning);
+        $this->db->where('QRCode', $participant_scanning);
         return $this->db->get()->row(0);
     }
 
-    //check qrcode of the participant scanned
-    public function scanned_qrcode($qrcode_scanned){
-        $this->db->select('Participant_ID');
-        $this->db->from('participant');
-        $this->db->where('QRCode', $qrcode_scanned);
-        $result = $this->db->get()->row(0);
-
-        if ($result == NULL){
-            return false;
-        }else{
-            return true;
-        }
-    }
-
     //check the participant_id of the person scanning
-    public function check_participant_id($participant_id){
-        $this->db->select('QRCode');
+    public function check_participant_id($participant_qrcode){
+        $this->db->select('Participant_Id');
         $this->db->from('participant');
-        $this->db->where('Participant_ID', $participant_id);
+        $this->db->where('QRCode', $participant_qrcode);
         $result = $this->db->get()->row(0);
 
         if ($result == NULL){
