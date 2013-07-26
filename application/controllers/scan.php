@@ -40,7 +40,7 @@ class Scan extends CI_Controller
         //if the qrcode for participant_scanned doesn't exist
         if ($check_participant == false){
             $message['error'] = "Sorry, this QR Code does not exist.";
-            $data['title'] = "Error";
+            $message['title'] = "Error";
 
             $this->load->view('templates/header', $data);
             $this->load->view('news/scan_notice',$message);
@@ -80,9 +80,9 @@ class Scan extends CI_Controller
 
         if (!isset($_POST['Yes']) && !isset($_POST['No'])){
         $message['check'] = "Are you $scanning_name?";
-        $data['title'] = "Name Check";
+        $message['title'] = "Name Check";
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('templates/header', $message);
         $this->load->view('news/scan_check', $message);
         $this->load->view('templates/footer');
 
@@ -109,14 +109,14 @@ class Scan extends CI_Controller
                     'expire' => time()+3600,
                 )
             );
-            print_r($cookie);
+
             foreach($cookie as $cookies){
                 $this->input->set_cookie($cookies);
             }
             $this->load->view('news/success');
         }elseif ($this->input->post('No')){
             $message['error'] = "Please scan your QR Code first to start the game.";
-            $data['title'] = "Error";
+            $message['title'] = "Error";
 
             $this->load->view('templates/header', $data);
             $this->load->view('news/scan_notice', $message);
@@ -152,11 +152,26 @@ class Scan extends CI_Controller
 
     //view individual scans by participant_id
     public function view($slug){
+        $CI =& get_instance();
+        $CI->load->model('register_model');
         $data['participant'] = $this->scan_model->get_scans($slug);
+        $result = $data['participant'];
+        $data['participant_info'] = array();
 
         if(empty($data['participant'])){
             show_404();
         }
+
+        $i = 0;
+        foreach($result as $row){
+            $qr_scanned = $row->QR_Scanned;
+
+            $result2[] = $CI->register_model->get_name($qr_scanned);
+
+            $data['participant_info'] = $result2;
+
+        }
+
         $data['title'] = 'Scans by ' . $slug;
 
         $this->load->view('templates/header_tables', $data);

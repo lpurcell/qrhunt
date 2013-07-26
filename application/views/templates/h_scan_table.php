@@ -18,7 +18,7 @@
         $(document).ready( function () {
             $('#table_id').dataTable({
                 "bSort":true,
-                "aaSortingFixed":[[1, 'desc']],
+                "aaSortingFixed":[[4, 'desc']],
              });
 
             // New record

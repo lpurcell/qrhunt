@@ -61,9 +61,9 @@ class Scan_model extends CI_Model
         return $this->db->get()->result();
 
     }
+
     //edit function
     public function update($data){
-
         $this->db->where('Participant_ID', $data['Participant_ID']);
         $this->db->where('QR_Scanned', $data['QR_Scanned']);
         $this->db->update('scan', $data);
@@ -81,9 +81,10 @@ class Scan_model extends CI_Model
 
     //total number of scans each participant made
     public function view_by_count(){
-        $this->db->select("Participant_ID, count(QR_Scanned) as Number_of_Scans");
+        $this->db->select("participant.Participant_LName, participant.Participant_FName, participant.QRCode, scan.Participant_ID, count(scan.QR_Scanned) as Number_of_Scans");
         $this->db->from('scan');
-        $this->db->group_by("Participant_ID");
+        $this->db->join('participant', 'participant.Participant_ID = scan.Participant_ID');
+        $this->db->group_by("scan.Participant_ID");
 
 
         return $this->db->get()->result();

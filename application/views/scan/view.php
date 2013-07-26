@@ -1,4 +1,7 @@
 <div id="main">
+    <?php if (get_cookie('participant_id')){ ?>
+        <a href="<?php echo site_url('participant_edit/'.get_cookie('participant_id'))?>">Back</a>
+    <?php } ?>
 <table id="table_id" class="display">
 
     <h2><? echo $title ?></h2>
@@ -7,6 +10,8 @@
     <tr>
         <th>Scan Count</th>
         <th>QR Code Scanned</th>
+        <th>Last Name</th>
+        <th>First Name</th>
         <th>Date</th>
         <th>Time</th>
         <!--if cookie is not set, show the admin functions-->
@@ -27,6 +32,15 @@
         echo '<tr>';
         echo '<td>'.$count.'</td>';
         echo '<td>'.$participant_item->QR_Scanned.'</td>';
+
+        foreach ($participant_info as $info):
+            if($participant_item->QR_Scanned == $info->QRCode){
+                echo '<td>'.$info->Participant_LName.'</td>';
+                echo '<td>'.$info->Participant_FName.'</td>';
+            }
+        endforeach;
+
+
         echo '<td>'.$participant_item->Date.'</td>';
         echo '<td>'.$participant_item->Time.'</td>'; ?>
         <?php if (empty($_COOKIE)){?>

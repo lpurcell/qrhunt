@@ -1,12 +1,17 @@
 <div id = "main">
 
     <h2><?php echo $title; ?></h2>
-
+    <?php if (get_cookie('participant_id')){ ?>
+    <a href="<?php echo site_url('participant_edit/'.get_cookie('participant_id'))?>">Back</a>
+    <?php } ?>
     <table id="table_id" class="display">
 
         <thead>
         <tr>
             <th>Participant ID</th>
+            <th>QR Code</th>
+            <th>Last Name</th>
+            <th>First Name</th>
             <th>Total Scans</th>
             <!-- if a cookie is set, they will not see the admin functions-->
             <?php if (empty($_COOKIE)){
@@ -22,6 +27,9 @@
             <!--TO DO link to view participant profile-->
             <!--add participant qr code and name-->
             <td><a href="" onclick="return ViewParticipant();" id="view_participant"><?php echo $scan->Participant_ID ?></a></td>
+            <td><?php echo $scan->QRCode ?></td>
+            <td><?php echo $scan->Participant_LName ?></td>
+            <td><?php echo $scan->Participant_FName ?></td>
             <td><?php echo $scan->Number_of_Scans ?></td>
             <?php if (empty($_COOKIE)){ ?>
                 <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("scan/".$scan->Participant_ID)?>'" class="editor_edit">View Each Scan</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("scan_delete_all/".$scan->Participant_ID)?>'" class="editor_remove">Delete All Scans</a></td>

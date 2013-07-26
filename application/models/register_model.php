@@ -57,6 +57,15 @@ class Register_model extends CI_Model {
         $this->db->delete('participant', array('Participant_ID'=>$participant_id));
     }
 
+    //get data for single scan view
+    public function get_name($qr_scanned){
+        $this->db->select("Participant_LName, Participant_FName, QRCode");
+        $this->db->from('participant');
+        $this->db->where('QRCode', $qr_scanned);
+
+        return $this->db->get()->row();
+    }
+
     //get qrcode and event_id of person who is scanning
     public function participant_qrcode($participant_scanning){
         $this->db->select('Participant_ID, QRCode, Event_ID, Participant_LName, Participant_FName');
