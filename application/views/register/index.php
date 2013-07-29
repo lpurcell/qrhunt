@@ -17,7 +17,7 @@
 
                 <?php foreach ($participant as $participant_item): ?>
                     <tr>
-                        <td><a href="" onclick="return ViewParticipant();" id="view_participant"><?php echo $participant_item->QRCode ?></a></td>
+                        <td><a href="<?php echo site_url('participant/'.$participant_item->QRCode)?>"  id="view"><?php echo $participant_item->QRCode ?></a></td>
                         <td><?php echo $participant_item->Participant_LName ?></td>
                         <td><?php echo $participant_item->Participant_FName ?></td>
                         <td><?php echo $participant_item->Participant_Email ?></td>

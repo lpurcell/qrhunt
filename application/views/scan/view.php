@@ -31,7 +31,7 @@
 
         echo '<tr>';
         echo '<td>'.$count.'</td>';
-        echo '<td>'.$participant_item->QR_Scanned.'</td>';
+        echo '<td><a href="'. site_url('participant/'.$participant_item->QR_Scanned).'"  id="view">'.$participant_item->QR_Scanned.'</a></td>';
 
         foreach ($participant_info as $info):
             if($participant_item->QR_Scanned == $info->QRCode){

@@ -8,7 +8,6 @@
 
         <thead>
         <tr>
-            <th>Participant ID</th>
             <th>QR Code</th>
             <th>Last Name</th>
             <th>First Name</th>
@@ -24,15 +23,12 @@
         <?php foreach ($scans as $scan): ?>
 
         <tr>
-            <!--TO DO link to view participant profile-->
-            <!--add participant qr code and name-->
-            <td><a href="" onclick="return ViewParticipant();" id="view_participant"><?php echo $scan->Participant_ID ?></a></td>
-            <td><?php echo $scan->QRCode ?></td>
+            <td><a href="<?php echo site_url('participant/'.$scan->QRCode)?>"  id="view"><?php echo $scan->QRCode ?></a></td>
             <td><?php echo $scan->Participant_LName ?></td>
             <td><?php echo $scan->Participant_FName ?></td>
             <td><?php echo $scan->Number_of_Scans ?></td>
             <?php if (empty($_COOKIE)){ ?>
-                <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("scan/".$scan->Participant_ID)?>'" class="editor_edit">View Each Scan</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("scan_delete_all/".$scan->Participant_ID)?>'" class="editor_remove">Delete All Scans</a></td>
+                <td><a href="<?php echo site_url('scan_view/'.$scan->Participant_ID)?>" id="view">View Each Scan</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("scan_delete_all/".$scan->Participant_ID)?>'" class="editor_remove">Delete All Scans</a></td>
             <?php } ?>
         </tr>
 

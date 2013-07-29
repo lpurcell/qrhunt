@@ -42,7 +42,7 @@ class Scan extends CI_Controller
             $message['error'] = "Sorry, this QR Code does not exist.";
             $message['title'] = "Error";
 
-            $this->load->view('templates/header', $data);
+            $this->load->view('templates/header', $message);
             $this->load->view('news/scan_notice',$message);
             $this->load->view('templates/footer');
 

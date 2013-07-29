@@ -15,6 +15,7 @@
         ?>
 
         <ul>
+            <li>Name: <?php echo $participant_item->Participant_FName. " " . $participant_item->Participant_LName ?></li>
             <li>Email: <?php echo $participant_item->Participant_Email ?></li>
             <li>Website:
                 <?php

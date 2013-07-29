@@ -48,9 +48,9 @@ class Event_model extends CI_Model {
             //$this->db->where('')
             return $this->db->get()->result();
         }
-        $this->db->select('Event_Name, Event_Location, Event_Date, Event_Coordinator, Event_Email, Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor');
+        $this->db->select('Event_ID, Event_Name, Event_Location, Event_Date, Event_Coordinator, Event_Email, Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor');
         $this->db->from('event');
-        $this->db->where('Event_Name', $slug);
+        $this->db->where('Event_ID', $slug);
         return $this->db->get()->result();
     }
 

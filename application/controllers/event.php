@@ -5,7 +5,7 @@ class Event extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('event_model');
-        $this->load->helper(array('form', 'html', 'file', 'date'));
+        $this->load->helper(array('form', 'html', 'file', 'date', 'cookie'));
         $this->load->library('form_validation');
 
         $config['upload_path']   = './assets/images/';

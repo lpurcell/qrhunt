@@ -52,8 +52,8 @@
                 { "label": "Delete", "fn": function () { editor.submit() } }
             );
         } );
-        //view participant
-        $('a.view_participant').on('click', function (e) {
+        //view individual items on event_all table and participant_all table
+        $('a.view').on('click', function (e) {
             e.preventDefault();
         });
 

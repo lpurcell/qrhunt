@@ -3,11 +3,11 @@ foreach ($event as $event_item):
     echo '<h2>'.$event_item->Event_Name.'</h2>';
     if ($event_item->Event_Logo === "0" || $event_item->Event_Logo === ""){
         ?>
-        <img src="<?php echo base_url(); ?>assets/images/avatar.jpg">
+        <img src="<?php echo base_url(); ?>assets/images/default_logo.jpg">
     <?php
     }else{
         ?>
-        <img src= "<?= base_url();?>uploads/<?= $event_item->Event_Logo?>">
+        <img src= "<?= base_url();?>assets/images/<?= $event_item->Event_Logo?>">
 
     <?php
     }

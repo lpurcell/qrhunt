@@ -19,8 +19,7 @@
         <?php $datestring = '%m-%d-%Y'; ?>
         <?php foreach ($event as $event_item): ?>
             <tr>
-                <!--TO DO: create a link to view the Event with Event_Name-->
-                <td><?php echo $event_item->Event_Name ?></td>
+                <td><a href="<?php echo site_url('event/'.$event_item->Event_ID)?>"  id="view"><?php echo $event_item->Event_Name ?></a></td>
                 <td><?php echo mdate($datestring, strtotime($event_item->Event_Date)); ?></td>
                 <td><?php echo $event_item->Event_Location ?></td>
                 <td><?php echo $event_item->Event_Coordinator ?></td>
