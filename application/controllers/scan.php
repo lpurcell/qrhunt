@@ -9,8 +9,8 @@ class Scan extends CI_Controller
         $this->load->helper(array('form', 'html', 'file', 'url', 'cookie'));
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('Participant_ID', 'Participant ID', 'required');
-        $this->form_validation->set_rules('QR_Scanned', 'QR Scanned', 'required');
+
+        $this->form_validation->set_rules('QR_Scanned', 'QR Scanned');
     }
 
     //create a scan manually
@@ -24,9 +24,10 @@ class Scan extends CI_Controller
             $this->load->view('templates/footer');
 
         } else {
-            $this->scan_model->scan_manual();
-            $this->load->view('news/success');
-            //redirect to person's file
+            $participant_scanned = $_POST['QR_Scanned'];
+
+           redirect('scan/'.$participant_scanned);
+
         }
     }
 
@@ -79,6 +80,7 @@ class Scan extends CI_Controller
         $scanning_name = $data->Participant_FName . " " . $data->Participant_LName;
 
         if (!isset($_POST['Yes']) && !isset($_POST['No'])){
+
         $message['check'] = "Are you $scanning_name?";
         $message['title'] = "Name Check";
 
@@ -114,7 +116,7 @@ class Scan extends CI_Controller
                 $this->input->set_cookie($cookies);
             }
             $this->load->view('news/success');
-        }elseif ($this->input->post('No')){
+        }elseif ($this->input->post('No') || isset($_POST['No'])){
             $message['error'] = "Please scan your QR Code first to start the game.";
             $message['title'] = "Error";
 
