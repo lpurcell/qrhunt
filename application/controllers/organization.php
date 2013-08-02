@@ -64,7 +64,7 @@ class Organization extends CI_Controller {
 
         }else{
             $new_data = array(
-                'Organization_ID' => $this->input->post('Organization_ID'),
+                'Organization_ID' => $this->input->post('ORGANIZATION_ID'),
                 'Organization_Name' => $this->input->post('Organization_Name'),
                 'Organization_Sponsor' => $this->input->post('Organization_Sponsor')
             );

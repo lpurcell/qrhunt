@@ -14,9 +14,11 @@ class Register extends CI_Controller {
 
         $this->load->library('upload', $config);
 
+
+
         $this->form_validation->set_rules('Participant_LName', 'Last Name', 'required|max_length[45]');
         $this->form_validation->set_rules('Participant_FName', 'First Name', 'required|max_length[45]');
-        $this->form_validation->set_rules('Participant_Email', 'Email', 'required|valid_email||is_unique[participant.Participant_Email]');
+        $this->form_validation->set_rules('Participant_Email', 'Email', 'required|valid_email|is_unique[participant.Participant_Email]');
         $this->form_validation->set_rules('QRCode', 'QR Code', 'required|is_unique[participant.QRCode]');
         $this->form_validation->set_rules('Participant_Website', 'Personal Website','|max_length[45]');
         $this->form_validation->set_rules('Participant_Picture', 'Picture', '|callback_handle_upload');
@@ -114,6 +116,7 @@ class Register extends CI_Controller {
 
         $data['title'] = 'Edit Your Profile';
 
+
         if ($this->form_validation->run() === FALSE){
             $this->load->view('templates/header', $data);
             $this->load->view('register/edit', $data);
@@ -121,7 +124,7 @@ class Register extends CI_Controller {
 
         }else{
             $new_data = array(
-                'Participant_ID' => $this->input->post('Participant_ID'),
+                'Participant_ID' => $this->input->post('PARTICIPANT_ID'),
                 'Event_ID' => $this ->input->post('Event_ID'),
                 'Participant_LName' => $this->input->post('Participant_LName'),
                 'Participant_FName' => $this->input->post('Participant_FName'),

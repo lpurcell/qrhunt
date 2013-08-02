@@ -13,7 +13,8 @@
 <?php echo form_open_multipart('participant_edit/'.$Participant->Participant_ID) ?>
 
 <input type ="hidden" name="Event_ID" value="<?php echo $Participant->Event_ID; ?>">
-<input type ="hidden" name="Participant_ID" value="<?php echo $Participant->Participant_ID; ?>">
+
+<input type ="hidden" name="PARTICIPANT_ID" value="<?php echo $Participant->Participant_ID; ?>">
 
 <label for="Participant_LName">Last Name:</label>
 <input type="text" name="Participant_LName" value="<?php echo $Participant->Participant_LName; ?>"/><br />
@@ -27,7 +28,7 @@
 <label for="Event_ID">Choose your Event:</label>
 <select name="Event_ID">
     <?php foreach($event as $event_item): ?>
-        <option  value="<?php echo $event_item->Event_ID; ?>"><?php echo $event_item->Event_Name; ?></option>
+        <option  value="<?php echo $event_item->Event_ID; ?>" <?php if ($event_item->Event_ID == $Participant->Event_ID){ echo "selected='selected'"; }else{ ''; } ?> ><?php echo $event_item->Event_Name; ?></option>
     <?php endforeach ?>
 </select><br/>
 

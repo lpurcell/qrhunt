@@ -24,6 +24,7 @@ class Event_model extends CI_Model {
 
         return $this->db->insert('event', $data);
     }
+    //used in edit()
     public function find_by_id($event_id){
         $this->db->select('Event_ID, Organization_ID, Event_Name, Event_Location, Event_Date, Event_Coordinator, Event_Email, Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor');
         $this->db->from('event');

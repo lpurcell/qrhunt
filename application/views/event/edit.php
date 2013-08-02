@@ -4,19 +4,20 @@
 
 <p>
     <?php if ($Event->Event_Logo === "0" || $Event->Event_Logo === ""){ ?>
-        <img src="<?php echo base_url(); ?>assets/images/avatar.jpg">
+        <img src="<?php echo base_url(); ?>assets/images/default_logo.jpg">
     <?php }else{ ?>
         <img src= "<?= base_url();?>uploads/<?= $Event->Event_Logo ?>">
     <?php } ?>
 </p>
 <?php echo form_open_multipart('event_edit/'.$Event->Event_ID) ?>
 
-<input type ="hidden" name="Event_ID" value="<?php echo $Event->Event_ID ?>">
+<input type ="hidden" name="EVENT_ID" value="<?php echo $Event->Event_ID ?>">
 
 <label for="Organization_ID">Choose your Organization:</label>
+
 <select name="Organization_ID">
     <?php foreach($organization as $organization_item): ?>
-        <option  value="<?php echo $organization_item->Organization_ID; ?>"><?php echo $organization_item->Organization_Name; ?></option>
+        <option  value="<?php echo $organization_item->Organization_ID; ?>" <?php if ($organization_item->Organization_ID == $Event->Organization_ID){ echo "selected='selected'"; }else{ ''; } ?> ><?php echo $organization_item->Organization_Name; ?></option>
     <?php endforeach ?>
 </select><br />
 

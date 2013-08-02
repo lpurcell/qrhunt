@@ -15,7 +15,7 @@ class Event extends CI_Controller {
         $this->load->library('upload', $config);
 
         $this->form_validation->set_rules('Organization_ID', 'Organization_ID', 'required ');
-        $this->form_validation->set_rules('Event_Name', 'Event Name:', 'required|max_length[45]');
+        $this->form_validation->set_rules('Event_Name', 'Event Name:', 'required|max_length[45]|is_unique[event.Event_Name]');
         $this->form_validation->set_rules('Event_Location', 'Location', 'required|max_length[12]');
         $this->form_validation->set_rules('Event_Date', 'Date of Event:', 'required');
         $this->form_validation->set_rules('Event_Coordinator', 'Coordinator Name:', 'required|max_length[45]');
@@ -121,7 +121,7 @@ class Event extends CI_Controller {
 
         }else{
             $new_data = array(
-                'Event_ID' => $this->input->post('Event_ID'),
+                'Event_ID' => $this->input->post('EVENT_ID'),
                 'Organization_ID' => $this ->input->post('Organization_ID'),
                 'Event_Name' => $this->input->post('Event_Name'),
                 'Event_Date' => $this->input->post('Event_Date'),

@@ -3,7 +3,7 @@
 
 <?php echo form_open('organization_edit/'.$Organization->Organization_ID) ?>
 
-<input type ="hidden" name="Organization_ID" value="<?php echo $Organization->Organization_ID ?>">
+<input type ="hidden" name="ORGANIZATION_ID" value="<?php echo $Organization->Organization_ID ?>">
 
 <label for="Organization_Name">Organization Name:</label>
 <input type="input" name="Organization_Name" value="<?php echo $Organization->Organization_Name ?>"><br />
