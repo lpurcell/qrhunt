@@ -131,6 +131,7 @@ class Scan extends CI_Controller
         $participant_scanning = get_cookie('participant_id');
 
         $already_scanned = $CI->scan_model->check_scan($participant_scanning, $participant_scanned); //checks if the scan is already in the database
+        $event_check = $CI->register_model->check_event($participant_scanned);
 
         //if they scanned someone and it is in the database already
         if ($already_scanned == true){
@@ -142,6 +143,15 @@ class Scan extends CI_Controller
             $this->load->view('news/notice_redirect', $message);
             $this->load->view('templates/footer');
 
+        }
+        elseif($event_check->Event_Id != get_cookie('event_id')){  //if they scanned someone who is in a different event
+            $message['error'] = "Sorry, this QR Code is in a different event";
+
+            $data['title'] = "Event Mismatch";
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('news/scan_notice', $message);
+            $this->load->view('templates/footer');
         }
         //if their cookie is set and they scan someone they haven't scanned before
         else{
@@ -164,7 +174,7 @@ class Scan extends CI_Controller
             show_404();
         }
 
-        $i = 0;
+
         foreach($result as $row){
             $qr_scanned = $row->QR_Scanned;
 

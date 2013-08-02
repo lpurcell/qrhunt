@@ -57,7 +57,7 @@ class Register_model extends CI_Model {
         $this->db->delete('participant', array('Participant_ID'=>$participant_id));
     }
 
-    //get data for single scan view
+    //get data for single scan view in view() function of scan model
     public function get_name($qr_scanned){
         $this->db->select("Participant_LName, Participant_FName, QRCode");
         $this->db->from('participant');
@@ -66,7 +66,7 @@ class Register_model extends CI_Model {
         return $this->db->get()->row();
     }
 
-    //get qrcode and event_id of person who is scanning
+    //get qrcode, event_id, first and last name of person who is scanning in check_name() of scan controller
     public function participant_qrcode($participant_scanning){
         $this->db->select('Participant_ID, QRCode, Event_ID, Participant_LName, Participant_FName');
         $this->db->from('participant');
@@ -74,7 +74,7 @@ class Register_model extends CI_Model {
         return $this->db->get()->row(0);
     }
 
-    //check the participant_id of the person scanning
+    //check the participant_id of the person scanning in insert() of scan controller
     public function check_participant_id($participant_qrcode){
         $this->db->select('Participant_Id');
         $this->db->from('participant');
@@ -86,6 +86,14 @@ class Register_model extends CI_Model {
         }else{
             return true;
         }
+    }
+    //check the event_id of person scanned in check_scan() of scan controller
+    public function check_event($participant_scanned){
+        $this->db->select('Event_Id');
+        $this->db->from('participant');
+        $this->db->where('QRCode', $participant_scanned);
+
+        return $this->db->get()->row(0);
     }
 }
 
