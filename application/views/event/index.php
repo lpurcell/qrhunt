@@ -12,7 +12,11 @@
         <th>Event Coordinator</th>
         <th>Email</th>
         <th>Event Logo</th>
+        <?php if (!get_cookie('participant_id')){ ?>
         <th>Admin</th>
+        <?php
+        }
+        ?>
      </tr>
     </thead>
     <tbody>
@@ -36,7 +40,11 @@
                     }
                     ?>
                 </td>
+                <?php if (!get_cookie('participant_id')){ ?>
                 <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("event_edit/".$event_item->Event_ID)?>'" class="editor_edit">Edit</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("event_delete/".$event_item->Event_ID)?>'" class="editor_remove">Delete</a></td>
+                <?php
+                }
+                ?>
             </tr>
         <?php endforeach ?>
     </tbody>

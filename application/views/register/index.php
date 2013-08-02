@@ -10,7 +10,10 @@
                         <th>First Name</th>
                         <th>Email</th>
                         <th>Website</th>
-                        <th>Admin</th>
+                        <?php if (! get_cookie('participant_id')){
+                            echo "<th>Admin</th>";
+                        }
+                        ?>
                      </tr>
                 </thead>
                 <tbody>
@@ -29,7 +32,11 @@
                                 }
                             ?>
                         </td>
+                        <?php if (!get_cookie('participant_id')) { ?>
                         <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("participant_edit/".$participant_item->Participant_ID)?>'" class="editor_edit">Edit</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("participant_delete/".$participant_item->Participant_ID)?>'" class="editor_remove">Delete</a></td>
+                        <?php
+                        }
+                        ?>
                     </tr>
                 <?php endforeach ?>
 

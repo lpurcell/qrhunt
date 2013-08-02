@@ -8,7 +8,11 @@
             <tr>
                 <th>Organization Name</th>
                 <th>Organization Sponsor</th>
+                <?php if (! get_cookie('participant_id')){ ?>
                 <th>Admin</th>
+                <?php
+                }
+                ?>
              </tr>
         </thead>
 
@@ -18,7 +22,11 @@
             <tr>
                 <td><?php echo $organization_item->Organization_Name ?></td>
                 <td><?php echo $organization_item->Organization_Sponsor ?></td>
+                <?php if (! get_cookie('participant_id')){ ?>
                 <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("organization_edit/".$organization_item->Organization_ID)?>'" class="editor_edit">Edit</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("organization_delete/".$organization_item->Organization_ID)?>'" class="editor_remove">Delete</a></td>
+                <?php
+                }
+                ?>
             </tr>
         <?php endforeach ?>
 
