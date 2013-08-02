@@ -20,7 +20,7 @@
 
     <tr>
         <td><label for="Participant_FName">First Name:</label></td>
-        <td><input type="input" name="Participant_FName" value="<?php echo set_value('Participant_FName')?>"/><br />/td>
+        <td><input type="input" name="Participant_FName" value="<?php echo set_value('Participant_FName')?>"/><br /></td>
     </tr>
 
     <tr>

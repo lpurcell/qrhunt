@@ -17,7 +17,7 @@
 
     <script type="text/javascript">
     $(document).ready( function () {
-        $('#table_id').dataTable();
+
 
         // New record
         $('a.editor_create').on('click', function (e) {

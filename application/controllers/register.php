@@ -19,7 +19,7 @@ class Register extends CI_Controller {
         $this->form_validation->set_rules('Participant_Email', 'Email', 'required|valid_email||is_unique[participant.Participant_Email]');
         $this->form_validation->set_rules('QRCode', 'QR Code', 'required|is_unique[participant.QRCode]');
         $this->form_validation->set_rules('Participant_Website', 'Personal Website','|max_length[45]');
-        $this->form_validation->set_rules('Participant_Picture', 'Picture', 'callback_handle_upload');
+        $this->form_validation->set_rules('Participant_Picture', 'Picture', '|callback_handle_upload');
 
     }
 
@@ -36,13 +36,14 @@ class Register extends CI_Controller {
             $this->load->view('register/create', $event);
             $this->load->view('templates/footer');
         }else{
+
             $this->register_model->register();
             $this->load->view('news/success');
-        }
+         }
 
     }
 
-    function handle_upload(){
+    public function handle_upload($str){
 
         if (isset($_FILES['userfile']) && $_FILES['userfile']['error']!= 4){
             if ($this->upload->do_upload('userfile')){

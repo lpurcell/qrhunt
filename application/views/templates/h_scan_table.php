@@ -18,7 +18,8 @@
         $(document).ready( function () {
             $('#table_id').dataTable({
                 "bSort":true,
-                "aaSortingFixed":[[4, 'desc']],
+                //need to make the scanning totals column desc by default
+                "aaSortingFixed":[[3, 'desc']]
              });
 
             // New record
