@@ -2,17 +2,15 @@
 <head>
 
 
-    <title><?php echo $title ?> QR Hunt</title>
+    <title><?php echo $title ?>-QR Hunt</title>
     <script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>assets/DataTables/media/js/jquery.js"></script>
     <script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>assets/DataTables/media/js/jquery.dataTables.js"></script>
     <style type="text/css" title="currentStyle">
         @import "<?php echo base_url()?>assets/DataTables/media/css/demo_table.css";
     </style>
-    <?php if (!get_cookie('event_id')){ ?>
-        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url("assets/css/default.php");?>"/>
-    <?php }else{ ?>
-        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
-    <?php } ?>
+
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:799px)" href="<?php echo base_url("assets/css/default.php");?>"/>
+    <link rel="stylesheet" type="text/css" media="screen and (min-device-width:320px)" href="<?php echo base_url("assets/css/mobile.php");?>"/>
 
     <script type="text/javascript">
         $(document).ready( function () {
@@ -78,6 +76,6 @@
 <div class="wrap">
     <div class="header">
         <div class = "logo">
-            <h1>QR Hunt</h1>
+            <img src="<?php base_url()?>assets/images/GELogoEdited.jpg" alt="Logo" title="Logo" />
         </div>
     </div>
