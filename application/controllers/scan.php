@@ -218,7 +218,10 @@ class Scan extends CI_Controller
              );
 
             $this->scan_model->update($new_data);
+
+            $this->load->view('templates/header_scan', $data);
             $this->load->view('news/success');
+            $this->load->view('templates/footer');
         }
 
     }
@@ -237,12 +240,20 @@ class Scan extends CI_Controller
     //delete an individual scan
     public function delete($participant_id,$qr_scanned){
         $this->scan_model->delete($participant_id,$qr_scanned);
+
+        $data['title']="Deleted Scan";
+        $this->load->view('templates/header', $data);
         $this->load->view('news/success');
+        $this->load->view('templates/footer');
     }
 
     //delete all scans made by a participant
     public function delete_all($participant_id){
         $this->scan_model->delete_all($participant_id);
+
+        $data['title']="Deleted All Scans";
+        $this->load->view('templates/header', $data);
         $this->load->view('news/success');
+        $this->load->view('templates/footer');
     }
 }

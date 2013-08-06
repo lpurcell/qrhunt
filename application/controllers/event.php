@@ -40,10 +40,13 @@ class Event extends CI_Controller {
             $this->load->view('event/create', $organization);
             $this->load->view('templates/footer');
 
-        }
-        else{
+        }else{
             $this->event_model->event();
+
+
+            $this->load->view('templates/header', $data);
             $this->load->view('news/success');
+            $this->load->view('templates/footer');
         }
     }
 
@@ -143,13 +146,19 @@ class Event extends CI_Controller {
             }
 
             $this->event_model->update($new_data);
+            $this->load->view('templates/header', $data);
             $this->load->view('news/success');
+            $this->load->view('templates/footer');
         }
     }
 
     public function delete($slug){
         $this->event_model->delete($slug);
+
+        $data['title']="Deleted Event";
+        $this->load->view('templates/header', $data);
         $this->load->view('news/success');
+        $this->load->view('templates/footer');
     }
 
 }

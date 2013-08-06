@@ -40,7 +40,9 @@ class Register extends CI_Controller {
         }else{
 
             $this->register_model->register();
+            $this->load->view('templates/header', $data);
             $this->load->view('news/success');
+            $this->load->view('templates/footer');
          }
 
     }
@@ -142,14 +144,21 @@ class Register extends CI_Controller {
             }
 
             $this->register_model->update($new_data);
+
+            $this->load->view('templates/header', $data);
             $this->load->view('news/success');
+            $this->load->view('templates/footer');
         }
 
     }
 
     public function delete($slug){
         $this->register_model->delete($slug);
+
+        $data['title']="Deleted Participant";
+        $this->load->view('templates/header', $data);
         $this->load->view('news/success');
+        $this->load->view('templates/footer');
     }
 
 

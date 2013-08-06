@@ -16,15 +16,18 @@ class Organization extends CI_Controller {
     {
         $data['title'] = 'Register Your Organization';
 
-        if ($this->form_validation->run() === FALSE)
-        {
+        if ($this->form_validation->run() === FALSE){
+
             $this->load->view('templates/header', $data);
             $this->load->view('organization/create');
             $this->load->view('templates/footer');
-        }
-        else{
+
+        }else{
+
             $this->organization_model->organization();
+            $this->load->view('templates/header', $data);
             $this->load->view('news/success');
+            $this->load->view('templates/footer');
         }
     }
 
@@ -61,21 +64,27 @@ class Organization extends CI_Controller {
             $this->load->view('organization/edit', $data);
             $this->load->view('templates/footer');
 
-
         }else{
             $new_data = array(
                 'Organization_ID' => $this->input->post('ORGANIZATION_ID'),
                 'Organization_Name' => $this->input->post('Organization_Name'),
                 'Organization_Sponsor' => $this->input->post('Organization_Sponsor')
             );
+
             $this->organization_model->update($new_data);
+            $this->load->view('templates/header', $data);
             $this->load->view('news/success');
+            $this->load->view('templates/footer');
         }
      }
 
     public function delete($slug){
         $this->organization_model->delete($slug);
+
+        $data['title']="Deleted Organization";
+        $this->load->view('templates/header', $data);
         $this->load->view('news/success');
+        $this->load->view('templates/footer');
     }
 }
 	
