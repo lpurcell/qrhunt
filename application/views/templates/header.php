@@ -1,18 +1,16 @@
 <html>
 <head>
 
-    <title><?php echo $title ?> QR Hunt</title>
+    <title><?php echo $title ?>-QR Hunt</title>
 
-    <?php if (!get_cookie('event_id')){ ?>
-        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url("assets/css/default.php");?>"/>
-    <?php }else{ ?>
-        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
-        <?php } ?>
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:799px)" href="<?php echo base_url("assets/css/default.php");?>"/>
+    <link rel="stylesheet" type="text/css" media="screen and (min-device-width:320px)" href="<?php echo base_url("assets/css/mobile.php");?>"/>
+
 </head>
 <body>
     <div class="wrap">
     <div class="header">
         <div class = "logo">
-	        <h1>QR Hunt</h1>
+            <img src="<?php base_url()?>assets/images/GELogoEdited.jpg" alt="Logo" title="Logo" />
          </div>
     </div>
