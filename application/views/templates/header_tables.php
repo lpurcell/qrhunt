@@ -72,6 +72,6 @@
 <div class="wrap">
     <div class="header">
         <div class = "logo">
-            <img src="<?php base_url()?>assets/images/GELogoEdited.jpg" alt="Logo" title="Logo" />
+            <img src="<?php echo base_url()?>assets/images/GELogoEdited.jpg" alt="Logo" title="Logo" />
         </div>
     </div>
