@@ -63,7 +63,7 @@ class Scan extends CI_Controller
 
             //if participant scanned doesn't match qrcode in cookie and participant cookie is set
             if (get_cookie('qrcode') != $participant_scanned && get_cookie('participant_id')){
-                echo 'here';
+
                 $this->check_scan($CI, $participant_scanned);
             }
         }
@@ -138,9 +138,6 @@ class Scan extends CI_Controller
         $event_check = $CI->register_model->check_event($participant_scanned);
 
         $event_id = $event_check->Event_ID;
-        echo $participant_scanning . '<br/>';
-        echo $participant_scanned . '<br/>';
-        echo $event_id;
 
         //if they scanned someone and it is in the database already
         if ($already_scanned == true){
@@ -228,6 +225,9 @@ class Scan extends CI_Controller
     }
 
     public function view_count(){
+        $CI =& get_instance();
+        $CI->load->model('event_model');
+        $data['event'] = $CI->event_model->event_names();
         $data['scans'] = $this->scan_model->view_by_count();
 
         $data['title'] = "Scan Totals";

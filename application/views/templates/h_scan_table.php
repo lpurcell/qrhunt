@@ -20,7 +20,7 @@
                 //need to make the scanning totals column desc by default
                 "aaSortingFixed":[[4, 'desc']],
                 "bFilter":true,
-                "aoColumns"   : [{ "bSearchable": true, "bVisible": false, "sWidth": "25%" }, {"sWidth": "25%"}, {"sWidth": "25%"}, {"sWidth": "25%"}, {"sWidth": "25%"} ]
+                "aoColumns"   : [{ "bSearchable": true, "bVisible": false, "sWidth": "5%" }, {"sWidth": "5%"}, {"sWidth": "5%"}, {"sWidth": "5%"}, {"sWidth": "5%"}, {"sWidth": "10%"} ]
                 });
 
             var oTable;

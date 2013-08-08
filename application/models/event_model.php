@@ -32,7 +32,7 @@ class Event_model extends CI_Model {
         return $this->db->get()->row(0);
     }
 
-    //used in registering a participant is not in the event controller
+    //used in registering a participant and viewing scans is not in the event controller
     public function event_names(){
         $this->db->select('Event_ID, Event_Name');
         $this->db->from('event');
