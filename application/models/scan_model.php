@@ -63,6 +63,14 @@ class Scan_model extends CI_Model
 
     }
 
+    public function scanned_by($qrcode){
+        $this->db->select("Participant_ID, Event_ID, date_format(Scan_Time,'%m-%d-%Y')as Date, date_format(Scan_Time, '%h:%i:%s') as Time", false);
+        $this->db->from('scan');
+        $this->db->where('QR_Scanned', $qrcode);
+
+        return $this->db->get()->result();
+    }
+
     //edit function
     public function update($data){
         $this->db->where('Participant_ID', $data['Participant_ID']);

@@ -188,7 +188,34 @@ class Scan extends CI_Controller
         $this->load->view('scan/view', $data);
         $this->load->view('templates/footer');
     }
+    //view who person was scanned by
+    public function view_reverse($qrcode){
+        $CI =& get_instance();
+        $CI->load->model('register_model');
+        $CI->load->model('event_model');
+        $data['scans'] = $this->scan_model->scanned_by($qrcode);
+        $data['events'] = $this->event_model->event_names();
+        $result = $data['scans'];
+        $data['scan_info'] = array();
 
+        if(empty($data['scans'])){
+            show_404();
+        }
+
+        foreach($result as $row){
+            $participant = $row->Participant_ID;
+
+            $result2[] = $CI->register_model->find_by_id($participant);
+
+            $data['scan_info'] = $result2;
+
+        }
+        $data['title'] = 'Participants Scanned ' . $qrcode;
+
+        $this->load->view('templates/header_tables', $data);
+        $this->load->view('scan/view_reverse', $data);
+        $this->load->view('templates/footer');
+    }
     public function edit($participant_id, $qr_scanned){
          $scan = $this->scan_model->find_by_id($participant_id, $qr_scanned);
 

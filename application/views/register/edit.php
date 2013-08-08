@@ -1,6 +1,7 @@
 <h2>Edit your Profile</h2>
 <a href="<?php echo site_url('scan_view/'.$Participant->Participant_ID)?>">See Your Points</a>
 <a href="<?php echo site_url('scan/totals')?>">See Game Points</a>
+<a href="<?php echo site_url('scanned_by/'.$Participant->QRCode)?>">Your QRCode Scans</a>
 <?php echo validation_errors(); ?>
 <?php ?>
 <p>
