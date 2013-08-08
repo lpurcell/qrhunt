@@ -2,7 +2,7 @@
 
 class My_Form_validation extends CI_Form_validation {
 
-    public function is_unique($str, $field)
+    public function unique($str, $field)
     {
         list($table, $field)=explode('.', $field);
 

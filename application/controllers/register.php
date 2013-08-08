@@ -18,8 +18,8 @@ class Register extends CI_Controller {
 
         $this->form_validation->set_rules('Participant_LName', 'Last Name', 'required|max_length[45]');
         $this->form_validation->set_rules('Participant_FName', 'First Name', 'required|max_length[45]');
-        $this->form_validation->set_rules('Participant_Email', 'Email', 'required|valid_email|is_unique[participant.Participant_Email]');
-        $this->form_validation->set_rules('QRCode', 'QR Code', 'required|is_unique[participant.QRCode]');
+        $this->form_validation->set_rules('Participant_Email', 'Email', 'required|valid_email|unique[participant.Participant_Email]');
+        $this->form_validation->set_rules('QRCode', 'QR Code', 'required|unique[participant.QRCode]');
         $this->form_validation->set_rules('Participant_Website', 'Personal Website','|max_length[45]');
         $this->form_validation->set_rules('Participant_Picture', 'Picture', '|callback_handle_upload');
 
