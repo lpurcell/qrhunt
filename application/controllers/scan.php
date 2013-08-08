@@ -63,7 +63,7 @@ class Scan extends CI_Controller
 
             //if participant scanned doesn't match qrcode in cookie and participant cookie is set
             if (get_cookie('qrcode') != $participant_scanned && get_cookie('participant_id')){
-
+                echo 'here';
                 $this->check_scan($CI, $participant_scanned);
             }
         }
@@ -115,7 +115,11 @@ class Scan extends CI_Controller
             foreach($cookie as $cookies){
                 $this->input->set_cookie($cookies);
             }
+
+            $this->load->view('templates/header', $data);
             $this->load->view('news/success');
+            $this->load->view('templates/footer');
+
         }elseif ($this->input->post('No') || isset($_POST['No'])){
             $message['error'] = "Please scan your QR Code first to start the game.";
             $message['title'] = "Error";
@@ -133,6 +137,11 @@ class Scan extends CI_Controller
         $already_scanned = $CI->scan_model->check_scan($participant_scanning, $participant_scanned); //checks if the scan is already in the database
         $event_check = $CI->register_model->check_event($participant_scanned);
 
+        $event_id = $event_check->Event_ID;
+        echo $participant_scanning . '<br/>';
+        echo $participant_scanned . '<br/>';
+        echo $event_id;
+
         //if they scanned someone and it is in the database already
         if ($already_scanned == true){
             $message['error'] = "You have already scanned this QR Code.<br/>You will receive no points for viewing their profile.";
@@ -144,19 +153,11 @@ class Scan extends CI_Controller
             $this->load->view('templates/footer');
 
         }
-        elseif($event_check->Event_Id != get_cookie('event_id')){  //if they scanned someone who is in a different event
-            $message['error'] = "Sorry, this QR Code is in a different event";
-
-            $data['title'] = "Event Mismatch";
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('news/scan_notice', $message);
-            $this->load->view('templates/footer');
-        }
-        //if their cookie is set and they scan someone they haven't scanned before
+         //if their cookie is set and they scan someone they haven't scanned before
         else{
 
-            $this->scan_model->scan($participant_scanning, $participant_scanned);
+
+            $this->scan_model->scan($participant_scanning, $participant_scanned, $event_id);
             redirect('participant/'.$participant_scanned);
         }
 
