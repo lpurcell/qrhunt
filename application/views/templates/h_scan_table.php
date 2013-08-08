@@ -16,9 +16,20 @@
         $(document).ready( function () {
             $('#table_id').dataTable({
                 "bSort":true,
+
                 //need to make the scanning totals column desc by default
-                "aaSortingFixed":[[3, 'desc']]
-             });
+                "aaSortingFixed":[[4, 'desc']],
+                "bFilter":true,
+                "aoColumns"   : [{ "bSearchable": true, "bVisible": false, "sWidth": "25%" }, {"sWidth": "25%"}, {"sWidth": "25%"}, {"sWidth": "25%"}, {"sWidth": "25%"} ]
+                });
+
+            var oTable;
+            oTable = $('#table_table').dataTable();
+
+            $('#table_id_select').change( function() {
+                oTable.fnFilter( $(this).val() );
+            });
+
 
             // New record
             $('a.editor_create').on('click', function (e) {

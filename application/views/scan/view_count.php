@@ -6,8 +6,18 @@
     <?php } ?>
     <table id="table_id" class="display">
 
+        <p>Filter by Event:
+            <select id="table_id_select">
+                <option></option>
+                <option>123</option>
+                <option>0</option>
+            </select>
+        </p>
+
         <thead>
+
         <tr>
+            <th>Event</th>
             <th>QR Code</th>
             <th>Last Name</th>
             <th>First Name</th>
@@ -23,6 +33,7 @@
         <?php foreach ($scans as $scan): ?>
 
         <tr>
+            <td><?php echo $scan->Event_ID ?></td>
             <td><a href="<?php echo site_url('participant/'.$scan->QRCode)?>"  id="view"><?php echo $scan->QRCode ?></a></td>
             <td><?php echo $scan->Participant_LName ?></td>
             <td><?php echo $scan->Participant_FName ?></td>
