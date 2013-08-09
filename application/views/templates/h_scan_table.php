@@ -4,6 +4,7 @@
     <title><?php echo $title ?>-QR Hunt</title>
 
     <meta name="viewport" content="initial-scale=1.0">
+    <link rel="icon" href="<?php echo base_url("assets/images/favicon.ico")?>">
 
     <script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>assets/DataTables/media/js/jquery.js"></script>
     <script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>assets/DataTables/media/js/jquery.dataTables.js"></script>

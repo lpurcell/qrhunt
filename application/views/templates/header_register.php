@@ -5,6 +5,7 @@
     <title><?php echo $title ?>-QR Hunt</title>
 
     <meta name="viewport" content="initial-scale=1.0">
+    <link rel="icon" href="<?php echo base_url("assets/images/favicon.ico")?>">
 
     <link rel="stylesheet" type="text/css" media="screen and (min-width:799px)" href="<?php echo base_url("assets/css/default.css");?>"/>
     <link rel="stylesheet" type="text/css" media="screen and (min-device-width:320px)" href="<?php echo base_url("assets/css/mobile.css");?>"/>

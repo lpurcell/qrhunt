@@ -5,6 +5,7 @@
     <title><?php echo $title ?>-QR Hunt</title>
 
     <meta name="viewport" content="initial-scale=1.0">
+    <link rel="icon" href="<?php echo base_url("assets/images/favicon.ico")?>">
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
