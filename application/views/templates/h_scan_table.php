@@ -1,8 +1,10 @@
 <html>
 <head>
 
-
     <title><?php echo $title ?>-QR Hunt</title>
+
+    <meta name="viewport" content="initial-scale=1.0">
+
     <script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>assets/DataTables/media/js/jquery.js"></script>
     <script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>assets/DataTables/media/js/jquery.dataTables.js"></script>
     <style type="text/css" title="currentStyle">
@@ -20,7 +22,7 @@
                 //need to make the scanning totals column desc by default
                 "aaSortingFixed":[[4, 'desc']],
                 "bFilter":true,
-                "aoColumns"   : [{ "bSearchable": true, "bVisible": false, "sWidth": "5%" }, {"sWidth": "5%"}, {"sWidth": "5%"}, {"sWidth": "5%"}, {"sWidth": "5%"}, {"sWidth": "10%"} ]
+                "aoColumns"   : [{ "bSearchable": true, "bVisible": false, "sWidth": "5%" }, {"sWidth": "5%"}, {"sWidth": "5%"}, {"sWidth": "5%"}, {"sWidth": "5%"}]
                 });
 
             var oTable;
@@ -87,6 +89,6 @@
 <div class="wrap">
     <div class="header">
         <div class = "logo">
-            <img src="<?php echo base_url()?>assets/images/GELogoEdited.jpg" alt="Logo" title="Logo" />
+            <a href="<?php echo site_url() ?>"><img src="<?php echo base_url()?>assets/images/GELogoEdited.jpg" alt="Logo" title="Logo" /></a>
         </div>
     </div>

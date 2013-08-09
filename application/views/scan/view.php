@@ -1,9 +1,12 @@
 <div id="main">
+    <?php if($url_id == get_cookie('participant_id')){?>
+    <h2>Your Scans</h2>
+    <?php }else {
+    echo '<h2>'.$title.'</h2>';
+    }
 
-    <h2><?php echo $title ?></h2>
-
-    <?php if (get_cookie('participant_id')){ ?>
-        <a href="<?php echo site_url('participant_edit/'.get_cookie('participant_id'))?>">Back</a>
+    if (get_cookie('participant_id')){ ?>
+        <a href="<?php echo site_url('participant/'.get_cookie('qrcode'))?>">Back</a>
     <?php } ?>
 <table id="table_id" class="display">
 

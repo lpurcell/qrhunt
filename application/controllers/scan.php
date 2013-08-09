@@ -55,10 +55,10 @@ class Scan extends CI_Controller
                 $this->check_name($CI, $participant_scanned);
             }
 
-            //if they scan their own qrcode and cookie is set, view edit page
+            //if they scan their own qrcode and cookie is set, view their own profile page
             if (get_cookie('qrcode')== $participant_scanned && get_cookie('participant_id')){
 
-                redirect('participant_edit/'.get_cookie('participant_id'));
+                redirect('participant/'.get_cookie('qrcode'));
             }
 
             //if participant scanned doesn't match qrcode in cookie and participant cookie is set
@@ -116,7 +116,9 @@ class Scan extends CI_Controller
                 $this->input->set_cookie($cookies);
             }
 
-            $this->load->view('templates/header', $data);
+            $message['title'] = "Name Check";
+
+            $this->load->view('templates/header', $message);
             $this->load->view('news/success');
             $this->load->view('templates/footer');
 
@@ -164,14 +166,15 @@ class Scan extends CI_Controller
     public function view($slug){
         $CI =& get_instance();
         $CI->load->model('register_model');
+
         $data['participant'] = $this->scan_model->get_scans($slug);
         $result = $data['participant'];
         $data['participant_info'] = array();
+        $data['url_id'] = $slug;
 
         if(empty($data['participant'])){
             show_404();
         }
-
 
         foreach($result as $row){
             $qr_scanned = $row->QR_Scanned;
@@ -193,10 +196,13 @@ class Scan extends CI_Controller
         $CI =& get_instance();
         $CI->load->model('register_model');
         $CI->load->model('event_model');
+
         $data['scans'] = $this->scan_model->scanned_by($qrcode);
         $data['events'] = $this->event_model->event_names();
+
         $result = $data['scans'];
         $data['scan_info'] = array();
+        $data['url_id'] = $qrcode;
 
         if(empty($data['scans'])){
             show_404();

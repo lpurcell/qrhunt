@@ -4,6 +4,8 @@
 
     <title><?php echo $title ?>-QR Hunt</title>
 
+    <meta name="viewport" content="initial-scale=1.0">
+
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <link type="text/css "rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -42,8 +44,6 @@
 <div class="wrap">
     <div class="header">
         <div class = "logo">
-            <img src="<?php echo base_url()?>assets/images/GELogoEdited.jpg" alt="Logo" title="Logo" />
-
-
+            <a href="<?php echo site_url() ?>"><img src="<?php echo base_url()?>assets/images/GELogoEdited.jpg" alt="Logo" title="Logo" /></a>
         </div>
     </div>

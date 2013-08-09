@@ -1,8 +1,15 @@
 <?php
 
     foreach ($participant as $participant_item):
+        if ($participant_item->QRCode == get_cookie('qrcode')){ ?>
+            <h2>Your Profile Page</h2>
+            <a href="<?php echo site_url('scan_view/'.$participant_item->Participant_ID)?>">See Your Points</a>
+            <a href="<?php echo site_url('scan/totals')?>">See Game Points</a>
+            <a href="<?php echo site_url('scanned_by/'.$participant_item->QRCode)?>">Your QRCode Scans</a>
+        <?php }
+
         echo '<h2>'.$participant_item->QRCode.'</h2>';
-            if ($participant_item->Participant_Picture === "0" || $participant_item->Participant_Picture === ""){
+            if ($participant_item->Participant_Picture === "0" || $participant_item->Participant_Picture === "" || $participant_item->Participant_Picture === null){
         ?>
             <img src="<?php echo base_url(); ?>assets/images/avatar.jpg">
         <?php

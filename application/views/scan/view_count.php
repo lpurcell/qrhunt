@@ -2,7 +2,7 @@
 
     <h2><?php echo $title; ?></h2>
     <?php if (get_cookie('participant_id')){ ?>
-    <a href="<?php echo site_url('participant_edit/'.get_cookie('participant_id'))?>">Back</a>
+    <a href="<?php echo site_url('participant/'.get_cookie('qrcode'))?>">Back</a>
     <?php } ?>
 
 

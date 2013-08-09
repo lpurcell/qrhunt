@@ -12,6 +12,6 @@
     <div class="wrap">
     <div class="header">
         <div class = "logo">
-            <img src="<?php echo base_url()?>assets/images/GELogoEdited.jpg" alt="Logo" title="Logo" />
+            <a href="<?php echo site_url() ?>"><img src="<?php echo base_url()?>assets/images/GELogoEdited.jpg" alt="Logo" title="Logo" /></a>
          </div>
     </div>
