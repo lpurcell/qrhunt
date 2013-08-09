@@ -7,7 +7,13 @@
     }
 
     if (get_cookie('participant_id')){ ?>
-        <a href="<?php echo site_url('participant/'.get_cookie('qrcode'))?>">Back</a>
+        <br/>
+        <div class="menu">
+            <ul>
+                <li><a href="<?php echo site_url('participant/'.get_cookie('qrcode'))?>">Back</a></li>
+            </ul>
+        </div>
+        <br/>
     <?php } ?>
     <table id="table_id" class="display">
 
