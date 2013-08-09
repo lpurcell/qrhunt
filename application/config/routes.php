@@ -80,6 +80,7 @@ $route['news/create'] = 'news/create';
 
 //Should change, but I don't know what to
 $route['default_controller'] = 'pages/view';
+$route['(:any)'] = 'pages/view/$1';
 
 
 /* End of file routes.php */
