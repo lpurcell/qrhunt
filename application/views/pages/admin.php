@@ -5,7 +5,7 @@
         echo "<li>" . anchor('register/create', 'Register a Participant', 'title="Register a Participant"') . "</li>";
         echo "<li>" . anchor('participants_all', 'View all Participants', 'title="View all Participants"'). "</li>";
         echo "<li>" . anchor('scan/create', 'Create a Scan Manually', 'title="Create a Scan Manually"'). "</li>";
-        echo "<li>" . anchor('scan/totals', 'View Scan Totals', 'title="View Scan Totals"'). "</li><br/>";
+        echo "<li>" . anchor('admin/scan/totals', 'View Scan Totals', 'title="View Scan Totals"'). "</li><br/>";
 
         echo "<li>" . anchor('', 'Scavenger Hunt Directions', 'title="Scavenger Hunt Directions"'). "</li><br/>";
 

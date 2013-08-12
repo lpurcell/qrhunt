@@ -4,7 +4,7 @@
 
     <?php }else {
         echo '<h2>'.$title.'</h2>';
-        }
+    }
 
     if (get_cookie('participant_id')){ ?>
         <br/>
@@ -18,7 +18,7 @@
 
     <table id="table_id" class="display">
 
-    <thead>
+        <thead>
         <tr>
             <th>Scan Count</th>
             <th>QR Code Scanned</th>
@@ -26,10 +26,11 @@
             <th>First Name</th>
             <th>Date</th>
             <th>Time</th>
-         </tr>
-    </thead>
+            <th>Admin</th>
+        </tr>
+        </thead>
 
-    <tbody>
+        <tbody>
 
         <?php
         $count = 1;
@@ -49,14 +50,15 @@
 
 
                 echo '<td>'.$participant_item->Date.'</td>';
-                echo '<td>'.$participant_item->Time.'</td>';
-            echo '</tr>';
+                echo '<td>'.$participant_item->Time.'</td>'; ?>
+                <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("scan_edit/".$participant_item->Participant_ID)."/".$participant_item->QR_Scanned?>'" class="editor_edit">Edit</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("scan_delete/".$participant_item->Participant_ID."/".$participant_item->QR_Scanned)?>'" class="editor_remove">Delete</a></td>
+             <?php echo '</tr>';
 
             $count += 1;
 
         endforeach
         ?>
-    </tbody>
+        </tbody>
 
     </table>
 

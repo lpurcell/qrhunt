@@ -80,7 +80,7 @@ class Scan_model extends CI_Model
 
     //part of edit function
     public function find_by_id($participant_id, $qr_scanned){
-        $this->db->select("Participant_ID, QR_Scanned, date_format(Scan_Time,'%m-%d-%Y')as Date, date_format(Scan_Time, '%h:%i:%s') as Time", false);
+        $this->db->select("Participant_ID, QR_Scanned, Event_ID, date_format(Scan_Time,'%m-%d-%Y')as Date, date_format(Scan_Time, '%h:%i:%s') as Time", false);
         $this->db->from('scan');
         $this->db->where('Participant_ID', $participant_id);
         $this->db->where('QR_Scanned', $qr_scanned);

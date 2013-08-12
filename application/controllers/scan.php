@@ -191,6 +191,35 @@ class Scan extends CI_Controller
         $this->load->view('scan/view', $data);
         $this->load->view('templates/footer');
     }
+
+    public function view_admin($slug){
+        $CI =& get_instance();
+        $CI->load->model('register_model');
+
+        $data['participant'] = $this->scan_model->get_scans($slug);
+        $result = $data['participant'];
+        $data['participant_info'] = array();
+        $data['url_id'] = $slug;
+
+        if(empty($data['participant'])){
+            show_404();
+        }
+
+        foreach($result as $row){
+            $qr_scanned = $row->QR_Scanned;
+
+            $result2[] = $CI->register_model->get_name($qr_scanned);
+
+            $data['participant_info'] = $result2;
+
+        }
+
+        $data['title'] = 'Scans by ' . $slug;
+
+        $this->load->view('templates/header_tables', $data);
+        $this->load->view('scan/view_admin', $data);
+        $this->load->view('templates/footer');
+    }
     //view who person was scanned by
     public function view_reverse($qrcode){
         $CI =& get_instance();
@@ -222,8 +251,50 @@ class Scan extends CI_Controller
         $this->load->view('scan/view_reverse', $data);
         $this->load->view('templates/footer');
     }
+
+    public function view_reverse_admin($qrcode){
+        $CI =& get_instance();
+        $CI->load->model('register_model');
+        $CI->load->model('event_model');
+
+        $data['scans'] = $this->scan_model->scanned_by($qrcode);
+        $data['events'] = $this->event_model->event_names();
+
+        $result = $data['scans'];
+        $data['scan_info'] = array();
+        $data['url_id'] = $qrcode;
+
+        if(empty($data['scans'])){
+            $message['error'] = "This person has not been scanned by anyone";
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('news/scan_notice', $message);
+            $this->load->view('templates/footer');
+        }else{
+
+        foreach($result as $row){
+            $participant = $row->Participant_ID;
+
+            $result2[] = $CI->register_model->find_by_id($participant);
+
+            $data['scan_info'] = $result2;
+
+        }
+        $data['title'] = 'Participants Scanned ' . $qrcode;
+        $data['lookupQRCode'] = $qrcode;
+
+        $this->load->view('templates/header_tables', $data);
+        $this->load->view('scan/view_reverse_admin', $data);
+        $this->load->view('templates/footer');
+       }
+    }
+
     public function edit($participant_id, $qr_scanned){
-         $scan = $this->scan_model->find_by_id($participant_id, $qr_scanned);
+        $scan = $this->scan_model->find_by_id($participant_id, $qr_scanned);
+
+        $CI =& get_instance();
+        $CI->load->model('event_model');
+        $data['event'] = $CI->event_model->event_names();
 
         $data['scan']= $scan;
 
@@ -245,6 +316,7 @@ class Scan extends CI_Controller
             $new_data = array(
                 'Participant_ID' => $this->input->post('Participant_ID'),
                 'QR_Scanned' => $this ->input->post('QR_Scanned'),
+                'Event_ID' => $this ->input->post('Event_ID'),
                 'Scan_Time' => $new_datetime
              );
 
@@ -267,6 +339,20 @@ class Scan extends CI_Controller
 
         $this->load->view('templates/h_scan_table', $data);
         $this->load->view('scan/view_count', $data);
+        $this->load->view('templates/footer');
+
+    }
+
+    public function view_count_admin(){
+        $CI =& get_instance();
+        $CI->load->model('event_model');
+        $data['event'] = $CI->event_model->event_names();
+        $data['scans'] = $this->scan_model->view_by_count();
+
+        $data['title'] = "Scan Totals";
+
+        $this->load->view('templates/h_scan_table_admin', $data);
+        $this->load->view('scan/view_count_admin', $data);
         $this->load->view('templates/footer');
 
     }
