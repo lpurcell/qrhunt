@@ -13,7 +13,7 @@
 </p>
 <?php echo form_open_multipart('participant_edit/'.$Participant->Participant_ID) ?>
 
-<input type ="hidden" name="Event_ID" value="<?php echo $Participant->Event_ID; ?>">
+<input type ="hidden" name="Type" value="<?php echo $Participant->Type; ?>">
 
 <input type ="hidden" name="PARTICIPANT_ID" value="<?php echo $Participant->Participant_ID; ?>">
 
@@ -23,24 +23,21 @@
 <label for="Participant_FName">First Name:</label>
 <input type="input" name="Participant_FName" value="<?php echo $Participant->Participant_FName; ?>"/><br />
 
-<label for="Participant_Email">Email:</label>
-<input type="input" name="Participant_Email" value="<?php echo $Participant->Participant_Email; ?>"/><br />
+<label for="Group">Email:</label>
+<input type="input" name="Group" value="<?php echo $Participant->Group; ?>"/><br />
 
-<label for="Event_ID">Choose your Event:</label>
-<select name="Event_ID">
+<label for="Type">Choose your Event:</label>
+<select name="Type">
     <?php foreach($event as $event_item): ?>
-        <option  value="<?php echo $event_item->Event_ID; ?>" <?php if ($event_item->Event_ID == $Participant->Event_ID){ echo "selected='selected'"; }else{ ''; } ?> ><?php echo $event_item->Event_Name; ?></option>
+        <option  value="<?php echo $event_item->Type; ?>" <?php if ($event_item->Type == $Participant->Type){ echo "selected='selected'"; }else{ ''; } ?> ><?php echo $event_item->Event_Name; ?></option>
     <?php endforeach ?>
 </select><br/>
 
 <label for="QRCode">QRCode:</label>
 <input type="input" name="QRCode" value="<?php echo $Participant->QRCode; ?>"/><br />
 
-<label for="Participant_Website">Personal Website:</label>
-<input type="input" name="Participant_Website" value="<?php echo $Participant->Participant_Website; ?>"/><br />
-
-<label for="Participant_Picture">Picture:</label>
-<input type="file" name="userfile" /><br />
+<label for="Major">Major:</label>
+<input type="input" name="Major" value="<?php echo $Participant->Major; ?>"/><br />
 
 <input type="submit" name="submit" value="Edit Your Profile" />
 

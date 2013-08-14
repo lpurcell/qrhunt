@@ -24,16 +24,16 @@
     </tr>
 
     <tr>
-        <td><label for="Participant_Email">Email:</label></td>
-        <td><input type="input" name="Participant_Email" value="<?php echo set_value('Participant_Email')?>"/><br /></td>
+        <td><label for="Group">Group:</label></td>
+        <td><input type="input" name="Group" value="<?php echo set_value('Group')?>"/><br /></td>
     </tr>
 
     <tr>
-        <td><label for="Event_ID">Choose your Event:</label></td>
+        <td><label for="Type">Choose your Event:</label></td>
         <td>
-            <select name="Event_ID">
+            <select name="Type">
                 <?php foreach($event as $event_item): ?>
-                    <option  value="<?php echo $event_item->Event_ID; ?>"><?php echo $event_item->Event_Name; ?></option>
+                    <option  value="<?php echo $event_item->Type; ?>"><?php echo $event_item->Event_Name; ?></option>
                 <?php endforeach ?>
             </select>
         </td>
@@ -55,14 +55,10 @@
     </tr>
 
     <tr>
-        <td><label for="Participant_Website">Personal Website:</label></td>
-        <td><input type="input" name="Participant_Website" value="<?php echo set_value('Participant_Website')?>"/><br /></td>
+        <td><label for="Major">Major:</label></td>
+        <td><input type="input" name="Major" value="<?php echo set_value('Major')?>"/><br /></td>
     </tr>
 
-    <tr>
-        <td><label for="Participant_Picture">Picture:</label></td>
-        <td><input type="file" name="userfile" /></td>
-    </tr>
 </table>
 <br  />
 <input type="submit" name="submit" value="Register Your Profile" />

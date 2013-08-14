@@ -11,13 +11,12 @@ class Register_model extends CI_Model {
 	public function register(){
 
 		$data = array(
-            'Event_ID' => $this ->input->post('Event_ID'),
+            'Type' => $this ->input->post('Type'),
 			'Participant_LName' => $this->input->post('Participant_LName'),
 			'Participant_FName' => $this->input->post('Participant_FName'),
-			'Participant_Email' => $this->input->post('Participant_Email'),
+			'Group' => $this->input->post('Group'),
 			'QRCode' => $this->input->post('QRCode'),
-			'Participant_Website' => $this->input->post('Participant_Website'),
-			'Participant_Picture' => $this->input->post('userfile')
+			'Major' => $this->input->post('Major')
 			);
 
 		    return $this->db->insert('participant', $data);
@@ -26,13 +25,13 @@ class Register_model extends CI_Model {
     public function get_participants($slug = FALSE){
 
         if($slug === FALSE){
-            $this->db->select('Participant_ID, Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
+            $this->db->select('Participant_ID, Participant_LName, Participant_FName, Group, Major, QRCode');
             $this->db->from('participant');
             //need to filter data
             //$this->db->where('')
             return $this->db->get()->result();
         }
-        $this->db->select('Participant_ID, Event_ID, Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
+        $this->db->select('Participant_ID, Type, Participant_LName, Participant_FName, Group, Major, QRCode');
         $this->db->from('participant');
         $this->db->where('QRCode', $slug);
         return $this->db->get()->result();
@@ -47,7 +46,7 @@ class Register_model extends CI_Model {
 
     //part of edit function
     public function find_by_id($participant_id){
-        $this->db->select('Participant_ID, Event_ID, Participant_LName, Participant_FName, Participant_Email, Participant_Website, QRCode, Participant_Picture');
+        $this->db->select('Participant_ID, Type, Participant_LName, Participant_FName, Group, Major, QRCode');
         $this->db->from('participant');
         $this->db->where('Participant_ID', $participant_id);
         return $this->db->get()->row(0);
@@ -66,9 +65,9 @@ class Register_model extends CI_Model {
         return $this->db->get()->row();
     }
 
-    //get qrcode, event_id, first and last name of person who is scanning in check_name() of scan
+    //get qrcode, Type, first and last name of person who is scanning in check_name() of scan
     public function participant_qrcode($participant_scanning){
-        $this->db->select('Participant_ID, QRCode, Event_ID, Participant_LName, Participant_FName');
+        $this->db->select('Participant_ID, QRCode, Type, Participant_LName, Participant_FName');
         $this->db->from('participant');
         $this->db->where('QRCode', $participant_scanning);
         return $this->db->get()->row(0);
@@ -87,9 +86,9 @@ class Register_model extends CI_Model {
             return true;
         }
     }
-    //check the event_id of person scanned in check_scan() of scan controller
+    //check the Type of person scanned in check_scan() of scan controller
     public function check_event($participant_scanned){
-        $this->db->select('Event_ID');
+        $this->db->select('Type');
         $this->db->from('participant');
         $this->db->where('QRCode', $participant_scanned);
 

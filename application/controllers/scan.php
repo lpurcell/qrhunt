@@ -75,7 +75,7 @@ class Scan extends CI_Controller
         $data = $CI->register_model->participant_qrcode($participant_scanned);
 
         $scanning_participant_id = $data->Participant_ID;
-        $scanning_eventid = $data->Event_ID;
+        $scanning_eventid = $data->Type;
         $scanning_qrcode = $data->QRCode;
         $scanning_name = $data->Participant_FName . " " . $data->Participant_LName;
 
@@ -96,7 +96,7 @@ class Scan extends CI_Controller
                     'expire' => time()+3600,
                 ),
                 array(
-                    'name' => 'event_id',
+                    'name' => 'Type',
                     'value' => $scanning_eventid,
                     'expire' => time()+3600,
                 ),
@@ -137,9 +137,7 @@ class Scan extends CI_Controller
         $participant_scanning = get_cookie('participant_id');
 
         $already_scanned = $CI->scan_model->check_scan($participant_scanning, $participant_scanned); //checks if the scan is already in the database
-        $event_check = $CI->register_model->check_event($participant_scanned);
 
-        $event_id = $event_check->Event_ID;
 
         //if they scanned someone and it is in the database already
         if ($already_scanned == true){
@@ -156,7 +154,7 @@ class Scan extends CI_Controller
         else{
 
 
-            $this->scan_model->scan($participant_scanning, $participant_scanned, $event_id);
+            $this->scan_model->scan($participant_scanning, $participant_scanned, $Type);
             redirect('participant/'.$participant_scanned);
         }
 
@@ -316,7 +314,7 @@ class Scan extends CI_Controller
             $new_data = array(
                 'Participant_ID' => $this->input->post('Participant_ID'),
                 'QR_Scanned' => $this ->input->post('QR_Scanned'),
-                'Event_ID' => $this ->input->post('Event_ID'),
+                'Type' => $this ->input->post('Type'),
                 'Scan_Time' => $new_datetime
              );
 

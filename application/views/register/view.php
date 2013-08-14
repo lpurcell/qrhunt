@@ -26,13 +26,13 @@
         <h2><?php echo $participant_item->QRCode?></h2>
 
             <p><?php echo $participant_item->Participant_FName. " " . $participant_item->Participant_LName ?></p>
-            <p><?php echo $participant_item->Participant_Email ?></p>
+            <p><?php echo $participant_item->Group ?></p>
             <p>
                 <?php
-                if ($participant_item->Participant_Website === ""){
+                if ($participant_item->Major === ""){
                     echo "not provided";
                 }else {
-                    echo $participant_item->Participant_Website;
+                    echo $participant_item->Major;
                 }
                 ?>
             </p>

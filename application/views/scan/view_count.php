@@ -17,7 +17,7 @@
         <?php
         $tmp = array();
          foreach ($scans as $scan):
-            $row = $scan->Event_ID;
+            $row = $scan->Type;
         if (!in_array($row,$tmp)) array_push($tmp,$row);
              endforeach;
 
@@ -27,7 +27,7 @@
                 <option></option>
                 <?php foreach ($event as $event_item): ?>
                 <?php foreach ($tmp as $k => $v): ?>
-                 <?php if ($v == $event_item->Event_ID) {  echo '<option value='.$v .'>'.$event_item->Event_Name.'</option>' ;} ?>
+                 <?php if ($v == $event_item->Type) {  echo '<option value='.$v .'>'.$event_item->Event_Name.'</option>' ;} ?>
                     <?php endforeach ?>
                 <?php endforeach ?>
                 <option>0</option>
@@ -49,7 +49,7 @@
             <?php foreach ($scans as $scan): ?>
 
                 <tr>
-                    <td><?php echo $scan->Event_ID ?></td>
+                    <td><?php echo $scan->Type ?></td>
                     <td><a href="<?php echo site_url('participant/'.$scan->QRCode)?>"  id="view"><?php echo $scan->QRCode ?></a></td>
                     <td><?php echo $scan->Participant_LName ?></td>
                     <td><?php echo $scan->Participant_FName ?></td>

@@ -8,13 +8,13 @@ class Scan_model extends CI_Model
         $this->load->helper(array('form', 'html', 'file', 'url', 'date'));
     }
     //regular scan
-    public function scan($participant_scanning, $participant_scanned, $event_id)
+    public function scan($participant_scanning, $participant_scanned, $Type)
     {
 
         $data = array(
             'Participant_ID' => $participant_scanning,
             'QR_Scanned' => $participant_scanned,
-            'Event_ID' => $event_id
+            'Type' => $Type
         );
 
         //set the date and time
@@ -64,7 +64,7 @@ class Scan_model extends CI_Model
     }
 
     public function scanned_by($qrcode){
-        $this->db->select("Participant_ID, Event_ID, date_format(Scan_Time,'%m-%d-%Y')as Date, date_format(Scan_Time, '%h:%i:%s') as Time", false);
+        $this->db->select("Participant_ID, Type, date_format(Scan_Time,'%m-%d-%Y')as Date, date_format(Scan_Time, '%h:%i:%s') as Time", false);
         $this->db->from('scan');
         $this->db->where('QR_Scanned', $qrcode);
 
@@ -80,7 +80,7 @@ class Scan_model extends CI_Model
 
     //part of edit function
     public function find_by_id($participant_id, $qr_scanned){
-        $this->db->select("Participant_ID, QR_Scanned, Event_ID, date_format(Scan_Time,'%m-%d-%Y')as Date, date_format(Scan_Time, '%h:%i:%s') as Time", false);
+        $this->db->select("Participant_ID, QR_Scanned, Type, date_format(Scan_Time,'%m-%d-%Y')as Date, date_format(Scan_Time, '%h:%i:%s') as Time", false);
         $this->db->from('scan');
         $this->db->where('Participant_ID', $participant_id);
         $this->db->where('QR_Scanned', $qr_scanned);
@@ -90,10 +90,10 @@ class Scan_model extends CI_Model
 
     //total number of scans each participant made
     public function view_by_count(){
-        $this->db->select("participant.Participant_LName, participant.Participant_FName, participant.QRCode, scan.Event_ID, scan.Participant_ID, count(scan.QR_Scanned) as Number_of_Scans");
+        $this->db->select("participant.Participant_LName, participant.Participant_FName, participant.QRCode, scan.Type, scan.Participant_ID, count(scan.QR_Scanned) as Number_of_Scans");
         $this->db->from('scan');
         $this->db->join('participant', 'participant.Participant_ID = scan.Participant_ID');
-        $this->db->group_by(array("scan.Event_ID", "scan.Participant_ID"));
+        $this->db->group_by(array("scan.Type", "scan.Participant_ID"));
 
 
         return $this->db->get()->result();

@@ -13,14 +13,14 @@
 	<label for="Participant_FName">First Name:</label> 
 	<input type="input" name="Participant_FName" /><br />
 
-	<label for="Participant_Email">Email:</label> 
-	<input type="input" name="Participant_Email" /><br />
+	<label for="Group">Group:</label>
+	<input type="input" name="Group" /><br />
 
 	<label for="QRCode">QRCode:</label>
 	<input type="input" name="QRCode" /><br />
 
-	<label for="Participant_Website">Personal Website:</label> 
-	<input type="input" name="Participant_Website" /><br />
+	<label for="Major">Major:</label>
+	<input type="input" name="Major" /><br />
 
 	<label for="Participant_Picture">Picture:</label> 
 	<input type="input" name="Participant_Picture" /><br />

@@ -41,7 +41,7 @@
                             echo '<td>'.$info->Participant_LName.'</td>';
                             echo '<td>'.$info->Participant_FName.'</td>';
                             foreach ($events as $event):
-                                if ($event->Event_ID == $scan_item->Event_ID){
+                                if ($event->Type == $scan_item->Type){
                                     echo '<td>'.$event->Event_Name.'</td>';
                                 }
                             endforeach;

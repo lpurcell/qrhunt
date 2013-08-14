@@ -18,10 +18,9 @@ class Register extends CI_Controller {
 
         $this->form_validation->set_rules('Participant_LName', 'Last Name', 'required|max_length[45]');
         $this->form_validation->set_rules('Participant_FName', 'First Name', 'required|max_length[45]');
-        $this->form_validation->set_rules('Participant_Email', 'Email', 'required|valid_email|unique[participant.Participant_Email]');
+        $this->form_validation->set_rules('Group', 'Group', 'required|valid_Group|unique[participant.Group]');
         $this->form_validation->set_rules('QRCode', 'QR Code', 'required|unique[participant.QRCode]');
-        $this->form_validation->set_rules('Participant_Website', 'Personal Website','|max_length[45]');
-        $this->form_validation->set_rules('Participant_Picture', 'Picture', '|callback_handle_upload');
+        $this->form_validation->set_rules('Major', 'Major','|max_length[45]');
 
     }
 
@@ -114,7 +113,7 @@ class Register extends CI_Controller {
         $data['event'] = $CI->event_model->event_names();
        
         $data['Participant'] = $participant;
-        $original_picture = $participant->Participant_Picture;
+
 
         $data['title'] = 'Edit Your Profile';
 
@@ -127,21 +126,13 @@ class Register extends CI_Controller {
         }else{
             $new_data = array(
                 'Participant_ID' => $this->input->post('PARTICIPANT_ID'),
-                'Event_ID' => $this ->input->post('Event_ID'),
+                'Type' => $this ->input->post('Type'),
                 'Participant_LName' => $this->input->post('Participant_LName'),
                 'Participant_FName' => $this->input->post('Participant_FName'),
-                'Participant_Email' => $this->input->post('Participant_Email'),
+                'Group' => $this->input->post('Group'),
                 'QRCode' => $this->input->post('QRCode'),
-                'Participant_Website' => $this->input->post('Participant_Website')
+                'Major' => $this->input->post('Major')
             );
-
-            $new_picture = $this->input->post('userfile');
-
-            if ($new_picture === "0" || $new_picture == ""){
-                $new_data['Participant_Picture'] = $original_picture;
-            }else{
-                $new_data['Participant_Picture'] = $new_picture;
-            }
 
             $this->register_model->update($new_data);
 
