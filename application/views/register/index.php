@@ -8,7 +8,6 @@
                         <th>QRCode</th>
                         <th>Last Name</th>
                         <th>First Name</th>
-                        <th>Group</th>
                         <th>Website</th>
                         <?php if (! get_cookie('participant_id')){
                             echo "<th>Admin</th>";
@@ -23,10 +22,9 @@
                         <td><a href="<?php echo site_url('participant/'.$participant_item->QRCode)?>"  id="view"><?php echo $participant_item->QRCode ?></a></td>
                         <td><?php echo $participant_item->Participant_LName ?></td>
                         <td><?php echo $participant_item->Participant_FName ?></td>
-                        <td><?php echo $participant_item->Group ?></td>
                         <td><?php
-                                if ($participant_item->Major === ""){
-                                    echo "not provided";
+                                if ($participant_item->Major === "" || $participant_item == null){
+                                    echo "";
                                 }else {
                                     echo $participant_item->Major;
                                 }

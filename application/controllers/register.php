@@ -18,7 +18,7 @@ class Register extends CI_Controller {
 
         $this->form_validation->set_rules('Participant_LName', 'Last Name', 'required|max_length[45]');
         $this->form_validation->set_rules('Participant_FName', 'First Name', 'required|max_length[45]');
-        $this->form_validation->set_rules('Group', 'Group', 'required|valid_Group|unique[participant.Group]');
+        $this->form_validation->set_rules('Group', 'Group', 'required');
         $this->form_validation->set_rules('QRCode', 'QR Code', 'required|unique[participant.QRCode]');
         $this->form_validation->set_rules('Major', 'Major','|max_length[45]');
 
@@ -108,12 +108,7 @@ class Register extends CI_Controller {
     public function edit($slug){
         $participant = $this->register_model->find_by_id($slug);
 
-        $CI =& get_instance();
-        $CI->load->model('event_model');
-        $data['event'] = $CI->event_model->event_names();
-       
         $data['Participant'] = $participant;
-
 
         $data['title'] = 'Edit Your Profile';
 

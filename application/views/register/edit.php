@@ -1,19 +1,22 @@
-<h2>Edit your Profile</h2>
+<h2>Edit Profile</h2>
 <a href="<?php echo site_url('scan_view/'.$Participant->Participant_ID)?>">See Your Points</a>
 <a href="<?php echo site_url('scan/totals')?>">See Game Points</a>
 <a href="<?php echo site_url('scanned_by/'.$Participant->QRCode)?>">Your QRCode Scans</a>
 <?php echo validation_errors(); ?>
 <?php ?>
 <p>
-    <?php if ($Participant->Participant_Picture === "0" || $Participant->Participant_Picture === ""){ ?>
+    <?php if ($Participant->Type == "PAR") {
+        ?>
         <img src="<?php echo base_url(); ?>assets/images/avatar.jpg">
-    <?php }else{ ?>
-        <img src= "<?= base_url();?>uploads/<?= $Participant->Participant_Picture; ?>">
-    <?php } ?>
+    <?php
+    }else{
+        ?>
+        <img src= "<?= base_url();?>assets/images/griffonResize.jpg">
+    <?php
+    }
+    ?>
 </p>
 <?php echo form_open_multipart('participant_edit/'.$Participant->Participant_ID) ?>
-
-<input type ="hidden" name="Type" value="<?php echo $Participant->Type; ?>">
 
 <input type ="hidden" name="PARTICIPANT_ID" value="<?php echo $Participant->Participant_ID; ?>">
 
@@ -23,14 +26,14 @@
 <label for="Participant_FName">First Name:</label>
 <input type="input" name="Participant_FName" value="<?php echo $Participant->Participant_FName; ?>"/><br />
 
-<label for="Group">Email:</label>
+<label for="Group">Group:</label>
 <input type="input" name="Group" value="<?php echo $Participant->Group; ?>"/><br />
 
-<label for="Type">Choose your Event:</label>
+<label for="Type">Choose Type:</label>
 <select name="Type">
-    <?php foreach($event as $event_item): ?>
-        <option  value="<?php echo $event_item->Type; ?>" <?php if ($event_item->Type == $Participant->Type){ echo "selected='selected'"; }else{ ''; } ?> ><?php echo $event_item->Event_Name; ?></option>
-    <?php endforeach ?>
+        <option value="PAR" <?php if ($Participant->Type == "PAR") {echo "selected='selected'";}?> >Participant</option>
+        <option value="ORG" <?php if ($Participant->Type == "ORG") {echo "selected='selected'";}?> >Organization</option>
+        <option value="SCA" <?php if ($Participant->Type == "SCA") {echo "selected='selected'";}?> >Scavenger Hunt</option>
 </select><br/>
 
 <label for="QRCode">QRCode:</label>

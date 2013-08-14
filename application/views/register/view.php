@@ -13,24 +13,30 @@
             <br/>
         <?php }
 
-        if ($participant_item->Participant_Picture === "0" || $participant_item->Participant_Picture === "" || $participant_item->Participant_Picture === null){
+        if ($participant_item->Type == "PAR") {
         ?>
             <img src="<?php echo base_url(); ?>assets/images/avatar.jpg">
         <?php
         }else{
         ?>
-            <img src= "<?= base_url();?>uploads/<?= $participant_item->Participant_Picture?>">
+            <img src= "<?= base_url();?>assets/images/griffonResize.jpg">
         <?php
             }
         ?>
         <h2><?php echo $participant_item->QRCode?></h2>
 
             <p><?php echo $participant_item->Participant_FName. " " . $participant_item->Participant_LName ?></p>
-            <p><?php echo $participant_item->Group ?></p>
+            <p><?php
+                if ($participant_item->Group === "" || $participant_item->Group == null){
+                    echo "";
+                }else{
+                    echo $participant_item->Group;
+                }
+                ?></p>
             <p>
                 <?php
-                if ($participant_item->Major === ""){
-                    echo "not provided";
+                if ($participant_item->Major === "" || $participant_item->Major == null){
+                    echo "";
                 }else {
                     echo $participant_item->Major;
                 }
