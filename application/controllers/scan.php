@@ -140,7 +140,7 @@ class Scan extends CI_Controller
         $event_check = $CI->register_model->check_event($participant_scanned);
 
         $Type = $event_check->Type;
-
+        $Point = $event_check->Point;
         //if they scanned someone and it is in the database already
         if ($already_scanned == true){
             $message['error'] = "You have already scanned this QR Code.<br/>You will receive no points for viewing their profile.";
@@ -155,8 +155,7 @@ class Scan extends CI_Controller
          //if their cookie is set and they scan someone they haven't scanned before
         else{
 
-
-            $this->scan_model->scan($participant_scanning, $participant_scanned, $Type);
+            $this->scan_model->scan($participant_scanning, $participant_scanned, $event_check);
             redirect('participant/'.$participant_scanned);
         }
 

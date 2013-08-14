@@ -88,7 +88,7 @@ class Register_model extends CI_Model {
     }
     //check the Type of person scanned in check_scan() of scan controller
     public function check_event($participant_scanned){
-        $this->db->select('Type');
+        $this->db->select('Type, Point');
         $this->db->from('participant');
         $this->db->where('QRCode', $participant_scanned);
 
