@@ -26,19 +26,23 @@ class Register extends CI_Controller {
 
     public function create()
     {
-        $CI =& get_instance();
-        $CI->load->model('event_model');
-        $event['event'] = $CI->event_model->event_names();
-
         $data['title'] = 'Register Your Profile';
 
          if ($this->form_validation->run() === FALSE){
             $this->load->view('templates/header', $data);
-            $this->load->view('register/create', $event);
+            $this->load->view('register/create');
             $this->load->view('templates/footer');
         }else{
 
-            $this->register_model->register();
+             if ($this->input->post('Type') == "SCA"){
+                 $point_data = 5;
+             }else if ($this->input->post('Type') == "ORG"){
+                 $point_data = 3;
+             }else{
+                 $point_data = 1;
+             }
+
+            $this->register_model->register($point_data);
             $this->load->view('templates/header', $data);
             $this->load->view('news/success');
             $this->load->view('templates/footer');
@@ -128,6 +132,16 @@ class Register extends CI_Controller {
                 'QRCode' => $this->input->post('QRCode'),
                 'Major' => $this->input->post('Major')
             );
+
+            if ($this->input->post('Type') == "SCA"){
+                $point_data = 5;
+            }else if ($this->input->post('Type') == "ORG"){
+                $point_data = 3;
+            }else{
+                $point_data = 1;
+            }
+
+            $new_data['Point'] = $point_data;
 
             $this->register_model->update($new_data);
 

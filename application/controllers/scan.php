@@ -223,18 +223,20 @@ class Scan extends CI_Controller
     public function view_reverse($qrcode){
         $CI =& get_instance();
         $CI->load->model('register_model');
-        $CI->load->model('event_model');
 
         $data['scans'] = $this->scan_model->scanned_by($qrcode);
-        $data['events'] = $this->event_model->event_names();
-
+        $data['title']="View Reverse";
         $result = $data['scans'];
         $data['scan_info'] = array();
         $data['url_id'] = $qrcode;
 
         if(empty($data['scans'])){
-            show_404();
-        }
+            $message['error'] = "You have not been scanned by anyone";
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('news/scan_notice', $message);
+            $this->load->view('templates/footer');
+        }else{
 
         foreach($result as $row){
             $participant = $row->Participant_ID;
@@ -249,16 +251,14 @@ class Scan extends CI_Controller
         $this->load->view('templates/header_tables', $data);
         $this->load->view('scan/view_reverse', $data);
         $this->load->view('templates/footer');
+        }
     }
-
     public function view_reverse_admin($qrcode){
         $CI =& get_instance();
         $CI->load->model('register_model');
-        $CI->load->model('event_model');
 
         $data['scans'] = $this->scan_model->scanned_by($qrcode);
-        $data['events'] = $this->event_model->event_names();
-
+        $data['title']="View Reverse";
         $result = $data['scans'];
         $data['scan_info'] = array();
         $data['url_id'] = $qrcode;
@@ -291,10 +291,6 @@ class Scan extends CI_Controller
     public function edit($participant_id, $qr_scanned){
         $scan = $this->scan_model->find_by_id($participant_id, $qr_scanned);
 
-        $CI =& get_instance();
-        $CI->load->model('event_model');
-        $data['event'] = $CI->event_model->event_names();
-
         $data['scan']= $scan;
 
         $data['title'] = 'Edit a Scan';
@@ -319,6 +315,17 @@ class Scan extends CI_Controller
                 'Scan_Time' => $new_datetime
              );
 
+            if ($this->input->post('Type') == "SCA"){
+                $point_data = 5;
+            }else if ($this->input->post('Type') == "ORG"){
+                $point_data = 3;
+            }else{
+                $point_data = 1;
+            }
+
+            $new_data['Point'] = $point_data;
+
+            $new_data['Point'] = $point_data;
             $this->scan_model->update($new_data);
 
             $this->load->view('templates/header_scan', $data);
@@ -329,10 +336,7 @@ class Scan extends CI_Controller
     }
 
     public function view_count(){
-        $CI =& get_instance();
-        $CI->load->model('event_model');
-        $data['event'] = $CI->event_model->event_names();
-        $data['scans'] = $this->scan_model->view_by_count();
+       $data['scans'] = $this->scan_model->view_by_count();
 
         $data['title'] = "Scan Totals";
 
@@ -343,9 +347,6 @@ class Scan extends CI_Controller
     }
 
     public function view_count_admin(){
-        $CI =& get_instance();
-        $CI->load->model('event_model');
-        $data['event'] = $CI->event_model->event_names();
         $data['scans'] = $this->scan_model->view_by_count();
 
         $data['title'] = "Scan Totals";

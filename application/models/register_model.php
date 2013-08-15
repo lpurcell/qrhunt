@@ -8,7 +8,7 @@ class Register_model extends CI_Model {
     }
 
     //register participants
-	public function register(){
+	public function register($point_data){
 
 		$data = array(
             'Type' => $this ->input->post('Type'),
@@ -17,7 +17,9 @@ class Register_model extends CI_Model {
 			'Group' => $this->input->post('Group'),
 			'QRCode' => $this->input->post('QRCode'),
 			'Major' => $this->input->post('Major')
-			);
+            );
+
+        $data['Point'] = $point_data;
 
 		    return $this->db->insert('participant', $data);
     }

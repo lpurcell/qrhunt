@@ -29,12 +29,12 @@
     </tr>
 
     <tr>
-        <td><label for="Type">Choose your Event:</label></td>
+        <td><label for="Type">Participant Type:</label></td>
         <td>
             <select name="Type">
-                <?php foreach($event as $event_item): ?>
-                    <option  value="<?php echo $event_item->Type; ?>"><?php echo $event_item->Event_Name; ?></option>
-                <?php endforeach ?>
+                <option value="PAR">Participant</option>
+                <option value="ORG">Organization</option>
+                <option value="SCA">Scavenger Hunt</option>
             </select>
         </td>
     </tr>

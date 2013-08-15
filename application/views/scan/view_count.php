@@ -25,12 +25,9 @@
         <p>Filter by Event:
             <select id="table_id_select">
                 <option></option>
-                <?php foreach ($event as $event_item): ?>
-                <?php foreach ($tmp as $k => $v): ?>
-                 <?php if ($v == $event_item->Type) {  echo '<option value='.$v .'>'.$event_item->Event_Name.'</option>' ;} ?>
-                    <?php endforeach ?>
-                <?php endforeach ?>
-                <option>0</option>
+                <option value="123">Participant</option>
+                <option value="456">Organization</option>
+                <option value="789">Scavenger Hunt</option>
             </select>
         </p>
 
@@ -49,7 +46,13 @@
             <?php foreach ($scans as $scan): ?>
 
                 <tr>
-                    <td><?php echo $scan->Type ?></td>
+                    <?php if ($scan->Type == "PAR"){?>
+                        <td>123</td>
+                    <?php }else if ($scan->Type == "ORG"){?>
+                        <td>456</td>
+                    <?php } else { ?>
+                        <td>789</td>
+                    <?php } ?>
                     <td><a href="<?php echo site_url('participant/'.$scan->QRCode)?>"  id="view"><?php echo $scan->QRCode ?></a></td>
                     <td><?php echo $scan->Participant_LName ?></td>
                     <td><?php echo $scan->Participant_FName ?></td>

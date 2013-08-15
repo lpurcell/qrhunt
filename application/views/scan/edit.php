@@ -9,10 +9,11 @@
 <label for="QR_Scanned">QR Scanned: </label>
 <input type="input" name="QR_Scanned" value="<?php echo $scan->QR_Scanned ?>"/><br />
 
+<label for="Type">QR Scanned Type: </label>
 <select name="Type">
-    <?php foreach($event as $event_item): ?>
-        <option  value="<?php echo $event_item->Type; ?>" <?php if ($event_item->Type == $scan->Type){ echo "selected='selected'"; }else{ ''; } ?> ><?php echo $event_item->Event_Name; ?></option>
-    <?php endforeach ?>
+    <option value="PAR" <?php if ($scan->Type == "PAR") {echo "selected='selected'";}?> >Participant</option>
+    <option value="ORG" <?php if ($scan->Type == "ORG") {echo "selected='selected'";}?> >Organization</option>
+    <option value="SCA" <?php if ($scan->Type == "SCA") {echo "selected='selected'";}?> >Scavenger Hunt</option>
 </select><br/>
 
 <label for="Time">Time: </label>

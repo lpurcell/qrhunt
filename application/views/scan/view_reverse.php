@@ -37,11 +37,13 @@
                     if($scan_item->Participant_ID == $info->Participant_ID){
                         echo '<td>'.$info->Participant_LName.'</td>';
                         echo '<td>'.$info->Participant_FName.'</td>';
-                        foreach ($events as $event):
-                            if ($event->Type == $scan_item->Type){
-                                echo '<td>'.$event->Event_Name.'</td>';
-                            }
-                        endforeach;
+                        if ($scan_item->Type == "SCA"){
+                            echo '<td>Scavenger Hunt</td>';
+                        }else if($scan_item->Type == "PAR"){
+                            echo '<td>Organization</td>';
+                        }else{
+                            echo '<td>Participant</td>';
+                        }
                         echo '<td>'.$scan_item->Date.'</td>';
                         echo '<td>'.$scan_item->Time.'</td>';
                     }

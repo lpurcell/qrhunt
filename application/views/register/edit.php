@@ -29,7 +29,7 @@
 <label for="Group">Group:</label>
 <input type="input" name="Group" value="<?php echo $Participant->Group; ?>"/><br />
 
-<label for="Type">Choose Type:</label>
+<label for="Type">Participant Type:</label>
 <select name="Type">
         <option value="PAR" <?php if ($Participant->Type == "PAR") {echo "selected='selected'";}?> >Participant</option>
         <option value="ORG" <?php if ($Participant->Type == "ORG") {echo "selected='selected'";}?> >Organization</option>
