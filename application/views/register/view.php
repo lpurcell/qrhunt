@@ -15,17 +15,15 @@
 
         if ($participant_item->Type == "PAR") {
         ?>
-            <img src="<?php echo base_url(); ?>assets/images/avatar.jpg">
+            <img src="<?php echo base_url(); ?>assets/images/avatar.jpg"/>
         <?php
         }else{
         ?>
-            <img src= "<?= base_url();?>assets/images/griffonResize.jpg">
+            <img src= "<?= base_url();?>assets/images/griffonResize.jpg"/>
         <?php
             }
         ?>
-        <h2><?php echo $participant_item->QRCode?></h2>
-
-            <p><?php echo $participant_item->Participant_FName. " " . $participant_item->Participant_LName ?></p>
+            <br/><h2><?php echo $participant_item->Participant_FName. " " . $participant_item->Participant_LName ?></h2>
             <p><?php
                 if ($participant_item->Group === "" || $participant_item->Group == null){
                     echo "";
