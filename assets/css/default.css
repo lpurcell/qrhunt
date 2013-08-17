@@ -18,7 +18,11 @@ body {
 .header{
     background:#FFFFFF;
 }
-
+.wrap_list{
+    margin-left: 45%;
+    margin-left: 45%;
+    text-align: left;
+}
 .menu{
     padding: 0px;
     margin: 0px;
