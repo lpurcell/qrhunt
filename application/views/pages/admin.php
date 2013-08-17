@@ -8,7 +8,7 @@
         echo "<li>" . anchor('admin/scan/totals', 'View Points by All Participants', 'title="View Scan Totals"'). "</li>";
         echo "<li>" . anchor('admin/scan/group_totals', 'View Points by Group', 'title="View Group Totals"'). "</li><br/>";
 
-        echo "<li>" . anchor('', 'Scavenger Hunt Directions', 'title="Scavenger Hunt Directions"'). "</li><br/>";
+        echo "<li>" . anchor('', 'Get EXTRA Points!', 'title="Get Extra Points"'). "</li><br/>";
 
         echo "<li>" . anchor('organization/create', 'Register an Organization', 'title="Register an Organization"') . "</li>";
         echo "<li>" . anchor('event/create', 'Register an Event', 'title="Register an Event"') . "</li>";
