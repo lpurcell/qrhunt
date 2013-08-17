@@ -44,8 +44,6 @@ class Scan_model extends CI_Model
         $this->db->insert('scan', $data);
     }
 
-
-
     public function get_scans($slug = FALSE){
 
         if($slug === FALSE){
@@ -62,6 +60,15 @@ class Scan_model extends CI_Model
 
         return $this->db->get()->result();
 
+    }
+
+    public function scan_by_group($slug){
+        $this->db->select("participant.QRCode, participant.Group, participant.Participant_FName, participant.Participant_LName, scan.Participant_ID, scan.QR_Scanned, scan.Point, scan.Type, date_format(scan.Scan_Time,'%m-%d-%Y')as Date, date_format(scan.Scan_Time, '%h:%i:%s') as Time", false);
+        $this->db->from('scan');
+        $this->db->join('participant', 'participant.Participant_ID = scan.Participant_ID');
+        $this->db->where('Group', $slug);
+
+        return $this->db->get()->result();
     }
 
     public function scanned_by($qrcode){

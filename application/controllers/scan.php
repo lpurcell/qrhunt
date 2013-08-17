@@ -302,6 +302,17 @@ class Scan extends CI_Controller
        }
     }
 
+    //view each scan made by a group
+    public function group_scans_admin($groupname){
+        $data['scans'] = $this->scan_model->scan_by_group($groupname);
+
+        $data['title']='Scans by '.$groupname;
+
+        $this->load->view('templates/header_tables', $data);
+        $this->load->view('scan/group_scans_admin', $data);
+        $this->load->view('templates/footer');
+
+    }
     public function edit($participant_id, $qr_scanned){
         $scan = $this->scan_model->find_by_id($participant_id, $qr_scanned);
 
@@ -369,6 +380,16 @@ class Scan extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function group_total_admin(){
+        $data['scans'] = $this->scan_model->view_group_total();
+
+        $data['title'] = "Scan Totals by Group";
+
+        $this->load->view('templates/h_scan_group_admin', $data);
+        $this->load->view('scan/group_total_admin', $data);
+        $this->load->view('templates/footer');
+    }
+    //show total points by individual
     public function view_count_admin(){
         $data['scans'] = $this->scan_model->view_by_total();
 
