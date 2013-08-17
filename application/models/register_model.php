@@ -69,7 +69,7 @@ class Register_model extends CI_Model {
 
     //get qrcode, Type, first and last name of person who is scanning in check_name() of scan
     public function participant_qrcode($participant_scanning){
-        $this->db->select('Participant_ID, QRCode, Type, Participant_LName, Participant_FName');
+        $this->db->select('Participant_ID, QRCode, Type, Point, Participant_LName, Participant_FName');
         $this->db->from('participant');
         $this->db->where('QRCode', $participant_scanning);
         return $this->db->get()->row(0);
