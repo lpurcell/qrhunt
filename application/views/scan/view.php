@@ -1,11 +1,5 @@
 <div id="main">
-    <?php if($url_id == get_cookie('participant_id')){?>
-        <h2>Your Scans</h2>
-
-    <?php }else {
-        echo '<h2>'.$title.'</h2>';
-        }
-
+    <?php
     if (get_cookie('participant_id')){ ?>
         <br/>
         <div class="menu">
@@ -14,7 +8,14 @@
             </ul>
         </div>
         <br/>
-    <?php } ?>
+    <?php
+    }
+    if($url_id == get_cookie('participant_id')){?>
+        <h2>Your Scans</h2>
+
+    <?php }else {
+    echo '<h2>'.$title.'</h2>';
+    } ?>
 
     <table id="table_id" class="display">
 
@@ -23,6 +24,7 @@
             <th>Scan Count</th>
             <th>QR Code Scanned</th>
             <th>Name</th>
+            <th>Point</th>
             <th>Date</th>
             <th>Time</th>
          </tr>
@@ -44,8 +46,7 @@
                         echo '<td>'.$info->Participant_FName." ".$info->Participant_LName.'</td>';
                     }
                 endforeach;
-
-
+                echo '<td>'.$participant_item->Point.'</td>';
                 echo '<td>'.$participant_item->Date.'</td>';
                 echo '<td>'.$participant_item->Time.'</td>';
             echo '</tr>';

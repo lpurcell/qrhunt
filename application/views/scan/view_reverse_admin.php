@@ -24,6 +24,7 @@
             <th>Last Name</th>
             <th>First Name</th>
             <th>Event Name</th>
+            <th>Point</th>
             <th>Date</th>
             <th>Time</th>
             <th>Admin</th>
@@ -47,6 +48,7 @@
                             }else{
                                 echo '<td>Participant</td>';
                             }
+                            echo '<td>'.$scan_item->Point.'</td>';
                             echo '<td>'.$scan_item->Date.'</td>';
                             echo '<td>'.$scan_item->Time.'</td>';
                         }

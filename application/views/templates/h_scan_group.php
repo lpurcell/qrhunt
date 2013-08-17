@@ -21,10 +21,10 @@
                 "bSort":true,
 
                 //need to make the scanning totals column desc by default
-                "aaSortingFixed":[[4, 'desc']],
+                "aaSortingFixed":[[1, 'desc']],
                 "bFilter":true,
-                "aoColumns"   : [{ "bSearchable": true, "bVisible": false, "sWidth": "10%" }, {"sWidth": "20%"}, {"sWidth": "20%"}, {"sWidth": "20%"}, {"sWidth": "15%"}]
-                });
+                "aoColumns"   : [{"sWidth": "50%"}, {"sWidth": "50%"}]
+            });
 
             var oTable;
             oTable = $('#table_table').dataTable();

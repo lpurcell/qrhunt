@@ -349,19 +349,28 @@ class Scan extends CI_Controller
 
     }
 
-    public function view_count(){
-       $data['scans'] = $this->scan_model->view_by_count();
+    public function view_total(){
+       $data['scans'] = $this->scan_model->view_by_total();
 
-        $data['title'] = "Scan Totals";
+        $data['title'] = "Scan Totals by All Participants";
 
         $this->load->view('templates/h_scan_table', $data);
-        $this->load->view('scan/view_count', $data);
+        $this->load->view('scan/view_total', $data);
         $this->load->view('templates/footer');
+    }
 
+    public function group_total(){
+        $data['scans'] = $this->scan_model->view_group_total();
+
+        $data['title'] = "Scan Totals by Group";
+
+        $this->load->view('templates/h_scan_group', $data);
+        $this->load->view('scan/group_total', $data);
+        $this->load->view('templates/footer');
     }
 
     public function view_count_admin(){
-        $data['scans'] = $this->scan_model->view_by_count();
+        $data['scans'] = $this->scan_model->view_by_total();
 
         $data['title'] = "Scan Totals";
 

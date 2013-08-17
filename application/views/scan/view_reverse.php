@@ -1,11 +1,5 @@
 <div id="main">
-
-    <?php if($url_id == get_cookie('qrcode')){?>
-        <h2>Participants Who Have Scanned You</h2>
-    <?php }else{
-        echo '<h2>'.$title.'</h2>';
-    }
-
+    <?php
     if (get_cookie('participant_id')){ ?>
         <br/>
         <div class="menu">
@@ -14,7 +8,15 @@
             </ul>
         </div>
         <br/>
-    <?php } ?>
+        <?php
+    }
+        if($url_id == get_cookie('qrcode')){?>
+            <h2>Participants Who Have Scanned You</h2>
+        <?php }else{
+            echo '<h2>'.$title.'</h2>';
+        }
+        ?>
+
     <table id="table_id" class="display">
 
         <thead>

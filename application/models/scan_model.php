@@ -56,7 +56,7 @@ class Scan_model extends CI_Model
             return $this->db->get()->result();
         }
 
-        $this->db->select("Participant_ID, QR_Scanned, date_format(Scan_Time,'%m-%d-%Y')as Date, date_format(Scan_Time, '%h:%i:%s') as Time", false);
+        $this->db->select("Participant_ID, QR_Scanned, Point, date_format(Scan_Time,'%m-%d-%Y')as Date, date_format(Scan_Time, '%h:%i:%s') as Time", false);
         $this->db->from('scan');
         $this->db->where('Participant_ID', $slug);
 
@@ -65,7 +65,7 @@ class Scan_model extends CI_Model
     }
 
     public function scanned_by($qrcode){
-        $this->db->select("Participant_ID, Type, date_format(Scan_Time,'%m-%d-%Y')as Date, date_format(Scan_Time, '%h:%i:%s') as Time", false);
+        $this->db->select("Participant_ID, Type, Point, date_format(Scan_Time,'%m-%d-%Y')as Date, date_format(Scan_Time, '%h:%i:%s') as Time", false);
         $this->db->from('scan');
         $this->db->where('QR_Scanned', $qrcode);
 
@@ -90,16 +90,23 @@ class Scan_model extends CI_Model
     }
 
     //total number of scans each participant made
-    public function view_by_count(){
-        $this->db->select("participant.Participant_LName, participant.Participant_FName, participant.QRCode, scan.Type, scan.Participant_ID, count(scan.QR_Scanned) as Number_of_Scans");
+    public function view_by_total(){
+        $this->db->select("participant.Participant_LName, participant.Participant_FName, participant.QRCode, scan.Type, scan.Participant_ID, scan.QR_Scanned,sum(scan.Point) as Points");
         $this->db->from('scan');
         $this->db->join('participant', 'participant.Participant_ID = scan.Participant_ID');
-        $this->db->group_by(array("scan.Type", "scan.Participant_ID"));
-
+        $this->db->group_by("scan.Participant_ID");
 
         return $this->db->get()->result();
     }
 
+    public function view_group_total(){
+        $this->db->select("participant.Group, sum(scan.Point) as Points");
+        $this->db->from('scan');
+        $this->db->join('participant', 'participant.Participant_ID = scan.Participant_ID');
+        $this->db->group_by("participant.Group");
+
+        return $this->db->get()->result();
+    }
     //delete individual scan
     public function delete($participant_id, $qrcode_scanned){
         $this->db->delete('scan', array('Participant_ID'=>$participant_id, 'QR_Scanned'=>$qrcode_scanned));
