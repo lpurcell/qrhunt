@@ -20,8 +20,7 @@
         <thead>
         <tr>
             <th>QR Code</th>
-            <th>Last Name</th>
-            <th>First Name</th>
+            <th>Name</th>
             <th>Event Name</th>
             <th>Date</th>
             <th>Time</th>
@@ -35,8 +34,7 @@
             echo '<td><a href="'. site_url('participant/'.$info->QRCode).'"  id="view">'.$info->QRCode.'</a></td>';
                 foreach ($scans as $scan_item):
                     if($scan_item->Participant_ID == $info->Participant_ID){
-                        echo '<td>'.$info->Participant_LName.'</td>';
-                        echo '<td>'.$info->Participant_FName.'</td>';
+                        echo '<td>'.$info->Participant_FName." ".$info->Participant_LName.'</td>';
                         if ($scan_item->Type == "SCA"){
                             echo '<td>Scavenger Hunt</td>';
                         }else if($scan_item->Type == "PAR"){

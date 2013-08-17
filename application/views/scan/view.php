@@ -22,8 +22,7 @@
         <tr>
             <th>Scan Count</th>
             <th>QR Code Scanned</th>
-            <th>Last Name</th>
-            <th>First Name</th>
+            <th>Name</th>
             <th>Date</th>
             <th>Time</th>
          </tr>
@@ -42,8 +41,7 @@
 
                 foreach ($participant_info as $info):
                     if($participant_item->QR_Scanned == $info->QRCode){
-                        echo '<td>'.$info->Participant_LName.'</td>';
-                        echo '<td>'.$info->Participant_FName.'</td>';
+                        echo '<td>'.$info->Participant_FName." ".$info->Participant_LName.'</td>';
                     }
                 endforeach;
 
