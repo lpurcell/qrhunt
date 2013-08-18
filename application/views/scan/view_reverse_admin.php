@@ -24,7 +24,7 @@
             <th>Last Name</th>
             <th>First Name</th>
             <th>Event Name</th>
-            <th>Point</th>
+            <th>Points</th>
             <th>Date</th>
             <th>Time</th>
             <th>Admin</th>

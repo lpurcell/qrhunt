@@ -24,7 +24,7 @@
             <th>Scan Count</th>
             <th>QR Code Scanned</th>
             <th>Name</th>
-            <th>Point</th>
+            <th>Points</th>
             <th>Date</th>
             <th>Time</th>
          </tr>
