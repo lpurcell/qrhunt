@@ -3,7 +3,7 @@
 <div class="wrap_list">
     <ol>
         <li>Clock Tower</li>
-        <li>Financial Aid</li>
+        <li>Center of Academic Support </li>
         <li>Baker Fitness Center</li>
     </ol>
 </div>
