@@ -47,10 +47,17 @@ class Register_model extends CI_Model {
     }
 
     //part of edit function
-    public function find_by_id($participant_id){
+    public function find_by_qrcode($qrcode){
         $this->db->select('Participant_ID, Type, Participant_LName, Participant_FName, Group, Major, QRCode');
         $this->db->from('participant');
-        $this->db->where('Participant_ID', $participant_id);
+        $this->db->where('QRCode', $qrcode);
+        return $this->db->get()->row(0);
+    }
+    //part of scan controller view reverse function
+    public function find_by_id($participant){
+        $this->db->select('Participant_ID, Type, Participant_LName, Participant_FName, Group, Major, QRCode');
+        $this->db->from('participant');
+        $this->db->where('Participant_id', $participant);
         return $this->db->get()->row(0);
     }
 

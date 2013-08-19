@@ -19,7 +19,6 @@ class Register extends CI_Controller {
         $this->form_validation->set_rules('Participant_LName', 'Last Name', 'required|max_length[45]');
         $this->form_validation->set_rules('Participant_FName', 'First Name', 'required|max_length[45]');
         $this->form_validation->set_rules('Group', 'Group', 'required');
-        $this->form_validation->set_rules('QRCode', 'QR Code', 'required|unique[participant.QRCode]');
         $this->form_validation->set_rules('Major', 'Major','|max_length[45]');
 
     }
@@ -108,13 +107,31 @@ class Register extends CI_Controller {
         $this->load->view('register/view', $data);
         $this->load->view('templates/footer');
     }
+    public function edit_start(){
+        $data['title'] = 'Add a Participant';
 
+        if (!isset($_POST['QRCode']) || $_POST['QRCode'] == null) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('register/edit_start', $data);
+            $this->load->view('templates/footer');
+
+        } else {
+            $qrcode = $_POST['QRCode'];
+
+            redirect('participant_edit/'.$qrcode);
+
+        }
+    }
     public function edit($slug){
-        $participant = $this->register_model->find_by_id($slug);
+        $participant = $this->register_model->find_by_qrcode($slug);
+
+        if ($participant == null ){
+            show_404();
+        }
 
         $data['Participant'] = $participant;
 
-        $data['title'] = 'Edit Your Profile';
+        $data['title'] = 'Edit Profile '.$slug;
 
 
         if ($this->form_validation->run() === FALSE){

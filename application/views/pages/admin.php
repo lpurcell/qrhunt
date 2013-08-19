@@ -2,7 +2,7 @@
 <div class="menu">
     <ul>
     <?php
-        echo "<li>" . anchor('register/create', 'Register a Participant', 'title="Register a Participant"') . "</li>";
+        echo "<li>" . anchor('participant/edit_start', 'Add a Participant', 'title="Add a Participant"') . "</li>";
         echo "<li>" . anchor('participants_all', 'View all Participants', 'title="View all Participants"'). "</li>";
         echo "<li>" . anchor('scan/create', 'Create a Scan Manually', 'title="Create a Scan Manually"'). "</li>";
         echo "<li>" . anchor('admin/scan/totals', 'View Points by All Participants', 'title="View Scan Totals"'). "</li>";

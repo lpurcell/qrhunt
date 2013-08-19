@@ -58,6 +58,7 @@ $route['scan/(:any)'] = 'scan/insert/$1';
 //Goes to page to generate multiple codes
 $route['participant/generateCodes']='generateCodes/create/generateCodes';
 $route['participant_delete/(:any)'] = 'register/delete/$1';
+$route['participant/edit_start']= 'register/edit_start';
 $route['participant_edit/(:any)']= 'register/edit/$1';
 //view one participant with qrcode
 $route['participant/(:any)'] = 'register/view/$1';

@@ -65,6 +65,10 @@ input{
     width: 200;
 }
 
+select{
+    width: 200;
+}
+
 @media all and (max-width: 799px) {
 
     @-ms-viewport { /* play nice with IE mobile */
