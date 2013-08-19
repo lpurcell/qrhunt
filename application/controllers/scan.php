@@ -79,75 +79,86 @@ class Scan extends CI_Controller
         $scanning_qrcode = $data->QRCode;
         $scanning_name = $data->Participant_FName . " " . $data->Participant_LName;
 
-        if (!isset($_POST['Yes']) && !isset($_POST['No'])){
-
-        $message['check'] = "Are you $scanning_name?";
-        $message['title'] = "Name Check";
-
-        $this->load->view('templates/header', $message);
-        $this->load->view('news/scan_check', $message);
-        $this->load->view('templates/footer');
-
-        }elseif ($this->input->post('Yes') && isset($_POST["Yes"])){//set cookie
-            $already_scanned = $CI->scan_model->check_scan($scanning_participant_id, $scanning_qrcode); //checks if the scan is already in the database
-
-            if ($already_scanned == true){//this qrcode has already been scanned by another user and a cookie has been set
-                $message['error'] = "This QR Code is already in use.";
-                $message['participant_scanned'] = $scanning_qrcode;
-
-                $this->load->view('templates/header', $data);
-                $this->load->view('news/scan_notice', $message);
-                $this->load->view('templates/footer');
-
-            }
-            //if their cookie is set and they scan someone they haven't scanned before
-            else{
-                $this->scan_model->scan($scanning_participant_id, $participant_scanned, $data);
-
-                $cookie = array(
-                    array(
-                        'name' => 'participant_id',
-                        'value' => $scanning_participant_id,
-                        'expire' => '3600',
-                    ),
-                    array(
-                        'name' => 'Type',
-                        'value' => $scanning_eventid,
-                        'expire' => '3600',
-                    ),
-                    array(
-                        'name' => 'qrcode',
-                        'value' => $scanning_qrcode,
-                        'expire' => '3600',
-                    ),
-                    array(
-                        'name' => 'participant_name',
-                        'value' => $scanning_name,
-                        'expire' => '3600',
-                    )
-                );
-
-                foreach($cookie as $cookies){
-                    $this->input->set_cookie($cookies);
-                }
-
-                $message['title'] = "Name Check";
-
-                $this->load->view('templates/header', $message);
-                $this->load->view('news/success');
-                $this->load->view('templates/footer');
-            }
-        }
-        elseif ($this->input->post('No') || isset($_POST['No'])){
+        if($scanning_eventid == "ORG" || $scanning_eventid == "SCA"){
+            
             $message['error'] = "Please scan your QR Code first to start the game.";
             $message['title'] = "Error";
 
             $this->load->view('templates/header', $data);
             $this->load->view('news/scan_notice', $message);
             $this->load->view('templates/footer');
+
+        }else{
+
+            if (!isset($_POST['Yes']) && !isset($_POST['No'])){
+
+            $message['check'] = "Are you $scanning_name?";
+            $message['title'] = "Name Check";
+
+            $this->load->view('templates/header', $message);
+            $this->load->view('news/scan_check', $message);
+            $this->load->view('templates/footer');
+
+            }elseif ($this->input->post('Yes') && isset($_POST["Yes"])){//set cookie
+                $already_scanned = $CI->scan_model->check_scan($scanning_participant_id, $scanning_qrcode); //checks if the scan is already in the database
+
+                if ($already_scanned == true){//this qrcode has already been scanned by another user and a cookie has been set
+                    $message['error'] = "This QR Code is already in use.";
+                    $message['participant_scanned'] = $scanning_qrcode;
+
+                    $this->load->view('templates/header', $data);
+                    $this->load->view('news/scan_notice', $message);
+                    $this->load->view('templates/footer');
+
+                }
+                //if their cookie is set and they scan someone they haven't scanned before
+                else{
+                    $this->scan_model->scan($scanning_participant_id, $participant_scanned, $data);
+
+                    $cookie = array(
+                        array(
+                            'name' => 'participant_id',
+                            'value' => $scanning_participant_id,
+                            'expire' => '3600',
+                        ),
+                        array(
+                            'name' => 'Type',
+                            'value' => $scanning_eventid,
+                            'expire' => '3600',
+                        ),
+                        array(
+                            'name' => 'qrcode',
+                            'value' => $scanning_qrcode,
+                            'expire' => '3600',
+                        ),
+                        array(
+                            'name' => 'participant_name',
+                            'value' => $scanning_name,
+                            'expire' => '3600',
+                        )
+                    );
+
+                    foreach($cookie as $cookies){
+                        $this->input->set_cookie($cookies);
+                    }
+
+                    $message['title'] = "Name Check";
+
+                    $this->load->view('templates/header', $message);
+                    $this->load->view('news/success');
+                    $this->load->view('templates/footer');
+                }
+            }
+            elseif ($this->input->post('No') || isset($_POST['No'])){
+                $message['error'] = "Please scan your QR Code first to start the game.";
+                $message['title'] = "Error";
+
+                $this->load->view('templates/header', $data);
+                $this->load->view('news/scan_notice', $message);
+                $this->load->view('templates/footer');
+            }
         }
     }
-
     //checks if the scan is already in the database, if not sends to model
     public function check_scan($CI, $participant_scanned){
         $participant_scanning = get_cookie('participant_id');
