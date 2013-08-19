@@ -40,9 +40,9 @@
                         if ($scan_item->Type == "SCA"){
                             echo '<td>Scavenger Hunt</td>';
                         }else if($scan_item->Type == "PAR"){
-                            echo '<td>Organization</td>';
-                        }else{
                             echo '<td>Participant</td>';
+                        }else{
+                            echo '<td>Organization</td>';
                         }
                         echo '<td>'.$scan_item->Date.'</td>';
                         echo '<td>'.$scan_item->Time.'</td>';
