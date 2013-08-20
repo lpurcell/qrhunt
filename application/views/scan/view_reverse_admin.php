@@ -45,6 +45,8 @@
                                 echo '<td>Scavenger Hunt</td>';
                             }else if($scan_item->Type == "PAR"){
                                 echo '<td>Organization</td>';
+                            }else if($scan_item->Type == "LEA"){
+                                echo '<td>Leader</td>';
                             }else{
                                 echo '<td>Participant</td>';
                             }

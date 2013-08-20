@@ -15,7 +15,7 @@
             <br/>
         <?php }
 
-        if ($participant_item->Type == "PAR") {
+        if ($participant_item->Type == "PAR" || $participant_item->Type == "LEA") {
         ?>
             <img src="<?php echo base_url(); ?>assets/images/avatar.jpg"/>
         <?php

@@ -37,9 +37,11 @@ class Register extends CI_Controller {
                  $point_data = 5;
              }else if ($this->input->post('Type') == "ORG"){
                  $point_data = 3;
+             }else if ($this->input->post('Type') == "LEA"){
+                 $point_data = 0;
              }else{
                  $point_data = 1;
-             }
+              }
 
             $this->register_model->register($point_data);
             $this->load->view('templates/header', $data);
@@ -154,6 +156,8 @@ class Register extends CI_Controller {
                 $point_data = 5;
             }else if ($this->input->post('Type') == "ORG"){
                 $point_data = 3;
+            }else if ($this->input->post('Type') == "LEA"){
+                $point_data = 0;
             }else{
                 $point_data = 1;
             }

@@ -19,6 +19,7 @@
             <select id="table_id_select">
                 <option></option>
                 <option value="123">Participant</option>
+                <option value="147">Leader</option>
                 <option value="456">Organization</option>
                 <option value="789">Scavenger Hunt</option>
 
@@ -45,6 +46,8 @@
                     <td>123</td>
                 <?php }else if ($scan->Type == "ORG"){?>
                     <td>456</td>
+                <?php }else if ($scan->Type == "LEA"){?>
+                    <td>147</td>
                 <?php } else { ?>
                     <td>789</td>
                 <?php } ?>

@@ -33,8 +33,10 @@
         <td>
             <select name="Type">
                 <option value="PAR">Participant</option>
+                <option value="LEA">Leader</option>
                 <option value="ORG">Organization</option>
                 <option value="SCA">Scavenger Hunt</option>
+
             </select>
         </td>
     </tr>

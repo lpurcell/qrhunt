@@ -12,6 +12,7 @@
 <label for="Type">QR Scanned Type: </label>
 <select name="Type">
     <option value="PAR" <?php if ($scan->Type == "PAR") {echo "selected='selected'";}?> >Participant</option>
+    <option value="LEA" <?php if ($scan->Type == "LEA") {echo "selected='selected'";}?> >Leader</option>
     <option value="ORG" <?php if ($scan->Type == "ORG") {echo "selected='selected'";}?> >Organization</option>
     <option value="SCA" <?php if ($scan->Type == "SCA") {echo "selected='selected'";}?> >Scavenger Hunt</option>
 </select><br/>

@@ -32,6 +32,7 @@
 <label for="Type">Type:</label>
 <select name="Type">
         <option value="PAR" <?php if ($Participant->Type == "PAR") {echo "selected='selected'";}?> >Participant</option>
+        <option value="LEA" <?php if ($Participant->Type == "LEA") {echo "selected='selected'";}?> >Leader</option>
         <option value="ORG" <?php if ($Participant->Type == "ORG") {echo "selected='selected'";}?> >Organization</option>
         <option value="SCA" <?php if ($Participant->Type == "SCA") {echo "selected='selected'";}?> >Scavenger Hunt</option>
 </select><br/>

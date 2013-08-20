@@ -18,6 +18,7 @@
             <select id="table_id_select">
                 <option></option>
                 <option value="123">Participant</option>
+                <option value="147">Leader</option>
                 <option value="456">Organization</option>
                 <option value="789">Scavenger Hunt</option>
             </select>
