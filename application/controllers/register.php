@@ -18,7 +18,7 @@ class Register extends CI_Controller {
 
         $this->form_validation->set_rules('Participant_LName', 'Last Name', 'required|max_length[45]');
         $this->form_validation->set_rules('Participant_FName', 'First Name', 'required|max_length[45]');
-        $this->form_validation->set_rules('Group', 'Group', 'required');
+        $this->form_validation->set_rules('Groups', 'Group', 'required');
         $this->form_validation->set_rules('Major', 'Major','|max_length[45]');
 
     }
@@ -147,7 +147,7 @@ class Register extends CI_Controller {
                 'Type' => $this ->input->post('Type'),
                 'Participant_LName' => $this->input->post('Participant_LName'),
                 'Participant_FName' => $this->input->post('Participant_FName'),
-                'Group' => $this->input->post('Group'),
+                'Groups' => $this->input->post('Groups'),
                 'QRCode' => $this->input->post('QRCode'),
                 'Major' => $this->input->post('Major')
             );

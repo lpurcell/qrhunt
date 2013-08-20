@@ -24,8 +24,8 @@
     </tr>
 
     <tr>
-        <td><label for="Group">Group:</label></td>
-        <td><input type="input" name="Group" value="<?php echo set_value('Group')?>"/><br /></td>
+        <td><label for="Groups">Group:</label></td>
+        <td><input type="input" name="Groups" value="<?php echo set_value('Groups')?>"/><br /></td>
     </tr>
 
     <tr>

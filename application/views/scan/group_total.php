@@ -34,7 +34,7 @@
 
         <?php foreach ($scans as $scan): ?>
             <tr>
-                <td><?php echo $scan->Group ?></td>
+                <td><?php echo $scan->Groups ?></td>
                 <td><?php echo $scan->Points ?></td>
             </tr>
         <?php endforeach ?>

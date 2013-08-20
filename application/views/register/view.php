@@ -27,10 +27,10 @@
         ?>
             <br/><h2><?php echo $participant_item->Participant_FName. " " . $participant_item->Participant_LName ?></h2>
             <p><?php
-                if ($participant_item->Group === "" || $participant_item->Group == null){
+                if ($participant_item->Groups === "" || $participant_item->Groups == null){
                     echo "";
                 }else{
-                    echo $participant_item->Group;
+                    echo $participant_item->Groups;
                 }
                 ?></p>
             <p>

@@ -13,8 +13,8 @@
 	<label for="Participant_FName">First Name:</label> 
 	<input type="input" name="Participant_FName" /><br />
 
-	<label for="Group">Group:</label>
-	<input type="input" name="Group" /><br />
+	<label for="Groups">Group:</label>
+	<input type="input" name="Groups" /><br />
 
 	<label for="QRCode">QRCode:</label>
 	<input type="input" name="QRCode" /><br />

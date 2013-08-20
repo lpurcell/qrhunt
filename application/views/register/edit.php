@@ -26,8 +26,8 @@
 <label for="Participant_FName">First Name:</label>
 <input type="input" name="Participant_FName" value="<?php echo $Participant->Participant_FName; ?>"/><br />
 
-<label for="Group">Group:</label>
-<input type="input" name="Group" value="<?php echo $Participant->Group; ?>"/><br />
+<label for="Groups">Group:</label>
+<input type="input" name="Groups" value="<?php echo $Participant->Groups; ?>"/><br />
 
 <label for="Type">Type:</label>
 <select name="Type">

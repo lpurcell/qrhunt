@@ -63,10 +63,10 @@ class Scan_model extends CI_Model
     }
 
     public function scan_by_group($slug){
-        $this->db->select("participant.QRCode, participant.Group, participant.Participant_FName, participant.Participant_LName, scan.Participant_ID, scan.QR_Scanned, scan.Point, scan.Type, date_format(scan.Scan_Time,'%m-%d-%Y')as Date, date_format(scan.Scan_Time, '%h:%i:%s') as Time", false);
+        $this->db->select("participant.QRCode, participant.Groups, participant.Participant_FName, participant.Participant_LName, scan.Participant_ID, scan.QR_Scanned, scan.Point, scan.Type, date_format(scan.Scan_Time,'%m-%d-%Y')as Date, date_format(scan.Scan_Time, '%h:%i:%s') as Time", false);
         $this->db->from('scan');
         $this->db->join('participant', 'participant.Participant_ID = scan.Participant_ID');
-        $this->db->where('Group', $slug);
+        $this->db->where('Groups', $slug);
 
         return $this->db->get()->result();
     }
@@ -107,10 +107,10 @@ class Scan_model extends CI_Model
     }
 
     public function view_group_total(){
-        $this->db->select("participant.Group, sum(scan.Point) as Points");
+        $this->db->select("participant.Groups, sum(scan.Point) as Points");
         $this->db->from('scan');
         $this->db->join('participant', 'participant.Participant_ID = scan.Participant_ID');
-        $this->db->group_by("participant.Group");
+        $this->db->group_by("participant.Groups");
 
         return $this->db->get()->result();
     }

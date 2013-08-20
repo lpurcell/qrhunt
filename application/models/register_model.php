@@ -14,7 +14,7 @@ class Register_model extends CI_Model {
             'Type' => $this ->input->post('Type'),
 			'Participant_LName' => $this->input->post('Participant_LName'),
 			'Participant_FName' => $this->input->post('Participant_FName'),
-			'Group' => $this->input->post('Group'),
+			'Groups' => $this->input->post('Groups'),
 			'QRCode' => $this->input->post('QRCode'),
 			'Major' => $this->input->post('Major')
             );
@@ -27,13 +27,13 @@ class Register_model extends CI_Model {
     public function get_participants($slug = FALSE){
 
         if($slug === FALSE){
-            $this->db->select('Participant_ID, Participant_LName, Participant_FName, Group, Major, QRCode');
+            $this->db->select('Participant_ID, Participant_LName, Participant_FName, Groups, Major, QRCode');
             $this->db->from('participant');
             //need to filter data
             //$this->db->where('')
             return $this->db->get()->result();
         }
-        $this->db->select('Participant_ID, Type, Participant_LName, Participant_FName, Group, Major, QRCode');
+        $this->db->select('Participant_ID, Type, Participant_LName, Participant_FName, Groups, Major, QRCode');
         $this->db->from('participant');
         $this->db->where('QRCode', $slug);
         return $this->db->get()->result();
@@ -48,14 +48,14 @@ class Register_model extends CI_Model {
 
     //part of edit function
     public function find_by_qrcode($qrcode){
-        $this->db->select('Participant_ID, Type, Participant_LName, Participant_FName, Group, Major, QRCode');
+        $this->db->select('Participant_ID, Type, Participant_LName, Participant_FName, Groups, Major, QRCode');
         $this->db->from('participant');
         $this->db->where('QRCode', $qrcode);
         return $this->db->get()->row(0);
     }
     //part of scan controller view reverse function
     public function find_by_id($participant){
-        $this->db->select('Participant_ID, Type, Participant_LName, Participant_FName, Group, Major, QRCode');
+        $this->db->select('Participant_ID, Type, Participant_LName, Participant_FName, Groups, Major, QRCode');
         $this->db->from('participant');
         $this->db->where('Participant_id', $participant);
         return $this->db->get()->row(0);
