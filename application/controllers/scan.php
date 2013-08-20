@@ -80,7 +80,7 @@ class Scan extends CI_Controller
         $scanning_name = $data->Participant_FName . " " . $data->Participant_LName;
 
         if($scanning_eventid == "ORG" || $scanning_eventid == "SCA"){
-            
+
             $message['error'] = "Please scan your QR Code first to start the game.";
             $message['title'] = "Error";
 
@@ -408,6 +408,26 @@ class Scan extends CI_Controller
 
         $this->load->view('templates/h_scan_table_admin', $data);
         $this->load->view('scan/view_count_admin', $data);
+        $this->load->view('templates/footer');
+
+    }
+    //delete old cookies
+    public function delete_cookies(){
+        $data['title']="Delete Cookies";
+
+        if (get_cookie('event_id')){ //if they have old event_id cookie set
+            delete_cookie('event_id');
+            delete_cookie('participant_id');
+            delete_cookie('qrcode');
+            delete_cookie('participant_name');
+        }else{ //delete cookie for data for Griffon Edge
+            delete_cookie('Type');
+            delete_cookie('participant_id');
+            delete_cookie('qrcode');
+            delete_cookie('participant_name');
+        }
+        $this->load->view('templates/header', $data);
+        $this->load->view('news/success');
         $this->load->view('templates/footer');
 
     }

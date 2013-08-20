@@ -39,6 +39,7 @@
 */
 
 //scans table
+$route['admin/delete_cookies'] = 'scan/delete_cookies';
 $route['scanned_by/(:any)']='scan/view_reverse/$1';
 $route['admin/scanned_by/(:any)']='scan/view_reverse_admin/$1';
 $route['scan_delete_all/(:any)']='scan/delete_all/$1';
