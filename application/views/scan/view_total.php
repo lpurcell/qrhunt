@@ -25,10 +25,8 @@
 
         <thead>
             <tr>
-                <th>Event</th>
                 <th>QR Code</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Name</th>
                 <th>Points</th>
             </tr>
         </thead>
@@ -38,16 +36,8 @@
             <?php foreach ($scans as $scan): ?>
 
                 <tr>
-                    <?php if ($scan->Type == "PAR"){?>
-                        <td>123</td>
-                    <?php }else if ($scan->Type == "ORG"){?>
-                        <td>456</td>
-                    <?php } else { ?>
-                        <td>789</td>
-                    <?php } ?>
                     <td><a href="<?php echo site_url('participant/'.$scan->QRCode)?>"  id="view"><?php echo $scan->QRCode ?></a></td>
-                    <td><?php echo $scan->Participant_FName ?></td>
-                    <td><?php echo $scan->Participant_LName ?></td>
+                    <td><?php echo $scan->Participant_FName." ".$scan->Participant_LName ?></td>
                     <td><?php echo $scan->Points ?></td>
                  </tr>
 

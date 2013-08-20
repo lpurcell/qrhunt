@@ -23,32 +23,16 @@
         <tr>
             <th>QR Code</th>
             <th>Name</th>
-            <th>Event Name</th>
-            <th>Date</th>
-            <th>Time</th>
-         </tr>
+        </tr>
         </thead>
         <tbody>
 
         <?php
             echo '<tr>';
             foreach ($scan_info as $info):
-            echo '<td><a href="'. site_url('participant/'.$info->QRCode).'"  id="view">'.$info->QRCode.'</a></td>';
-                foreach ($scans as $scan_item):
-                    if($scan_item->Participant_ID == $info->Participant_ID){
-                        echo '<td>'.$info->Participant_FName." ".$info->Participant_LName.'</td>';
-                        if ($scan_item->Type == "SCA"){
-                            echo '<td>Scavenger Hunt</td>';
-                        }else if($scan_item->Type == "PAR"){
-                            echo '<td>Participant</td>';
-                        }else{
-                            echo '<td>Organization</td>';
-                        }
-                        echo '<td>'.$scan_item->Date.'</td>';
-                        echo '<td>'.$scan_item->Time.'</td>';
-                    }
-                endforeach;
-                echo '</tr>';
+                echo '<td><a href="'. site_url('participant/'.$info->QRCode).'"  id="view">'.$info->QRCode.'</a></td>';
+                echo '<td>'.$info->Participant_FName." ".$info->Participant_LName.'</td>';
+            echo '</tr>';
             endforeach ?>
         </tbody>
     </table>

@@ -53,23 +53,33 @@
 }
 
 .dataTables_length {
-	width: 50%;
+    margin-top: 2%;
+	width: 100%;
 	float: left;
 }
 
 .dataTables_length label{
-    margin-top:3%;
+    /*margin-top:3%;*/
     display:inline-block;
     width: 150px;
-    text-align: left;
+    text-align: center;
+}
+
+.dataTables_length select{
+    width:50px;
 }
 
 .dataTables_filter {
-	width: 40%;
-	float: right;
+    margin-top: 2%;
+    width: 100%;
+	float: left;
 	/*text-align: right;*/
 }
+.dataTables_filter label{
+    display:inline-block;
+    width: 250px;
 
+}
 .dataTables_info {
 	width: 30%;
 	float: left;

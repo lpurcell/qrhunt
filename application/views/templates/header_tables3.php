@@ -1,6 +1,7 @@
 <html>
 <head>
 
+
     <title><?php echo $title ?>-QR Hunt</title>
 
     <meta name="viewport" content="initial-scale=1.0">
@@ -18,21 +19,8 @@
     <script type="text/javascript">
         $(document).ready( function () {
             $('#table_id').dataTable({
-                "bSort":true,
-
-                //need to make the scanning totals column desc by default
-                "aaSortingFixed":[[2, 'desc']],
-                "bFilter":true
-
-                });
-
-            var oTable;
-            oTable = $('#table_table').dataTable();
-
-            $('#table_id_select').change( function() {
-                oTable.fnFilter( $(this).val() );
+                "aoColumns"   : [{"sWidth": "2%" }, {"sWidth": "2%"}, {"sWidth": "2%"}]
             });
-
 
             // New record
             $('a.editor_create').on('click', function (e) {
@@ -67,8 +55,8 @@
                     { "label": "Delete", "fn": function () { editor.submit() } }
                 );
             } );
-            //view participant
-            $('a.view_participant').on('click', function (e) {
+            //view individual items on event_all table and participant_all table
+            $('a.view').on('click', function (e) {
                 e.preventDefault();
             });
 
