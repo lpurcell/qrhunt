@@ -7,16 +7,16 @@
         <li>Student Success</li>
         <li>Financial Aid</li>
         <li>The Esry</li>
+        <li>Registrar's Office</li>
         <li>Murphy Computer Lab</li>
+        <li>Craig School of Business Office</li>
         <li>Agenstein 129</li>
         <li>Swimming Pool</li>
         <li>Baker Fitness Center</li>
-        <li>Registrar's Office</li>
         <li>Art Gallery</li>
-        <li>Craig School of Business Office</li>
-        <li>Department of Nursing</li>
-        <li>Help Desk at the Library?</li>
-        <li>IT - 110 at library?</li>
-        <li>The Atrium?</li>
+        <li>Help Desk at the Library</li>
+        <li>Information Technology Services</li>
+        <li>Dr. Glenn Rice's Office</li>
+        <li>Dr. Evelyn Brooks's Office</li>
     </ol>
 </div>
