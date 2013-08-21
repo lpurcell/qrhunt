@@ -180,6 +180,10 @@ class Scan extends CI_Controller
          //if their cookie is set and they scan someone they haven't scanned before
         else{
 
+            if (get_cookie('Type')=='LEA'){
+                $event_check->Point = 0;
+            }
+            echo $event_check->Type;
             $this->scan_model->scan($participant_scanning, $participant_scanned, $event_check);
             redirect('participant/'.$participant_scanned);
         }
@@ -421,11 +425,13 @@ class Scan extends CI_Controller
             delete_cookie('qrcode');
             delete_cookie('participant_name');
         }else{ //delete cookie for data for Griffon Edge
+            $this->scan_model->delete(get_cookie('participant_id'), get_cookie('qrcode'));
             delete_cookie('Type');
             delete_cookie('participant_id');
             delete_cookie('qrcode');
             delete_cookie('participant_name');
         }
+
         $this->load->view('templates/header', $data);
         $this->load->view('news/success');
         $this->load->view('templates/footer');
