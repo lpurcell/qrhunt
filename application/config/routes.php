@@ -39,19 +39,19 @@
 */
 
 //scans table
-$route['admin/delete_cookies'] = 'scan/delete_cookies';
+$route['noynaert/delete_cookies'] = 'scan/delete_cookies';
 $route['scanned_by/(:any)']='scan/view_reverse/$1';
-$route['admin/scanned_by/(:any)']='scan/view_reverse_admin/$1';
+$route['noynaert/scanned_by/(:any)']='scan/view_reverse_admin/$1';
 $route['scan_delete_all/(:any)']='scan/delete_all/$1';
 $route['scan_delete/(:any)/(:any)']='scan/delete/$1/$2';
-$route['admin/scan/group_scans/(:any)']='scan/group_scans_admin/$1';
-$route['admin/scan/group_totals']='scan/group_total_admin';
+$route['noynaert/scan/group_scans/(:any)']='scan/group_scans_admin/$1';
+$route['noynaert/scan/group_totals']='scan/group_total_admin';
 $route['scan/group_totals']='scan/group_total';
 $route['scan/totals']='scan/view_total';
-$route['admin/scan/totals']='scan/view_count_admin';
+$route['noynaert/scan/totals']='scan/view_count_admin';
 $route['scan_edit/(:any)/(:any)']= 'scan/edit/$1/$2';
 $route['scan_view/(:any)']= 'scan/view/$1';
-$route['admin/scan_view/(:any)']= 'scan/view_admin/$1';
+$route['noynaert/scan_view/(:any)']= 'scan/view_admin/$1';
 $route['scan/create']= 'scan/create';
 $route['scan/(:any)'] = 'scan/insert/$1';
 
