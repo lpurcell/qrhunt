@@ -119,22 +119,22 @@ class Scan extends CI_Controller
                         array(
                             'name' => 'participant_id',
                             'value' => $scanning_participant_id,
-                            'expire' => '259200',
+                            'expire' => '302400',
                         ),
                         array(
                             'name' => 'Type',
                             'value' => $scanning_eventid,
-                            'expire' => '259200',
+                            'expire' => '302400',
                         ),
                         array(
                             'name' => 'qrcode',
                             'value' => $scanning_qrcode,
-                            'expire' => '259200',
+                            'expire' => '302400',
                         ),
                         array(
                             'name' => 'participant_name',
                             'value' => $scanning_name,
-                            'expire' => '259200',
+                            'expire' => '302400',
                         )
                     );
 
