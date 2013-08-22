@@ -34,15 +34,17 @@
 
         <tbody>
 
-            <?php foreach ($scans as $scan): ?>
-
+            <?php foreach ($scans as $scan):
+                if ($scan->Points != 0){ ?>
                 <tr>
                     <td><a href="<?php echo site_url('participant/'.$scan->QRCode)?>"  id="view"><?php echo $scan->QRCode ?></a></td>
                     <td><?php echo $scan->Participant_FName." ".$scan->Participant_LName ?></td>
                     <td><?php echo $scan->Points ?></td>
                  </tr>
 
-            <?php endforeach ?>
+            <?php
+            }
+            endforeach ?>
 
         </tbody>
     </table>

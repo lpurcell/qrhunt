@@ -113,6 +113,10 @@ class Scan extends CI_Controller
                 }
                 //if their cookie is set and they scan someone they haven't scanned before
                 else{
+
+                    if ($data->Type=='LEA'){
+                        $data->Point = 0;
+                    }
                     $this->scan_model->scan($scanning_participant_id, $participant_scanned, $data);
 
                     $cookie = array(
@@ -183,7 +187,7 @@ class Scan extends CI_Controller
             if (get_cookie('Type')=='LEA'){
                 $event_check->Point = 0;
             }
-            echo $event_check->Type;
+
             $this->scan_model->scan($participant_scanning, $participant_scanned, $event_check);
             redirect('participant/'.$participant_scanned);
         }
