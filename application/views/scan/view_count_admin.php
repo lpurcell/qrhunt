@@ -55,7 +55,7 @@
                 <td><?php echo $scan->Participant_FName ?></td>
                 <td><?php echo $scan->Participant_LName ?></td>
                 <td><?php echo $scan->Points ?></td>
-                <td><a href="<?php echo site_url('admin/scan_view/'.$scan->Participant_ID)?>" id="view">View Each</a> / <a href="<?php echo site_url("admin/scanned_by/".$scan->QRCode)?>" id="view">View Reverse</a></td>
+                <td><a href="<?php echo site_url('noynaert/scan_view/'.$scan->Participant_ID)?>" id="view">View Each</a> / <a href="<?php echo site_url("noynaert/scanned_by/".$scan->QRCode)?>" id="view">View Reverse</a></td>
             </tr>
 
         <?php endforeach ?>
