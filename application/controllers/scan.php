@@ -319,9 +319,11 @@ class Scan extends CI_Controller
 
     //view each scan made by a group
     public function group_scans_admin($groupname){
-        $data['scans'] = $this->scan_model->scan_by_group($groupname);
+        $fixed_groupname = str_replace("%20", " ", $groupname);
 
-        $data['title']='Scans by '.$groupname;
+        $data['scans'] = $this->scan_model->scan_by_group($fixed_groupname);
+
+        $data['title']='Scans by '.$fixed_groupname;
 
         $this->load->view('templates/header_tables', $data);
         $this->load->view('scan/group_scans_admin', $data);

@@ -47,7 +47,7 @@
                 <td><?php echo $scan->Point ?></td>
                 <td><?php echo $scan->Date ?></td>
                 <td><?php echo $scan->Time ?></td>
-                <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("scan_delete/".$scan->Participant_ID."/".$scan->QR_Scanned)?>'" class="editor_remove">Delete</a></td>
+                <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("scan_edit/".$scan->Participant_ID."/".$scan->QR_Scanned)?>'" class="editor_edit">Edit</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("scan_delete/".$scan->Participant_ID."/".$scan->QR_Scanned)?>'" class="editor_remove">Delete</a></td>
             </tr>
         <?php endforeach ?>
 

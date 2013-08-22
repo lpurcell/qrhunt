@@ -37,7 +37,7 @@
             <tr>
                <td><?php echo $scan->Groups ?></td>
                <td><?php echo $scan->Points ?></td>
-               <td><a href="<?php echo site_url('admin/scan/group_scans/'.$scan->Groups)?>">View Each Scan</a></td>
+               <td><a href="<?php echo site_url('noynaert/scan/group_scans/'.$scan->Groups)?>">View Each Scan</a></td>
             </tr>
         <?php endforeach ?>
 
