@@ -42,8 +42,6 @@ class Scan_model extends CI_Model
         $this->db->insert('scan', $data);
     }
 
-
-
     public function get_scans($slug = FALSE){
 
         if($slug === FALSE){
@@ -85,7 +83,6 @@ class Scan_model extends CI_Model
         $this->db->from('scan');
         $this->db->join('participant', 'participant.Participant_ID = scan.Participant_ID');
         $this->db->group_by("scan.Participant_ID");
-
 
         return $this->db->get()->result();
     }
