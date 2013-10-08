@@ -8,6 +8,6 @@ echo anchor('participants_all', 'View all Participants', 'title="View all Partic
 echo anchor('organization_all', 'View all Organizations', 'title="View all Organizations"')."<br/>";
 echo anchor('events_all', 'View all Events', 'title="View all Events"')."<br/>";
 echo anchor('scan/totals', 'View Scan Totals', 'title="View Scan Totals"')."<br/>";
-
+echo anchor('scan/delete_cookies', 'Delete Cookie', 'title="Delete Cookie"')."<br/>"
 
 ?>

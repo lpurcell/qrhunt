@@ -237,6 +237,19 @@ class Scan extends CI_Controller
 
     }
 
+    //delete cookies
+    public function delete_cookies(){
+        $data['title']="Delete Cookies";
+
+        delete_cookie('event_id');
+        delete_cookie('participant_id');
+        delete_cookie('qrcode');
+        delete_cookie('participant_name');
+
+        $this->load->view('news/success'); //no header and footer because generated css doesn't have the information it needs
+
+    }
+
     //delete an individual scan
     public function delete($participant_id,$qr_scanned){
         $this->scan_model->delete($participant_id,$qr_scanned);
