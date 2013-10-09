@@ -75,6 +75,6 @@
 <div class="wrap">
     <div class="header">
         <div class = "logo">
-            <h1>QR Hunt</h1>
+            <h1><a href="<?php echo site_url()?>">QR Hunt</a></h1>
         </div>
     </div>
