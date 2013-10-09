@@ -2,7 +2,7 @@
  if (get_cookie('participant_id')){ ?>
    <ul>
         <li><a href="<?php echo site_url('participant_edit/'.get_cookie('participant_id'))?>">Back to Profile</a></li>
-        <li><a href="<?php echo site_url('scan/totals')?>">Back to Game Points</a></li>
+        <li><a href="<?php echo site_url('scan/totals')?>">See Game Points</a></li>
    </ul>
 <?php }
 
