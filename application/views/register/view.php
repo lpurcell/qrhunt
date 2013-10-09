@@ -1,4 +1,10 @@
 <?php
+ if (get_cookie('participant_id')){ ?>
+   <ul>
+        <li><a href="<?php echo site_url('participant_edit/'.get_cookie('participant_id'))?>">Back to Profile</a></li>
+        <li><a href="<?php echo site_url('scan/totals')?>">Back to Game Points</a></li>
+   </ul>
+<?php }
 
     foreach ($participant as $participant_item):
         echo '<h2>'.$participant_item->QRCode.'</h2>';

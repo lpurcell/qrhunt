@@ -87,6 +87,15 @@ class Scan_model extends CI_Model
         return $this->db->get()->result();
     }
 
+    //view who scanned you
+    public function scanned_by($qrcode){
+        $this->db->select("Participant_ID, QR_Scanned, date_format(Scan_Time,'%m-%d-%Y')as Date, date_format(Scan_Time, '%h:%i:%s') as Time", false);
+        $this->db->from('scan');
+        $this->db->where('QR_Scanned', $qrcode);
+
+        return $this->db->get()->result();
+    }
+
     //delete individual scan
     public function delete($participant_id, $qrcode_scanned){
         $this->db->delete('scan', array('Participant_ID'=>$participant_id, 'QR_Scanned'=>$qrcode_scanned));

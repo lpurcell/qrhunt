@@ -1,6 +1,14 @@
 <h2>Edit your Profile</h2>
-<a href="<?php echo site_url('scan_view/'.$Participant->Participant_ID)?>">See Your Points</a>
-<a href="<?php echo site_url('scan/totals')?>">See Game Points</a>
+
+<div class="menu">
+    <ul>
+        <li><a href="<?php echo site_url('scan_view/'.$Participant->Participant_ID)?>">See Your Points</a></li>
+        <li><a href="<?php echo site_url('scanned_by/'.$Participant->QRCode)?>">See Who Scanned You</a></li>
+        <li><a href="<?php echo site_url('scan/totals')?>">See Game Points</a></li>
+    </ul>
+</div>
+<br/>
+
 <?php echo validation_errors(); ?>
 <?php ?>
 <p>

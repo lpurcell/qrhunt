@@ -40,6 +40,7 @@
 
 //scans table
 $route['scan/delete_cookies'] = 'scan/delete_cookies';
+$route['scanned_by/(:any)']='scan/view_reverse/$1';
 $route['scan_delete_all/(:any)']='scan/delete_all/$1';
 $route['scan_delete/(:any)/(:any)']='scan/delete/$1/$2';
 $route['scan/totals']='scan/view_count';
