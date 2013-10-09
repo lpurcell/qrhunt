@@ -285,7 +285,8 @@ class Scan extends CI_Controller
     }
 
     public function view_count(){
-        $data['scans'] = $this->scan_model->view_by_count();
+        $participant_eventid = get_cookie('event_id');
+        $data['scans'] = $this->scan_model->view_by_count($participant_eventid);
 
         $data['title'] = "Scan Totals";
 
