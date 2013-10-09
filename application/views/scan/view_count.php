@@ -23,7 +23,12 @@
         <?php foreach ($scans as $scan): ?>
 
         <tr>
-            <td><a href="<?php echo site_url('participant/'.$scan->QRCode)?>"  id="view"><?php echo $scan->QRCode ?></a></td>
+            <?php
+                if ($scan->QRCode == get_cookie('qrcode')){ //if user clicks their own qrcode in the table, it will take them to their profile?>
+                    <td><a href="<?php echo site_url('participant_edit/'.get_cookie('participant_id'))?>"  id="view"><?php echo $scan->QRCode ?></a></td>
+          <?php }else{ ?>
+                    <td><a href="<?php echo site_url('participant/'.$scan->QRCode)?>"  id="view"><?php echo $scan->QRCode ?></a></td>
+          <?php } ?>
             <td><?php echo $scan->Participant_LName ?></td>
             <td><?php echo $scan->Participant_FName ?></td>
             <td><?php echo $scan->Number_of_Scans ?></td>
