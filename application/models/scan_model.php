@@ -8,12 +8,13 @@ class Scan_model extends CI_Model
         $this->load->helper(array('form', 'html', 'file', 'url', 'date'));
     }
     //regular scan
-    public function scan($participant_scanning, $participant_scanned)
+    public function scan($participant_scanning, $participant_scanned, $scanning_eventid)
     {
 
         $data = array(
             'Participant_ID' => $participant_scanning,
             'QR_Scanned' => $participant_scanned,
+            'Event_ID' => $scanning_eventid,
         );
 
         //set the date and time

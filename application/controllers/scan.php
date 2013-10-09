@@ -101,7 +101,7 @@ class Scan extends CI_Controller
 
             }else{ //if their cookie is not set and the initial qrcode scan is not in use
 
-                $this->scan_model->scan($scanning_participant_id, $participant_scanned, $data); //put initial scan in scan table to database
+                $this->scan_model->scan($scanning_participant_id, $participant_scanned, $scanning_eventid); //put initial scan in scan table to database
 
                 $cookie = array(
                     array(
@@ -151,6 +151,7 @@ class Scan extends CI_Controller
     //checks if the scan is already in the database, if not sends to model
     public function check_scan($CI, $participant_scanned){
         $participant_scanning = get_cookie('participant_id');
+        $participant_eventid = get_cookie('event_id');
 
         $already_scanned = $CI->scan_model->check_scan($participant_scanning, $participant_scanned); //checks if the scan is already in the database
         $event_check = $CI->register_model->check_event($participant_scanned);
@@ -178,7 +179,7 @@ class Scan extends CI_Controller
         //if their cookie is set and they scan someone they haven't scanned before
         else{
 
-            $this->scan_model->scan($participant_scanning, $participant_scanned);
+            $this->scan_model->scan($participant_scanning, $participant_scanned, $participant_eventid);
             redirect('participant/'.$participant_scanned);
         }
 
