@@ -296,6 +296,18 @@ class Scan extends CI_Controller
 
     }
 
+    public function view_most_scanned(){
+        $participant_eventid = get_cookie('event_id');
+        $data['scans'] = $this->scan_model->scanned_most($participant_eventid);
+
+        $data['title'] = "People Scanned Totals";
+
+        $this->load->view('templates/h_scan_table', $data);
+        $this->load->view('scan/view_count', $data);
+        $this->load->view('templates/footer');
+
+    }
+
     //delete cookies
     public function delete_cookies(){
         $participant_id = get_cookie('participant_id');

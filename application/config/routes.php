@@ -39,6 +39,7 @@
 */
 
 //scans table
+$route['scan/scanned_most']='scan/view_most_scanned';
 $route['scan/delete_cookies'] = 'scan/delete_cookies';
 $route['scanned_by/(:any)']='scan/view_reverse/$1';
 $route['scan_delete_all/(:any)']='scan/delete_all/$1';

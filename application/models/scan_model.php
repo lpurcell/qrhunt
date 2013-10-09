@@ -98,6 +98,17 @@ class Scan_model extends CI_Model
         return $this->db->get()->result();
     }
 
+    //find out who was scanned the most
+    public function scanned_most($participant_eventid){
+        $this->db->select("participant.Participant_LName, participant.Participant_FName, participant.QRCode, participant.Participant_ID, count(scan.QR_Scanned) as Number_of_Scans");
+        $this->db->from('scan');
+        $this->db->where('scan.Event_ID', $participant_eventid);
+        $this->db->join('participant', 'participant.QRCode = scan.QR_Scanned');
+        $this->db->group_by("scan.QR_Scanned");
+
+        return $this->db->get()->result();
+    }
+
     //delete individual scan
     public function delete($participant_id, $qrcode_scanned){
         $this->db->delete('scan', array('Participant_ID'=>$participant_id, 'QR_Scanned'=>$qrcode_scanned));
