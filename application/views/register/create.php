@@ -55,8 +55,18 @@
     </tr>
 
     <tr>
-        <td><label for="MISC1">Personal Website:</label></td>
+        <td><label for="MISC1">Misc:</label></td>
         <td><input type="input" name="MISC1" value="<?php echo set_value('MISC1')?>"/><br /></td>
+    </tr>
+
+    <tr>
+        <td><label for="MISC2">Misc:</label></td>
+        <td><input type="input" name="MISC2" value="<?php echo set_value('MISC2')?>"/><br /></td>
+    </tr>
+
+    <tr>
+        <td><label for="MISC3">Misc:</label></td>
+        <td><input type="input" name="MISC3" value="<?php echo set_value('MISC3')?>"/><br /></td>
     </tr>
 
     <tr>

@@ -25,12 +25,32 @@
         <ul>
             <li>Name: <?php echo $participant_item->Participant_FName. " " . $participant_item->Participant_LName ?></li>
             <li>Email: <?php echo $participant_item->Participant_Email ?></li>
-            <li>Website:
+            <li>Misc 1:
                 <?php
-                if ($participant_item->MISC1 === ""){
+                if ($participant_item->MISC1 === "" || $participant_item->MISC1 === null || $participant_item->MISC1 === 0){
                     echo "not provided";
                 }else {
                     echo $participant_item->MISC1;
+                }
+                ?>
+            </li>
+
+            <li>Misc 2:
+                <?php
+                if ($participant_item->MISC2 === "" || $participant_item->MISC2 === null || $participant_item->MISC2 === 0){
+                    echo "not provided";
+                }else {
+                    echo $participant_item->MISC2;
+                }
+                ?>
+            </li>
+
+            <li>Misc 3:
+                <?php
+                if ($participant_item->MISC3 === "" || $participant_item->MISC3 === null || $participant_item->MISC3 === 0){
+                    echo "not provided";
+                }else {
+                    echo $participant_item->MISC3;
                 }
                 ?>
             </li>

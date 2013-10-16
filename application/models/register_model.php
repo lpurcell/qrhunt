@@ -17,6 +17,8 @@ class Register_model extends CI_Model {
 			'Participant_Email' => $this->input->post('Participant_Email'),
 			'QRCode' => $this->input->post('QRCode'),
 			'MISC1' => $this->input->post('MISC1'),
+            'MISC2' => $this->input->post('MISC2'),
+            'MISC3' => $this->input->post('MISC3'),
 			'Participant_Picture' => $this->input->post('userfile')
 			);
 
@@ -26,13 +28,13 @@ class Register_model extends CI_Model {
     public function get_participants($slug = FALSE){
 
         if($slug === FALSE){
-            $this->db->select('Participant_ID, Participant_LName, Participant_FName, Participant_Email, MISC1, QRCode, Participant_Picture');
+            $this->db->select('Participant_ID, Participant_LName, Participant_FName, Participant_Email, MISC1, MISC2, MISC3, QRCode, Participant_Picture');
             $this->db->from('participant');
             //need to filter data
             //$this->db->where('')
             return $this->db->get()->result();
         }
-        $this->db->select('Event_ID, Participant_LName, Participant_FName, Participant_Email, MISC1, QRCode, Participant_Picture');
+        $this->db->select('Event_ID, Participant_LName, Participant_FName, Participant_Email, MISC1, MISC2, MISC3, QRCode, Participant_Picture');
         $this->db->from('participant');
         $this->db->where('QRCode', $slug);
         return $this->db->get()->result();
@@ -47,7 +49,7 @@ class Register_model extends CI_Model {
 
     //part of edit function
     public function find_by_id($participant_id){
-        $this->db->select('Participant_ID, Event_ID, Participant_LName, Participant_FName, Participant_Email, MISC1, QRCode, Participant_Picture');
+        $this->db->select('Participant_ID, Event_ID, Participant_LName, Participant_FName, Participant_Email, MISC1, MISC2, MISC3, QRCode, Participant_Picture');
         $this->db->from('participant');
         $this->db->where('Participant_ID', $participant_id);
         return $this->db->get()->row(0);

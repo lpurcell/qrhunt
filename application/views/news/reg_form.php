@@ -19,8 +19,14 @@
 	<label for="QRCode">QRCode:</label>
 	<input type="input" name="QRCode" /><br />
 
-	<label for="MISC1">Personal Website:</label>
+	<label for="MISC1">Misc 1:</label>
 	<input type="input" name="MISC1" /><br />
+
+    <label for="MISC2">Misc 2:</label>
+    <input type="input" name="MISC2" /><br />
+
+    <label for="MISC3">Misc 3:</label>
+    <input type="input" name="MISC3" /><br />
 
 	<label for="Participant_Picture">Picture:</label> 
 	<input type="input" name="Participant_Picture" /><br />
