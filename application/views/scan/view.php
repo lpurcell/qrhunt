@@ -31,7 +31,11 @@
 
         echo '<tr>';
         echo '<td>'.$count.'</td>';
-        echo '<td><a href="'. site_url('participant/'.$participant_item->QR_Scanned).'"  id="view">'.$participant_item->QR_Scanned.'</a></td>';
+        if ($participant_item->QR_Scanned == get_cookie('qrcode')){ //if user clicks their own qrcode in the table, it will take them to their profile
+            echo '<td><a href="'.site_url('participant_edit/'.get_cookie('participant_id')).'"  id="view">'.$participant_item->QR_Scanned.'</a></td>';
+        }else{
+            echo '<td><a href="'. site_url('participant/'.$participant_item->QR_Scanned).'"  id="view">'.$participant_item->QR_Scanned.'</a></td>';
+        }
 
         foreach ($participant_info as $info):
             if($participant_item->QR_Scanned == $info->QRCode){
