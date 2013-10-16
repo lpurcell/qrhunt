@@ -25,10 +25,10 @@
                         <td><?php echo $participant_item->Participant_FName ?></td>
                         <td><?php echo $participant_item->Participant_Email ?></td>
                         <td><?php
-                                if ($participant_item->Participant_Website === ""){
+                                if ($participant_item->MISC1 === ""){
                                     echo "not provided";
                                 }else {
-                                    echo $participant_item->Participant_Website;
+                                    echo $participant_item->MISC1;
                                 }
                             ?>
                         </td>

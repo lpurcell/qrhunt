@@ -55,8 +55,8 @@
     </tr>
 
     <tr>
-        <td><label for="Participant_Website">Personal Website:</label></td>
-        <td><input type="input" name="Participant_Website" value="<?php echo set_value('Participant_Website')?>"/><br /></td>
+        <td><label for="MISC1">Personal Website:</label></td>
+        <td><input type="input" name="MISC1" value="<?php echo set_value('MISC1')?>"/><br /></td>
     </tr>
 
     <tr>

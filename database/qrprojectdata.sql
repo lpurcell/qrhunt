@@ -58,7 +58,7 @@ INSERT INTO `organization` (`ORGANIZATION_ID`, `ORGANIZATION_NAME`, `ORGANIZATIO
 -- Dumping data for table `participant`
 --
 
-INSERT INTO `participant` (`PARTICIPANT_ID`, `EVENT_ID`, `PARTICIPANT_LNAME`, `PARTICIPANT_FNAME`, `PARTICIPANT_EMAIL`, `PARTICIPANT_WEBSITE`, `QRCODE`, `PARTICIPANT_PICTURE`) VALUES
+INSERT INTO `participant` (`PARTICIPANT_ID`, `EVENT_ID`, `PARTICIPANT_LNAME`, `PARTICIPANT_FNAME`, `PARTICIPANT_EMAIL`, `MISC1`, `QRCODE`, `PARTICIPANT_PICTURE`) VALUES
 (4, 123, 'kitty', 'cat', 'toby@toby.com', '', '32165', ''),
 (5, 123, 'kitty', 'Toby', 'cat@cat.com', '', '32156', ''),
 (6, 123, 'Cheese', 'Delicious', 'toby@toby.com', 'ldskjf', 'lakdsj', 'meeting6.18.txt'),

@@ -45,8 +45,8 @@
 <label for="QRCode">QRCode:</label>
 <input type="input" name="QRCode" value="<?php echo $Participant->QRCode; ?>"/><br />
 
-<label for="Participant_Website">Personal Website:</label>
-<input type="input" name="Participant_Website" value="<?php echo $Participant->Participant_Website; ?>"/><br />
+<label for="MISC1">Personal Website:</label>
+<input type="input" name="MISC1" value="<?php echo $Participant->MISC1; ?>"/><br />
 
 <label for="Participant_Picture">Picture:</label>
 <input type="file" name="userfile" /><br />

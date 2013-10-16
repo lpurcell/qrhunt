@@ -20,7 +20,7 @@ class Register extends CI_Controller {
         $this->form_validation->set_rules('Participant_FName', 'First Name', 'required|max_length[45]');
         $this->form_validation->set_rules('Participant_Email', 'Email', 'required|valid_email|is_unique[participant.Participant_Email]');
         $this->form_validation->set_rules('QRCode', 'QR Code', 'required|is_unique[participant.QRCode]');
-        $this->form_validation->set_rules('Participant_Website', 'Personal Website','|max_length[45]');
+        $this->form_validation->set_rules('MISC1', 'Personal Website','|max_length[100]');
         $this->form_validation->set_rules('Participant_Picture', 'Picture', '|callback_handle_upload');
 
     }
@@ -132,7 +132,7 @@ class Register extends CI_Controller {
                 'Participant_FName' => $this->input->post('Participant_FName'),
                 'Participant_Email' => $this->input->post('Participant_Email'),
                 'QRCode' => $this->input->post('QRCode'),
-                'Participant_Website' => $this->input->post('Participant_Website')
+                'MISC1' => $this->input->post('MISC1')
             );
 
             $new_picture = $this->input->post('userfile');

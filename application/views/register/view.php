@@ -27,10 +27,10 @@
             <li>Email: <?php echo $participant_item->Participant_Email ?></li>
             <li>Website:
                 <?php
-                if ($participant_item->Participant_Website === ""){
+                if ($participant_item->MISC1 === ""){
                     echo "not provided";
                 }else {
-                    echo $participant_item->Participant_Website;
+                    echo $participant_item->MISC1;
                 }
                 ?>
             </li>
