@@ -15,14 +15,13 @@ body {
     box-shadow:0px 0px 15px 5px #888888;
 }
 .header{
-    background:#82817b;
+    background:#FFFFFF;
 
 }
 .logo{
-background-image:url('../images/default_logo.jpg');
+background-image:url('../images/QRHuntLogo5.jpg');
 background-repeat:no-repeat;
-margin-left:30px;
-height:180px;
+height:350;
 }
 
 label{
