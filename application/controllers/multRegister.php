@@ -15,14 +15,14 @@ class MultRegister extends CI_Controller {
         $this->load->helper(array('form', 'html', 'file', 'url', 'cookie'));
         $this->load->library('form_validation');
 
-        $config['upload_path']   = './uploads/';
+        $config['upload_path']   = './downloads/';
         $config['allowed_types'] = 'csv';
         $config['remove_spaces'] = TRUE;
 
         $this->load->library('upload', $config);
 
 
-        $this->form_validation->set_rules('Participant_CSV', 'File', 'required|callback_handle_upload');
+        $this->form_validation->set_rules('CSV_File', 'File', 'required|callback_handle_upload');
 
     }
 
@@ -30,16 +30,21 @@ class MultRegister extends CI_Controller {
     {
         $CI =& get_instance();
         $CI->load->model('event_model');
-        $event['event'] = $CI->event_model->event_names();
+        $data['event'] = $CI->event_model->event_names();
 
         $data['title'] = 'submit';
 
-        if ($this->form_validation->run() === FALSE){
+        if (! $this->upload->do_upload() && $this->form_validation->run() === FALSE)
+        {
+            $data['error'] = array('error' => $this->upload->display_errors());
+
             $this->load->view('templates/header', $data);
-            $this->load->view('register/multCreate', $event);
+            $this->load->view('register/multCreate', $data);
             $this->load->view('templates/footer');
-        }else{
-            $this->multRegister_model->register();
+        }
+        else
+        {
+            $this->multRegister_model->register(); //or you can do $this->upload->do_upload
             $this->load->view('templates/header', $data);
             $this->load->view('news/success');
             $this->load->view('templates/footer');
@@ -50,6 +55,7 @@ class MultRegister extends CI_Controller {
     public function handle_upload($str){
 
         if (isset($_FILES['userfile']) && $_FILES['userfile']['error']!= 4){
+            echo "here";
             if ($this->upload->do_upload('userfile')){
                 // set a $_POST value for 'image' that we can use later
                 $upload_data    = $this->upload->data();

@@ -40,7 +40,7 @@
 <h3><u>Step 3:</u></h3>
 <label for="CSV_File">Upload your file and hit submit!</label>
 <br/>
-<input type="file" name="multCreate" />
+<input type="file" name="userfile" />
 <br/>
 
 <input type="submit" name="submit" value="submit" />
