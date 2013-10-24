@@ -22,7 +22,7 @@
 </p>
 <?php echo form_open_multipart('participant_edit/'.$Participant->Participant_ID) ?>
 
-<input type ="hidden" name="Event_ID" value="<?php echo $Participant->Event_ID; ?>">
+<input type ="hidden" name="Event_ID" value="<?php echo $Participant->Event_ID; ?>"/>
 
 <input type ="hidden" name="PARTICIPANT_ID" value="<?php echo $Participant->Participant_ID; ?>">
 
@@ -35,14 +35,9 @@
 <label for="Participant_Email">Email:</label>
 <input type="input" name="Participant_Email" value="<?php echo $Participant->Participant_Email; ?>"/><br />
 
-<label for="Event_ID">Choose your Event:</label>
-<select name="Event_ID">
-    <?php foreach($event as $event_item): ?>
-        <option  value="<?php echo $event_item->Event_ID; ?>" <?php if ($event_item->Event_ID == $Participant->Event_ID){ echo "selected='selected'"; }else{ ''; } ?> ><?php echo $event_item->Event_Name; ?></option>
-    <?php endforeach ?>
-</select><br/>
+<input type="hidden" name="Event_ID" value="<?php foreach($event as $event_item): echo $event_item->Event_ID; endforeach ?>"/>
 
-<input type="hidden" name="QRCode" value="<?php echo $Participant->QRCode; ?>"/><br />
+<input type="hidden" name="QRCode" value="<?php echo $Participant->QRCode; ?>"/>
 
 <label for="MISC1">Misc:</label>
 <input type="input" name="MISC1" value="<?php echo $Participant->MISC1; ?>"/><br />
