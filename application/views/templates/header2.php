@@ -48,4 +48,4 @@
         </div>
     </div>
 
-    <h1><a href="<?php echo site_url()?>">QR Hunt</a></h1>
+    <h1><a href="<?php echo site_url()?>">Home</a></h1>

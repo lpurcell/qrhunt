@@ -19,7 +19,7 @@
             $('#table_id').dataTable({
                 "bSort":true,
                 //need to make the scanning totals column desc by default
-                "aaSortingFixed":[[3, 'desc']]
+                "aaSortingFixed":[[2, 'desc']]
              });
 
             // New record
@@ -78,6 +78,8 @@
 <div class="wrap">
     <div class="header">
         <div class = "logo">
-            <h1><a href="<?php echo site_url()?>">QR Hunt</a></h1>
+
         </div>
     </div>
+
+    <h1><a href="<?php echo site_url()?>">Home</a></h1>

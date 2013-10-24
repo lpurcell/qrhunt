@@ -15,6 +15,5 @@
         <div class = "logo">
 
          </div>
-
     </div>
         <h1><a href="<?php echo site_url()?>">Home</a></h1>
