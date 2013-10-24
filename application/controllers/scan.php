@@ -134,10 +134,12 @@ class Scan extends CI_Controller
 
     public function check_participantid($CI, $scanned_participantid){
 
+
         if (!isset($_POST['entered_id'])){
-        $this->load->view('templates/header');
-        $this->load->view('scan/check_participantid');
-        $this->load->view('templates/footer');
+            $data['title'] = "Check ID - ";
+            $this->load->view('templates/header', $data);
+            $this->load->view('scan/check_participantid');
+            $this->load->view('templates/footer');
 
         }else{
 
@@ -148,9 +150,9 @@ class Scan extends CI_Controller
 
             } else {
                 $message['error'] = "Please scan your QR Code first to start the game.";
-                $message['title'] = "Error";
+                $message['title'] = "ID Error - ";
 
-                $this->load->view('templates/header');
+                $this->load->view('templates/header', $message);
                 $this->load->view('news/scan_notice', $message);
                 $this->load->view('templates/footer');
             }
