@@ -42,8 +42,7 @@
     <?php endforeach ?>
 </select><br/>
 
-<label for="QRCode">QRCode:</label>
-<input type="input" name="QRCode" value="<?php echo $Participant->QRCode; ?>"/><br />
+<input type="hidden" name="QRCode" value="<?php echo $Participant->QRCode; ?>"/><br />
 
 <label for="MISC1">Misc:</label>
 <input type="input" name="MISC1" value="<?php echo $Participant->MISC1; ?>"/><br />

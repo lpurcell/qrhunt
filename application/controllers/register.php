@@ -14,8 +14,6 @@ class Register extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-
-
         $this->form_validation->set_rules('Participant_LName', 'Last Name', 'required|max_length[45]');
         $this->form_validation->set_rules('Participant_FName', 'First Name', 'required|max_length[45]');
         $this->form_validation->set_rules('Participant_Email', 'Email', 'required|valid_email|is_unique[participant.Participant_Email]');
