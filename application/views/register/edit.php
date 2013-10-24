@@ -35,7 +35,7 @@
 <label for="Participant_Email">Email:</label>
 <input type="input" name="Participant_Email" value="<?php echo $Participant->Participant_Email; ?>"/><br />
 
-<input type="hidden" name="Event_ID" value="<?php foreach($event as $event_item): echo $event_item->Event_ID; endforeach ?>"/>
+<input type="hidden" name="Event_ID" value="<?php echo $Participant->Event_ID; ?>" />
 
 <input type="hidden" name="QRCode" value="<?php echo $Participant->QRCode; ?>"/>
 
