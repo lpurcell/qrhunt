@@ -60,7 +60,9 @@ $route['participant_edit/(:any)']= 'register/edit/$1';
 $route['participant/(:any)'] = 'register/view/$1';
 //view all participants in the table
 $route['participants_all'] = 'register/index';
+//Add participants
 $route['register/create'] = 'register/create';
+$route['register/multCreate'] = 'multRegister/create/multCreate';
 
 //organization table
 $route['organization_delete/(:any)']='organization/delete/$1';
