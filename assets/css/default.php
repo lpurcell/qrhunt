@@ -24,6 +24,11 @@ background-repeat:no-repeat;
 height:350;
 }
 
+.footer{
+padding-top:3%;
+clear:both;
+}
+
 label{
     display:inline-block;
     width: 125px;
