@@ -1,6 +1,6 @@
 <?php
     if($url_id == get_cookie('qrcode')){?>
-        <h2>Participants Who Have Scanned You</h2>
+        <h2>Players Who Scanned Your QR Code</h2>
         <a href="<?php echo site_url('participant_edit/'.get_cookie('participant_id'))?>">Back</a>
     <?php }else{
         echo '<h2>'.$title.'</h2>';

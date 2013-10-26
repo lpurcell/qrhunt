@@ -85,10 +85,11 @@ class Scan extends CI_Controller
          $already_scanned = $CI->scan_model->check_scan($scanning_participant_id, $scanning_qrcode); //checks if the scan is already in the scan table of database
 
             if ($already_scanned == true){//this qrcode has already been scanned by another user and a cookie has been set
+                $message['title'] = "ID Error - ";
                 $message['error'] = "This QR Code is already in use.";
                 $message['participant_scanned'] = $scanning_qrcode;
 
-                $this->load->view('templates/header', $data);
+                $this->load->view('templates/header', $message);
                 $this->load->view('news/scan_notice', $message);
                 $this->load->view('templates/footer');
 
@@ -221,7 +222,7 @@ class Scan extends CI_Controller
 
         }
 
-        $data['title'] = 'Scans by ' . $slug;
+        $data['title'] = 'Scans by You';
 
         $this->load->view('templates/header_tables', $data);
         $this->load->view('scan/view', $data);
