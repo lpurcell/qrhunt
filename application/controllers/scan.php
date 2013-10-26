@@ -70,7 +70,9 @@ class Scan extends CI_Controller
 
     }
 
-    //checks the participant's name if there is not a cookie set/sets cookie
+    /*checks the participant's name if there is not a cookie set/sets cookie
+     When setting a cookie, a scan for that QRCode is put in the scan table to keep anyone else from trying to set a cookie for that QRCode
+    */
     public function checkSet_cookie($CI, $participant_scanned_id){
         $data = $CI->register_model->participant_qrcode($participant_scanned_id);
 
@@ -300,7 +302,7 @@ class Scan extends CI_Controller
         $participant_eventid = get_cookie('event_id');
         $data['scans'] = $this->scan_model->view_by_count($participant_eventid);
 
-        $data['title'] = "Scan Totals";
+        $data['title'] = "Game Points";
 
         $this->load->view('templates/h_scan_table', $data);
         $this->load->view('scan/view_count', $data);
@@ -312,7 +314,7 @@ class Scan extends CI_Controller
         $participant_eventid = get_cookie('event_id');
         $data['scans'] = $this->scan_model->scanned_most($participant_eventid);
 
-        $data['title'] = "People Scanned Totals";
+        $data['title'] = "Most Scanned QR Codes";
 
         $this->load->view('templates/h_scan_table', $data);
         $this->load->view('scan/view_count', $data);
@@ -320,7 +322,10 @@ class Scan extends CI_Controller
 
     }
 
-    //delete cookies
+    /*delete cookies
+    This will require a game administrator to log in to admin on player's phone to delete cookie.
+    This will also delete the initial scan from the scan table when the player first scanned it, so the QRCode can be scanned again.
+    */
     public function delete_cookies(){
         $participant_id = get_cookie('participant_id');
         $qr_scanned = get_cookie('qrcode');
@@ -334,7 +339,7 @@ class Scan extends CI_Controller
         delete_cookie('qrcode');
         delete_cookie('participant_name');
 
-        $this->load->view('news/success'); //no header and footer because generated css doesn't have the information it needs
+        $this->load->view('news/success'); //no header and footer because generated css doesn't have the information it needs to generate the css
 
     }
 
