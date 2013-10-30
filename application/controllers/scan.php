@@ -240,7 +240,7 @@ class Scan extends CI_Controller
         $data['scan_info'] = array();
         $data['url_id'] = $qrcode;
 
-        if(empty($data['scans'])){
+        if(count($data['scans'])== 1){ //user only has 1 scan which is the initial scan
             $message['error'] = "You have not been scanned by anyone";
 
             $this->load->view('templates/header', $data);
