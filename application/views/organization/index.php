@@ -20,7 +20,7 @@
 
         <?php foreach ($organization as $organization_item): ?>
             <tr>
-                <td><?php echo $organization_item->Organization_Name ?></td>
+                <td><a href="<?php echo site_url('organization/'.$organization_item->Organization_ID)?>"  id="view"><?php echo $organization_item->Organization_Name ?></a></td>
                 <td><?php echo $organization_item->Organization_Sponsor ?></td>
                 <?php if (! get_cookie('participant_id')){ ?>
                 <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("organization_edit/".$organization_item->Organization_ID)?>'" class="editor_edit">Edit</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("organization_delete/".$organization_item->Organization_ID)?>'" class="editor_remove">Delete</a></td>

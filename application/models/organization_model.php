@@ -23,7 +23,7 @@ class Organization_model extends CI_Model {
         return $this->db->get()->row(0);
     }
 
-    //used in registering an event is not in the organization controller
+    //used in registering an event, located in the event controller
     public function organization_names(){
         $this->db->select('Organization_ID, Organization_Name');
         $this->db->from('organization');
@@ -36,7 +36,7 @@ class Organization_model extends CI_Model {
             $this->db->select('Organization_ID, Organization_Name, Organization_Sponsor');
             $this->db->from('organization');
             //need to filter data
-            //$this->db->where('')
+            //$this->db->where('') by admin login
             return $this->db->get()->result();
         }
         $this->db->select('Organization_ID, Organization_Name, Organization_Sponsor');

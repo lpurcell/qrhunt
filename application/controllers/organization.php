@@ -46,7 +46,7 @@ class Organization extends CI_Controller {
         if(empty($data['organization'])){
             show_404();
         }
-        $data['title'] = 'Organization_Name ' . $slug;
+        $data['title'] = 'Organization Information - ';
 
         $this->load->view('templates/header', $data);
         $this->load->view('organization/view', $data);
