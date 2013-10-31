@@ -208,25 +208,28 @@ class Scan extends CI_Controller
         $result = $data['participant'];
         $data['participant_info'] = array();
 
-        if(empty($data['participant'])){
-            show_404();
+        if(count($data['participant'])== 1){//user only has 1 scan which is the initial scan
+            $message['error'] = "You haven't scanned any QR Codes yet! Go scan some!!";
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('news/participant_redirect', $message);
+            $this->load->view('templates/footer');
+        }else{
+
+            foreach($result as $row){
+                $qr_scanned = $row->QR_Scanned;
+
+                $result2[] = $CI->register_model->get_name($qr_scanned);
+
+                $data['participant_info'] = $result2;
+
+            }
+            $data['title'] = 'Scans by You';
+
+            $this->load->view('templates/header_tables', $data);
+            $this->load->view('scan/view', $data);
+            $this->load->view('templates/footer');
         }
-
-
-        foreach($result as $row){
-            $qr_scanned = $row->QR_Scanned;
-
-            $result2[] = $CI->register_model->get_name($qr_scanned);
-
-            $data['participant_info'] = $result2;
-
-        }
-
-        $data['title'] = 'Scans by You';
-
-        $this->load->view('templates/header_tables', $data);
-        $this->load->view('scan/view', $data);
-        $this->load->view('templates/footer');
     }
 
     //view who person was scanned by
@@ -241,10 +244,10 @@ class Scan extends CI_Controller
         $data['url_id'] = $qrcode;
 
         if(count($data['scans'])== 1){ //user only has 1 scan which is the initial scan
-            $message['error'] = "You have not been scanned by anyone";
+            $message['error'] = "Your QR Code has not been scanned yet.";
 
             $this->load->view('templates/header', $data);
-            $this->load->view('news/scan_notice', $message);
+            $this->load->view('news/participant_redirect', $message);
             $this->load->view('templates/footer');
         }else{
 

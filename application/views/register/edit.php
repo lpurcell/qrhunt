@@ -14,7 +14,7 @@
 <?php echo validation_errors(); ?>
 <?php ?>
 <p>
-    <?php if ($Participant->Participant_Picture === "0" || $Participant->Participant_Picture === ""){ ?>
+    <?php if ($Participant->Participant_Picture === "0" || $Participant->Participant_Picture === "" || $Participant->Participant_Picture === null){ ?>
         <img src="<?php echo base_url(); ?>assets/images/avatar.jpg">
     <?php }else{ ?>
         <img src= "<?= base_url();?>uploads/<?= $Participant->Participant_Picture; ?>">
