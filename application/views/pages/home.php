@@ -1,3 +1,4 @@
+<div class=menu>
 <?php
 echo "<br/>" . anchor('organization/create', 'Register an Organization', 'title="Register an Organization"') . "<br/>";
 echo anchor('event/create', 'Register an Event', 'title="Register an Event"') . "<br/>";
@@ -11,3 +12,4 @@ echo anchor('scan/totals', 'View Scan Totals', 'title="View Scan Totals"')."<br/
 echo anchor('scan/delete_cookies', 'Delete Cookie', 'title="Delete Cookie"')."<br/>"
 
 ?>
+</div>

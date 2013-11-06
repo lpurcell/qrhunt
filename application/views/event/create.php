@@ -1,9 +1,9 @@
-<h2>Register your Event</h2>
+<div class="event">
 
 <?php echo validation_errors(); ?>
 
 <?php echo form_open_multipart('event/create') ?>
-
+<h2>Register your Event</h2>
 <label for="Organization_ID">Choose your Organization:</label>
 <select name="Organization_ID">
     <?php foreach($organization as $organization_item): ?>
@@ -42,4 +42,4 @@
 
 <input type="submit" name="submit" value="Register Your Event" />
 
-</form>
+</form></div>
