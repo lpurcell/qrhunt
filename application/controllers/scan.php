@@ -7,7 +7,7 @@ class Scan extends CI_Controller
         parent::__construct();
         $this->load->model('scan_model');
         $this->load->helper(array('form', 'html', 'file', 'url', 'cookie'));
-        $this->load->library('form_validation');
+        $this->load->library(array('form_validation', 'user_agent'));
 
 
         $this->form_validation->set_rules('QR_Scanned', 'QR Scanned');
@@ -96,6 +96,14 @@ class Scan extends CI_Controller
             }else{ //if their cookie is not set and the initial qrcode scan is not in use
 
                 $this->scan_model->scan($scanning_participant_id, $scanning_qrcode, $scanning_eventid); //put initial scan in scan table to database
+                if ($this->agent->is_mobile()){
+                    $agent_data = $this->agent->mobile();
+                }else{
+                    $agent_data = $this->agent->browser();
+                }
+                $CI =& get_instance();
+                $CI->load->model('user_agent_model');
+                $CI->user_agent_model->insert($scanning_participant_id, $agent_data);
 
                 $cookie = array(
                     array(
