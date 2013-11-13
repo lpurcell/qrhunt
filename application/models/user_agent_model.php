@@ -26,7 +26,7 @@
      }
 
      public function get_browser_agents(){
-         $where = "Agent = 'Chrome' AND Agent = 'Mozilla' AND Agent = 'Opera' AND Agent = 'Safari'";
+         $where = "Agent = 'Chrome' OR Agent = 'Mozilla' OR Agent = 'Opera' OR Agent = 'Safari'";
          $this->db->select("Agent, count(Agent) as Total");
          $this->db->from('user_agent');
          $this->db->where($where);

@@ -39,6 +39,7 @@
 */
 //user agent table
 $route['mobile/totals']='user_agent/index_mobile';
+$route['browser/totals']='user_agent/index_browser';
 
 //scans table
 $route['scan/scanned_most']='scan/view_most_scanned';

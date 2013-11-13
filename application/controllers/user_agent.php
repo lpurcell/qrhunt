@@ -27,4 +27,23 @@ class User_agent extends CI_Controller {
         }
     }
 
+    public function index_browser(){
+
+        $data['agents'] = $this->user_agent_model->get_browser_agents();
+
+        $data['title'] = 'Browser User Agent Totals';
+
+        if ($data['agents']==null){
+            $data['error'] = "You don't have any broswer user agents.";
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('news/scan_notice', $data);
+            $this->load->view('templates/footer');
+        }else{
+            $this->load->view('templates/header_tables', $data);
+            $this->load->view('user_agent/index_browser', $data);
+            $this->load->view('templates/footer');
+        }
+    }
+
 }
