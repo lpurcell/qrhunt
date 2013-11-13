@@ -344,6 +344,11 @@ class Scan extends CI_Controller
 
         $this->scan_model->delete($participant_id, $qr_scanned); //delete initial scan in the database
 
+        //delete the user agent from initial scan
+        $CI =& get_instance();
+        $CI->load->model('user_agent_model');
+        $this->user_agent_model->delete($participant_id);
+
         $data['title']="Delete Cookies";
                 
         delete_cookie('event_id');

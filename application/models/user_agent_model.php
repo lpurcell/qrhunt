@@ -35,4 +35,9 @@
          return $this->db->get()->result();
      }
 
+     public function delete($participant_id){
+
+         $this->db->delete('user_agent', array('Participant_ID'=>$participant_id));
+     }
+
  }
