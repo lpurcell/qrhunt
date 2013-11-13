@@ -24,17 +24,17 @@
             });
 
             $('INPUT[type=minicolors_main]').minicolors({
-                    defaultValue: '#ebca0e',
+                    defaultValue: '#4A4A4A',
                     theme: 'no theme'
                 });
 
             $('INPUT[type=minicolors_text]').minicolors({
-                defaultValue: '#000000',
+                defaultValue: '#FFFFFF',
                 theme: 'no theme'
             });
 
             $('INPUT[type=minicolors_header]').minicolors({
-                defaultValue: '#82817b',
+                defaultValue: '#000000',
                 theme: 'no theme'
             });
         });
