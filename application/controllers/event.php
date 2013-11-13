@@ -17,7 +17,7 @@ class Event extends CI_Controller {
         $this->form_validation->set_rules('Organization_ID', 'Organization_ID', 'required ');
         $this->form_validation->set_rules('Event_Name', 'Event Name:', 'required|max_length[45]|is_unique[event.Event_Name]');
         $this->form_validation->set_rules('Event_Location', 'Location', 'required|max_length[12]');
-        $this->form_validation->set_rules('Event_Date', 'Date of Event:', 'required');
+        $this->form_validation->set_rules('Event_Date', 'Date of Event:', 'callback_valid_date');
         $this->form_validation->set_rules('Event_Coordinator', 'Coordinator Name:', 'required|max_length[45]');
         $this->form_validation->set_rules('Event_Email', 'Coordinator Email:', 'required|valid_email');
         $this->form_validation->set_rules('Event_Logo', 'Logo for Event', 'callback_handle_upload');
@@ -81,6 +81,21 @@ class Event extends CI_Controller {
         }else{
             // return true because nothing was uploaded
             return true;
+        }
+    }
+
+    public function valid_date($str){
+        $current_date = date('Y-m-d');
+
+        if ( preg_match("/^([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})$/", $str) ){
+
+        }
+        if (strtotime($str) >= strtotime($current_date)){
+
+        }
+        else{
+            $this->form_validation->set_message('valid_date', 'Date Format Error');
+            return false;
         }
     }
     public function index(){
