@@ -15,4 +15,24 @@
          return $this->db->insert('user_agent', $data);
      }
 
+     public function get_mobile_agents(){
+         $where = "Agent != 'Chrome' AND Agent != 'Mozilla' AND Agent != 'Opera' AND Agent != 'Safari'";
+         $this->db->select("Agent, count(Agent) as Total");
+         $this->db->from('user_agent');
+         $this->db->where($where);
+         $this->db->group_by("Agent");
+
+         return $this->db->get()->result();
+     }
+
+     public function get_browser_agents(){
+         $where = "Agent = 'Chrome' AND Agent = 'Mozilla' AND Agent = 'Opera' AND Agent = 'Safari'";
+         $this->db->select("Agent, count(Agent) as Total");
+         $this->db->from('user_agent');
+         $this->db->where($where);
+         $this->db->group_by("Agent");
+
+         return $this->db->get()->result();
+     }
+
  }
