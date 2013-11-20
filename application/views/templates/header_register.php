@@ -18,10 +18,14 @@
 </head>
 <body>
 <div class="wrap">
+    <!--Make Header a link back to homepage-->
+    <a style="display:block" href="<?php echo site_url()?>">
+
     <div class="header">
         <div class = "logo">
 
-        </div>
+         </div>
     </div>
 
-    <h1><a href="<?php echo site_url()?>">Home</a></h1>
+    </a>
+    <!--End Header-->

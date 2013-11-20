@@ -65,19 +65,19 @@ $route['register/create'] = 'register/create';
 $route['register/multCreate'] = 'multRegister/create/multCreate';
 
 //organization table
-$route['organization_delete/(:any)']='organization/delete/$1';
-$route['organization_all']= 'organization/index';
+$route['organization_delete/(:any)']='admin/organization/delete/$1';
+$route['organization_all']= 'admin/organization/index';
 //code needs to be fixed
-$route['organization/(:any)']= 'organization/view/$1';
-$route['organization_edit/(:any)']= 'organization/edit/$1';
-$route['organization/create']= 'organization/create';
+$route['organization/(:any)']= 'admin/organization/view/$1';
+$route['organization_edit/(:any)']= 'admin/organization/edit/$1';
+$route['organization/create']= 'admin/organization/create';
 
 //event table
-$route['event_delete/(:any)'] = 'event/delete/$1';
-$route['event_edit/(:any)']= 'event/edit/$1';
-$route['event/(:any)'] = 'event/view/$1';
-$route['events_all'] = 'event/index';
-$route['event/create']= 'event/create';
+$route['event_delete/(:any)'] = 'admin/event/delete/$1';
+$route['event_edit/(:any)']= 'admin/event/edit/$1';
+$route['event/(:any)'] = 'admin/event/view/$1';
+$route['events_all'] = 'admin/event/index';
+$route['event/create']= 'admin/event/create';
 
 //other routes
 $route['css/get/(:any)'] = 'css/get/$1';
