@@ -1607,23 +1607,9 @@ var qrcode = function() {
         base64.flush();
 
         var img = '';
-        img += '<img';
-        img += '\u0020src="';
-        img += 'data:image/gif;base64,';
+        img += 'data:image/jpeg;base64,';
         img += base64;
-        img += '"';
-        img += '\u0020width="';
-        img += width;
-        img += '"';
-        img += '\u0020height="';
-        img += height;
-        img += '"';
-        if (alt) {
-            img += '\u0020alt="';
-            img += alt;
-            img += '"';
-        }
-        img += '/>';
+
 
         return img;
     };

@@ -7,12 +7,98 @@
  */
 /** Missouri Western State University **/
 
+
+
 //generate a single code
 var generate = function() {
     var generatedCode = randomString(10, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
     //set text field value
     document.getElementById('QRField').value= generatedCode;
+}
+
+var generateForPDF = function(participants, event) {
+    var doc = new jsPDF();
+    var count = 0;
+    var value = '';
+    var nameHeight = 10;
+    var idHeight = 20;
+    var codeHeight = 30;
+    var imgHeight=0;
+    var labelCount = 0;
+
+    for (var i=0; i<participants.length; i++) {
+        for (var key in participants[i]) {
+            for(var vals in participants[i][key]){
+                value += participants[i][key][vals];
+            }
+            count += 1;
+            switch(count)
+            {
+                case 1:
+                    var id = value;
+                    break;
+                case 2:
+                    var fname = value;
+                    break;
+                case 3:
+                    var lname = value;
+                    break;
+                case 4:
+                    var qrcode = value;
+                default:
+                    break;
+            }
+            if(count > 4) {
+                count = 0;
+            }
+            value = '';
+        }
+
+        //Generate the image - returns as gif
+        var qrImage = create_qrcode(("qrhunt.org/qrhunt/index.php/participant/" + qrcode),10,'H');
+
+        //convert image to jpeg
+        var canvas = document.getElementById("myCanvas");
+        canvas.height = 130;
+        canvas.width = 130;
+        var ctx = canvas.getContext("2d");
+        var img = new Image();
+        img.src = qrImage;
+        ctx.drawImage(img,0,0);
+        var newImg = canvas.toDataURL("image/jpeg");
+
+        //format the PDF
+
+        doc.addImage(newImg,'JPEG',0,imgHeight,40,40);
+        doc.text(40,nameHeight, "Name: " + fname + " " + lname);
+        doc.text(40,codeHeight, "QR Code:" + qrcode);
+        doc.text(40, idHeight, "Participant: " + id);
+
+
+        //update position for next label
+        nameHeight+=40;
+        idHeight+=40;
+        codeHeight+=40;
+        imgHeight+=40;
+        labelCount+=1;
+
+        //if six labels have been printed, reset for next page
+        if(labelCount == 6) {
+            doc.addPage();
+            labelCount = 0;
+            nameHeight = 10;
+            idHeight = 20;
+            codeHeight = 30;
+            imgHeight=0;
+        }
+
+    }
+
+    //write the document
+    doc.output('dataurlnewwindow');
+    document.getElementById("myCanvas").remove();
+
 }
 
 //generate multiple codes
