@@ -1,29 +1,97 @@
-ul.nav li.dropdown:hover ul.dropdown-menu { display: block; }
-/*add image to header here*/
-/*h1 a{ display: inline-block; background: url('../img/.jpg') no-repeat; height: 70px; padding: 20px 0 0 90px; color: black; }*/
-h1 a:hover { text-decoration: none; color: black; }
-h2 a{ color: black; }
+div.content {
+    padding:10px 0 0 20px;
 
-h1, h2, h3 { font-family: georgia, serif; }
-p.pubdate { font-style: italic; font-size: 0.9em; }
+}
+div.content h1 {
+    font-size:18pt;
+    border-bottom:5px solid #a00;
+    padding:0px;
+    margin:10px 0px 20px;
+    width:95%;
+}
 
-.sidebar h3 { font-size: 1em; line-height: 1.2em; margin-bottom: 0; }
-.sidebar ul { margin-left: 0; list-style-type: none; }
+div.content div.data table {
+    border:2px solid #000;
+    background:#fff;
+    width:95%;
+}
+div.content div.data table td {
+    font-size:10pt;
+    padding:5px 10px;
+    border-bottom:1px solid #ddd;
+    text-align: left;
+}
+div.content div.data table th {
+    text-align: left;
+    font-size: 8pt;
+    padding: 10px 10px 7px;
+    text-transform: uppercase;
+    color: #fff;
+    background:url(images/head.gif) left -5px repeat-x;
+}
 
-/*calendar css*/
-.calendar {font-family: Arial; font-size: 12px;}
-table.calendar {margin: auto; border-collapse: collapse;}
-.calendar .days td {width: 80px; height: 80px; padding: 4px; border: 1px solid #999; vertical-align: top; background-color: #DEF;}
-.calendar .days td:hover {background-color: #FFF;}
-.calendar .highlight {font-weight: bold; color: #00F;}
+div.paging {
+    font-size: 9pt;
+    margin:5px 0px;
+}
+div.paging a {
+    color:#900;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+div.paging a:hover {
+    color:#c00;
+}
+div.paging b {
+    color:#900;
+}
 
-/*photo gallery css*/
-#gallery, #upload {border: 1px solid #ccc; margin: 10px auto; width: 570px; padding: 10px;}
-#blank_gallery {font-family: Arial; font-size: 18px; font-weight: bold; text-align: center;}
-.thumb {float: left; width: 150px; height: 100px; padding: 10px; margin: 10px; background-color: #ddd;}
-.thumb:hover {outline: 1px solid #999;}
-img {border: 0;}
-#gallery:after {content: "."; visibility: hidden; display: block; clear: both; height: 0; font-size: 0;}
-body{font-family: Arial; font-size: 14px;}
-a {color: blue; text-decoration: none; font-size: 14px;}
-a:hover{text-decoration: underline;}
+div.success {
+    font-size:14pt;
+    background:url(images/accept.png) left 5px no-repeat;
+    padding:0px;
+    padding-left:20px;
+    margin:0px 0px 10px;
+    color:#060;
+    width:80%;
+}
+
+a.update, a.delete, a.add, a.view, a.back {
+    font-size: 9pt;
+    color:#900;
+    font-wight:bold;
+    padding-left:20px;
+    text-decoration: none;
+}
+a.update {
+    background:url(images/update.png) left center no-repeat;
+}
+a.delete {
+    background:url(images/delete.png) left center no-repeat;
+}
+a.add {
+    background:url(images/add.png) left center no-repeat;
+}
+a.view {
+    background:url(images/view.png) left center no-repeat;
+}
+a.back {
+    background:url(images/prev.gif) left center no-repeat;
+}
+a.update:hover, a.delete:hover, a.add:hover, a.view:hover {
+    color:#000;
+}
+
+input.text {
+    border:2px solid #aaa;
+}
+
+.error {
+    background: #FBE6F2 none repeat scroll 0 0;
+    border: 1px solid #D893A1;
+    color: #333333;
+    margin: 5px 0 0;
+    padding: 5px;
+    font-size: 10px;
+    font-family: Lucida Grande,Verdana,Geneva,Sans-serif;
+}

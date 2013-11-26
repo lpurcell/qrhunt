@@ -5,9 +5,10 @@
 
     <?php if (!get_cookie('event_id')){ ?>
         <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url("assets/css/default.php");?>"/>
+        <link href="<?php echo base_url("assets/css/styles.css"); ?>" rel="stylesheet" type="text/css" />
     <?php }else{ ?>
         <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
-        <?php } ?>
+    <?php } ?>
 </head>
 <body>
     <div class="wrap">
