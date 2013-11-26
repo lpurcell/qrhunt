@@ -82,12 +82,10 @@ $route['event/create']= 'admin/event/create';
 //Labels
 $route['labels'] = 'Labels/index/labels';
 
-
 //other routes
 $route['css/get/(:any)'] = 'css/get/$1';
 $route['news/create'] = 'news/create';
 
-//Should change, but I don't know what to
 $route['default_controller'] = 'pages/view';
 
 

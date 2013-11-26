@@ -2,91 +2,76 @@
 class User_M extends MY_Model
 {
 	
-	protected $_table_name = 'game_admin';
+	protected $_table_name = 'users';
+	private $tbl_users= 'users';
 	protected $_order_by = 'name';
-	public $rules = array(
-		'email' => array(
-			'field' => 'email', 
-			'label' => 'Email', 
-			'rules' => 'trim|required|valid_email|xss_clean'
-		), 
-		'password' => array(
-			'field' => 'password', 
-			'label' => 'Password', 
-			'rules' => 'trim|required'
-		)
-	);
-	public $rules_admin = array(
-		'name' => array(
-			'field' => 'name', 
-			'label' => 'Name', 
-			'rules' => 'trim|required|xss_clean'
-		), 
-		'email' => array(
-			'field' => 'email', 
-			'label' => 'Email', 
-			'rules' => 'trim|required|valid_email|callback__unique_email|xss_clean'
-		), 
-		'password' => array(
-			'field' => 'password', 
-			'label' => 'Password', 
-			'rules' => 'trim|matches[password_confirm]'
-		),
-		'password_confirm' => array(
-			'field' => 'password_confirm', 
-			'label' => 'Confirm password', 
-			'rules' => 'trim|matches[password]'
-		),
-	);
+	
 
 	function __construct ()
 	{
 		parent::__construct();
 	}
 
-	public function login ()
-	{
-		$user = $this->get_by(array(
-			'email' => $this->input->post('email'),
-			'password' => $this->hash($this->input->post('password')),
-		), TRUE);
-		
-		if (count($user)) {
-			// Log in user
-			$data = array(
-				'name' => $user->name,
-				'email' => $user->email,
-				'id' => $user->id,
-				'loggedin' => TRUE,
-			);
-			$this->session->set_userdata($data);
-		}
+	function list_all(){
+		$this->db->order_by('id','asc');
+		return $this->db->get($tbl_users);
+	}
+	
+	function count_all(){
+		return $this->db->count_all($this->tbl_users);
+	}
+	
+	function get_paged_list($limit = 10, $offset = 0){
+		$this->db->order_by('id','asc');
+		return $this->db->get($this->tbl_users, $limit, $offset);
+	}
+	
+	function get_by_id($id){
+		$this->db->where('id', $id);
+		return $this->db->get($this->tbl_users);
+	}
+	
+	function get_by_username(){
+		$this->db->where('username', $username);
+		return $this->db->get($this->tbl_users);
+	}
+	
+	function save($user){
+		$this->db->insert($this->tbl_users, $user);
+		return $this->db->insert_id();
+	}
+	
+	function update($id, $user){
+		$this->db->where('id', $id);
+		$this->db->update($this->tbl_users, $user);
+	}
+	
+	function delete($id){
+		$this->db->where('id', $id);
+		$this->db->delete($this->tbl_users);
 	}
 
 	public function logout ()
 	{
+		$unset_sessions = array(
+						"logged_in" => false,
+						"username" => "",
+						"name"=>"",
+						"id"=>"",
+						"email" => "",
+						"level" => 0
+					);
+
+		$this->session->unset_userdata($unset_sessions);
+		
 		$this->session->sess_destroy();
 	}
 
 	public function loggedin ()
 	{
 		return (bool) $this->session->userdata('loggedin');
-	}
-
-	public function isAdmin ()
-	{
-		$this->email = $this->session->userdata( 'email' ) ;
-		
-		$sql = $this->db->query("SELECT * FROM `game_admin` WHERE 'email'= 'email' and `admin` = '1' ") or die(mysql_error());
-		return ($sql->num_rows()) ? true: false;	
-	}
-	public function isOrganization ()
-	{
-		$this->email = $this->session->userdata( 'email' ) ;
-		
-		$sql = $this->db->query("SELECT * FROM `game_admin` WHERE 'email'= 'email' and `organization` = '1' ") or die(mysql_error());
-		return ($sql->num_rows()) ? true: false;	
-	}
+	}	
+	
 	
 	public function get_new(){
 		$user = new stdClass();

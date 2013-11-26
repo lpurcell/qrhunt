@@ -1,6 +1,6 @@
 <div class=menu>
 <?php
-echo "<br/>" . anchor('admin/user/edit', 'Add QR Admin', 'title="Add QR Admin"') . "<br/>";
+echo "<br/>" . anchor('admin/user/user', 'View QR Users', 'title="View QR Users"') . "<br/>";
 echo  anchor('admin/organization/create', 'Register an Organization', 'title="Register an Organization"') . "<br/>";
 echo anchor('admin/event/create', 'Register an Event', 'title="Register an Event"') . "<br/>";
 echo anchor('admin/register/create', 'Register a Participant', 'title="Register a Participant"')."<br/>";
