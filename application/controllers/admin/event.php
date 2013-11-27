@@ -141,7 +141,7 @@ class Event extends CI_Controller {
     }
 
     public function edit($slug){
-        
+
         //check if admin is logged in
         if (!$this->session->userdata("id")) {
             redirect('admin/login');
