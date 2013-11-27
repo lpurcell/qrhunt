@@ -7,7 +7,7 @@ class Scan extends CI_Controller
         parent::__construct();
         $this->load->model('scan_model');
         $this->load->helper(array('form', 'html', 'file', 'url', 'cookie'));
-        $this->load->library(array('form_validation', 'user_agent'));
+        $this->load->library(array('form_validation', 'user_agent', 'session'));
 
 
         $this->form_validation->set_rules('QR_Scanned', 'QR Scanned');
@@ -276,36 +276,43 @@ class Scan extends CI_Controller
     }
 
     public function edit($participant_id, $qr_scanned){
-         $scan = $this->scan_model->find_by_id($participant_id, $qr_scanned);
 
-        $data['scan']= $scan;
-
-        $data['title'] = 'Edit a Scan';
-
-        if ($this->form_validation->run() === FALSE){
-            $this->load->view('templates/header_scan', $data);
-            $this->load->view('scan/edit', $data);
-            $this->load->view('templates/footer');
+        //check if admin is logged in
+        if (!$this->session->userdata("id")) {
+            redirect('admin/login');
 
         }else{
-            $date = $this->input->post('Date');
-            $time = $this->input->post('Time');
+            $scan = $this->scan_model->find_by_id($participant_id, $qr_scanned);
 
-            $datetime = $date." ".$time;
+            $data['scan']= $scan;
 
-            $new_datetime=date("Y-m-d H:i:s", strtotime($datetime));
+            $data['title'] = 'Edit a Scan';
 
-            $new_data = array(
-                'Participant_ID' => $this->input->post('Participant_ID'),
-                'QR_Scanned' => $this ->input->post('QR_Scanned'),
-                'Scan_Time' => $new_datetime
-             );
+            if ($this->form_validation->run() === FALSE){
+                $this->load->view('templates/header_scan', $data);
+                $this->load->view('scan/edit', $data);
+                $this->load->view('templates/footer');
 
-            $this->scan_model->update($new_data);
+            }else{
+                $date = $this->input->post('Date');
+                $time = $this->input->post('Time');
 
-            $this->load->view('templates/header_scan', $data);
-            $this->load->view('news/success');
-            $this->load->view('templates/footer');
+                $datetime = $date." ".$time;
+
+                $new_datetime=date("Y-m-d H:i:s", strtotime($datetime));
+
+                $new_data = array(
+                    'Participant_ID' => $this->input->post('Participant_ID'),
+                    'QR_Scanned' => $this ->input->post('QR_Scanned'),
+                    'Scan_Time' => $new_datetime
+                 );
+
+                $this->scan_model->update($new_data);
+
+                $this->load->view('templates/header_scan', $data);
+                $this->load->view('news/success');
+                $this->load->view('templates/footer');
+            }
         }
 
     }
@@ -339,44 +346,65 @@ class Scan extends CI_Controller
     This will also delete the initial scan from the scan table when the player first scanned it, so the QRCode can be scanned again.
     */
     public function delete_cookies(){
-        $participant_id = get_cookie('participant_id');
-        $qr_scanned = get_cookie('qrcode');
 
-        $this->scan_model->delete($participant_id, $qr_scanned); //delete initial scan in the database
+        //check if admin is logged in
+        if (!$this->session->userdata("id")) {
+            redirect('admin/login');
 
-        //delete the user agent from initial scan
-        $CI =& get_instance();
-        $CI->load->model('user_agent_model');
-        $this->user_agent_model->delete($participant_id);
+        }else{
+            $participant_id = get_cookie('participant_id');
+            $qr_scanned = get_cookie('qrcode');
 
-        $data['title']="Delete Cookies";
-                
-        delete_cookie('event_id');
-        delete_cookie('participant_id');
-        delete_cookie('qrcode');
-        delete_cookie('participant_name');
+            $this->scan_model->delete($participant_id, $qr_scanned); //delete initial scan in the database
 
-        $this->load->view('news/success'); //no header and footer because generated css doesn't have the information it needs to generate the css
+            //delete the user agent from initial scan
+            $CI =& get_instance();
+            $CI->load->model('user_agent_model');
+            $this->user_agent_model->delete($participant_id);
+
+            $data['title']="Delete Cookies";
+
+            delete_cookie('event_id');
+            delete_cookie('participant_id');
+            delete_cookie('qrcode');
+            delete_cookie('participant_name');
+
+            $this->load->view('news/success'); //no header and footer because generated css doesn't have the information it needs to generate the css
+        }
 
     }
 
     //delete an individual scan
     public function delete($participant_id,$qr_scanned){
-        $this->scan_model->delete($participant_id,$qr_scanned);
 
-        $data['title']="Deleted Scan";
-        $this->load->view('templates/header', $data);
-        $this->load->view('news/success');
-        $this->load->view('templates/footer');
+        //check if admin is logged in
+        if (!$this->session->userdata("id")) {
+            redirect('admin/login');
+
+        }else{
+            $this->scan_model->delete($participant_id,$qr_scanned);
+
+            $data['title']="Deleted Scan";
+            $this->load->view('templates/header', $data);
+            $this->load->view('news/success');
+            $this->load->view('templates/footer');
+        }
     }
 
     //delete all scans made by a participant
     public function delete_all($participant_id){
-        $this->scan_model->delete_all($participant_id);
 
-        $data['title']="Deleted All Scans";
-        $this->load->view('templates/header', $data);
-        $this->load->view('news/success');
-        $this->load->view('templates/footer');
+        //check if admin is logged in
+        if (!$this->session->userdata("id")) {
+            redirect('admin/login');
+
+        }else{
+            $this->scan_model->delete_all($participant_id);
+
+            $data['title']="Deleted All Scans";
+            $this->load->view('templates/header', $data);
+            $this->load->view('news/success');
+            $this->load->view('templates/footer');
+        }
     }
 }
