@@ -318,15 +318,26 @@ class Scan extends CI_Controller
     }
 
     public function view_count(){
+
         $participant_eventid = get_cookie('event_id');
         $data['scans'] = $this->scan_model->view_by_count($participant_eventid);
 
         $data['title'] = "Game Points";
 
-        $this->load->view('templates/h_scan_table', $data);
-        $this->load->view('scan/view_count', $data);
-        $this->load->view('templates/footer');
+        //check if admin is logged in
+        if (!$this->session->userdata("id")) { //show user view
 
+            $this->load->view('templates/h_scan_table', $data);
+            $this->load->view('scan/view_count', $data);
+            $this->load->view('templates/footer');
+
+        }else{ //show admin view
+
+            $this->load->view('templates/h_scan_table', $data);
+            $this->load->view('scan/view_count_admin', $data);
+            $this->load->view('templates/footer');
+
+        }
     }
 
     public function view_most_scanned(){

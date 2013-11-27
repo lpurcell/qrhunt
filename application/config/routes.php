@@ -48,6 +48,7 @@ $route['scanned_by/(:any)']='scan/view_reverse/$1';
 $route['scan_delete_all/(:any)']='scan/delete_all/$1';
 $route['scan_delete/(:any)/(:any)']='scan/delete/$1/$2';
 $route['scan/totals']='scan/view_count';
+$route['admin/scan/totals']='scan/view_count';
 $route['scan_edit/(:any)/(:any)']= 'scan/edit/$1/$2';
 $route['scan_view/(:any)']= 'scan/view/$1';
 $route['scan/create']= 'scan/create';
