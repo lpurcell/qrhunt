@@ -10,7 +10,7 @@
 <?php echo validation_errors(); ?>
 
 <?php echo form_open_multipart('register/create') ?>
-    <h2>Register your Profile</h2>
+    <h2>Register A New Player</h2>
 
 
 <table>
@@ -84,6 +84,6 @@
     </tr>
 </table>
 <br  />
-<input type="submit" name="submit" value="Register Your Profile" />
+<input type="submit" name="submit" value="Register New Player" />
 </div>
 </form>

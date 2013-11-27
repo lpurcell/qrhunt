@@ -6,7 +6,7 @@ class Register extends CI_Controller {
         parent::__construct();
         $this->load->model('register_model');
         $this->load->helper(array('form', 'html', 'file', 'url', 'cookie'));
-        $this->load->library('form_validation');
+        $this->load->library(array('form_validation', 'session'));
 
         $config['upload_path']   = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png';
@@ -25,25 +25,31 @@ class Register extends CI_Controller {
 
     }
 
-    public function create()
-    {
-        $CI =& get_instance();
-        $CI->load->model('event_model');
-        $event['event'] = $CI->event_model->event_names();
+    public function create(){
 
-        $data['title'] = 'Register Your Profile';
+        //check if admin is logged in
+        if (!$this->session->userdata("id")) {
+            redirect('admin/login');
 
-         if ($this->form_validation->run() === FALSE){
-            $this->load->view('templates/header', $data);
-            $this->load->view('register/create', $event);
-            $this->load->view('templates/footer');
         }else{
+            $CI =& get_instance();
+            $CI->load->model('event_model');
+            $event['event'] = $CI->event_model->event_names();
 
-            $this->register_model->register();
-            $this->load->view('templates/header', $data);
-            $this->load->view('news/success');
-            $this->load->view('templates/footer');
-         }
+            $data['title'] = 'Register Your Profile';
+
+             if ($this->form_validation->run() === FALSE){
+                $this->load->view('templates/header', $data);
+                $this->load->view('register/create', $event);
+                $this->load->view('templates/footer');
+            }else{
+
+                $this->register_model->register();
+                $this->load->view('templates/header', $data);
+                $this->load->view('news/success');
+                $this->load->view('templates/footer');
+             }
+        }
 
     }
 
@@ -79,12 +85,19 @@ class Register extends CI_Controller {
     }
 
      public function index(){
-        $data['participant'] = $this->register_model->get_participants();
-        $data['title'] = 'List of Participants';
 
-        $this->load->view('templates/header_tables', $data);
-        $this->load->view('register/index', $data);
-        $this->load->view('templates/footer');
+        //check if admin is logged in
+        if (!$this->session->userdata("id")) {
+             redirect('admin/login');
+
+        }else{
+            $data['participant'] = $this->register_model->get_participants();
+            $data['title'] = 'List of Participants';
+
+            $this->load->view('templates/header_tables', $data);
+            $this->load->view('register/index', $data);
+            $this->load->view('templates/footer');
+         }
 
     }
 
@@ -155,12 +168,19 @@ class Register extends CI_Controller {
     }
 
     public function delete($slug){
-        $this->register_model->delete($slug);
 
-        $data['title']="Deleted Participant";
-        $this->load->view('templates/header', $data);
-        $this->load->view('news/success');
-        $this->load->view('templates/footer');
+        if (!$this->session->userdata("id")) {
+                redirect('admin/login');
+
+        }else{
+
+            $this->register_model->delete($slug);
+
+            $data['title']="Deleted Participant";
+            $this->load->view('templates/header', $data);
+            $this->load->view('news/success');
+            $this->load->view('templates/footer');
+        }
     }
 
 

@@ -104,7 +104,7 @@
 						
 						
 					} else { 
-						//Incorret Password
+						//Incorrect Password
 						$this->session->set_flashdata("pw_error", "Sorry, the password you entered is incorrect!");
 						$this->session->set_flashdata("tf_account", $input);
 						redirect(base_url()."admin/login");
