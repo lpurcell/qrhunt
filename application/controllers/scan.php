@@ -251,27 +251,55 @@ class Scan extends CI_Controller
         $data['scan_info'] = array();
         $data['url_id'] = $qrcode;
 
-        if(count($data['scans'])== 1){ //user only has 1 scan which is the initial scan
-            $message['error'] = "Your QR Code has not been scanned yet.";
+        //check if admin is logged in
+        if (!$this->session->userdata("id")) { //not an admin, so show user view
 
-            $this->load->view('templates/header', $data);
-            $this->load->view('news/participant_redirect', $message);
-            $this->load->view('templates/footer');
-        }else{
+            if(count($data['scans'])== 1){ //user only has 1 scan which is the initial scan
+                $message['error'] = "Your QR Code has not been scanned yet.";
 
-            foreach($result as $row){
-                $participant = $row->Participant_ID;
+                $this->load->view('templates/header', $data);
+                $this->load->view('news/participant_redirect', $message);
+                $this->load->view('templates/footer');
+            }else{
 
-                $result2[] = $CI->register_model->find_by_id($participant);
+                foreach($result as $row){
+                    $participant = $row->Participant_ID;
 
-                $data['scan_info'] = $result2;
+                    $result2[] = $CI->register_model->find_by_id($participant);
 
+                    $data['scan_info'] = $result2;
+
+                }
+                $data['title'] = 'Participants Scanned Who Scanned ' . $qrcode . ' Code';
+
+                $this->load->view('templates/header_tables', $data);
+                $this->load->view('scan/view_reverse', $data);
+                $this->load->view('templates/footer');
             }
-            $data['title'] = 'Participants Scanned ' . $qrcode;
+        }else{ //user is an admin, so show admin view
 
-            $this->load->view('templates/header_tables', $data);
-            $this->load->view('scan/view_reverse', $data);
-            $this->load->view('templates/footer');
+            if(count($data['scans'])== 1){ //user only has 1 scan which is the initial scan
+                $message['error'] = "This Player's QR Code has not been scanned yet.";
+
+                $this->load->view('templates/header', $data);
+                $this->load->view('news/scan_notice', $message);
+                $this->load->view('templates/footer');
+            }else{
+
+                foreach($result as $row){
+                    $participant = $row->Participant_ID;
+
+                    $result2[] = $CI->register_model->find_by_id($participant);
+
+                    $data['scan_info'] = $result2;
+
+                }
+                $data['title'] = 'Participants Scanned Who Scanned ' . $qrcode . ' Code';
+
+                $this->load->view('templates/header_tables', $data);
+                $this->load->view('scan/view_reverse_admin', $data);
+                $this->load->view('templates/footer');
+            }
         }
     }
 
