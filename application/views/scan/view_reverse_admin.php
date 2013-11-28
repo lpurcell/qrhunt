@@ -1,3 +1,19 @@
+<script>
+    $(document).ready(function() {
+        $("#table_id").dataTable({
+            "bFilter": true
+        });
+
+        var oTable;
+        oTable = $('#table_id').dataTable();
+
+
+        $('#table_id_select').change( function() {
+            oTable.fnFilter( $(this).val() );
+        });
+    }
+</script>
+
 <?php
 
     echo '<h2>'.$title.'</h2>';
@@ -6,10 +22,24 @@
 
 <table id="table_id" class="display">
 
+    <p>Filter by Event:
+        <select id="table_id_select">
+            <option></option>
+            <?php foreach($events as $event):
+                echo "<option value='".$event->Event_ID."'>".$event->Event_Name."</option>";
+
+            endforeach;
+            ?>
+        </select>
+
     <thead>
     <tr>
         <th>QR Code</th>
         <th>Name</th>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Admin</th>
     </tr>
     </thead>
     <tbody>
@@ -18,8 +48,18 @@
     echo '<tr>';
     foreach ($scan_info as $info):
 
-            echo '<td><a href="'. site_url('participant/'.$info->QRCode).'"  id="view">'.$info->QRCode.'</a></td>';
+        echo '<td>'.$info->Event_ID.'</td>';
+        echo '<td><a href="'. site_url('participant/'.$info->QRCode).'"  id="view">'.$info->QRCode.'</a></td>';
             echo '<td>'.$info->Participant_FName." ".$info->Participant_LName.'</td>';
+
+
+            foreach ($scans as $scan):
+                if($info->Participant_ID == $scan->Participant_ID){
+                    echo '<td>'.$scan->Date.'</td>';
+                    echo '<td>'.$scan->Time.'</td>';
+                    echo '<td>'."edit/delete".'</td>';
+                }
+                endforeach;
 
     echo '</tr>';
     endforeach ?>

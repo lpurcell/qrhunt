@@ -278,6 +278,12 @@ class Scan extends CI_Controller
             }
         }else{ //user is an admin, so show admin view
 
+            $CI2 =& get_instance();
+            $CI2->load->model('event_model');
+
+            $data['events'] = $CI2->event_model-> event_names();
+
+
             if(count($data['scans'])== 1){ //user only has 1 scan which is the initial scan
                 $message['error'] = "This Player's QR Code has not been scanned yet.";
 
