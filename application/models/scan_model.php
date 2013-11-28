@@ -79,10 +79,22 @@ class Scan_model extends CI_Model
     }
 
     /*total number of scans each participant made
+   1 is subtracted from each player to exclude the first scan the player made to set their cookie
+   */
+    public function view_all_count(){
+        $this->db->select("participant.Participant_LName, participant.Participant_FName, participant.QRCode, scan.Participant_ID, scan.Event_ID, (count(scan.QR_Scanned)-1) as Number_of_Scans"); //take off 1 point to exclude initial scan
+        $this->db->from('scan');
+        $this->db->join('participant', 'participant.Participant_ID = scan.Participant_ID');
+        $this->db->group_by("scan.Participant_ID");
+
+        return $this->db->get()->result();
+    }
+
+    /*total number of scans each participant made
     1 is subtracted from each player to exclude the first scan the player made to set their cookie
     */
     public function view_by_count($participant_eventid){
-        $this->db->select("participant.Participant_LName, participant.Participant_FName, participant.QRCode, scan.Participant_ID, (count(scan.QR_Scanned)-1) as Number_of_Scans"); //take off 1 point to exclude initial scan
+        $this->db->select("participant.Participant_LName, participant.Participant_FName, participant.QRCode, scan.Participant_ID, scan.Event_ID, (count(scan.QR_Scanned)-1) as Number_of_Scans"); //take off 1 point to exclude initial scan
         $this->db->from('scan');
         $this->db->where('scan.Event_ID', $participant_eventid);
         $this->db->join('participant', 'participant.Participant_ID = scan.Participant_ID');
