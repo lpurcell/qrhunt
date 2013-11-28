@@ -18,9 +18,9 @@
 
     <thead>
     <tr>
+        <th>Event Name</th>
         <th>QR Code</th>
         <th>Name</th>
-        <th>Event Name</th>
         <th>Date</th>
         <th>Time</th>
         <th>Admin</th>
@@ -31,23 +31,54 @@
     <?php
     echo '<tr>';
     foreach ($scan_info as $info):
-
-        echo '<td>'.$info->Event_ID.'</td>';
-        echo '<td><a href="'. site_url('participant/'.$info->QRCode).'"  id="view">'.$info->QRCode.'</a></td>';
-            echo '<td>'.$info->Participant_FName." ".$info->Participant_LName.'</td>';
-
-
-            foreach ($scans as $scan):
-                if($info->Participant_ID == $scan->Participant_ID){
-                    echo '<td>'.$scan->Date.'</td>';
-                    echo '<td>'.$scan->Time.'</td>';
-                    echo '<td>'."edit/delete".'</td>';
-                }
-                endforeach;
+        foreach ($scans as $scan):
+            if($info->Participant_ID == $scan->Participant_ID){
+                echo '<td>'.$scan->Event_ID.'</td>';
+                echo '<td><a href="'. site_url('participant/'.$info->QRCode).'"  id="view">'.$info->QRCode.'</a></td>';
+                echo '<td>'.$info->Participant_FName." ".$info->Participant_LName.'</td>';
+                echo '<td>'.$scan->Date.'</td>';
+                echo '<td>'.$scan->Time.'</td>';
+                echo '<td><a href="'.site_url('admin/scan_edit/'.$info->Participant_ID.'/'.$qrcode_lookup).'" id="view">Edit</a> / <a href="'.site_url('admin/scan_delete/'.$info->Participant_ID.'/'.$qrcode_lookup).'" id="view">Delete</a></td>';
+            }
+        endforeach;
 
     echo '</tr>';
     endforeach ?>
     </tbody>
 </table>
+
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#table_id').dataTable({
+            "bSort":true,
+            "bFilter":true,
+
+            "aoColumns": [{ "bSearchable": true,
+                "bVisible": false }, null, null, null, null, null]
+        });
+
+        var oTable;
+        oTable = $('#table_table').dataTable();
+
+        $('#table_id_select').change( function() {
+            oTable.fnFilter( $(this).val() );
+        });
+        //view individual items on event_all table and participant_all table
+        $('a.view').on('click', function (e) {
+            e.preventDefault();
+        });
+
+        /* Init DataTables */
+        var oTable = $('#table_id').dataTable();
+
+        /* Apply the tooltips */
+        $( oTable.fnGetNodes() ).tooltip( {
+            "delay": 0,
+            "track": true,
+            "fade": 250
+        });
+
+    } );
+</script>
 
 
