@@ -302,7 +302,7 @@ class Scan extends CI_Controller
                 }
                 $data['title'] = 'Participants Scanned Who Scanned ' . $qrcode . ' Code';
 
-                $this->load->view('templates/header_tables', $data);
+                $this->load->view('templates/header_admin', $data);
                 $this->load->view('scan/view_reverse_admin', $data);
                 $this->load->view('templates/footer');
             }

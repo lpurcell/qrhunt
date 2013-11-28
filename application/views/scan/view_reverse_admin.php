@@ -1,19 +1,3 @@
-<script>
-    $(document).ready(function() {
-        $("#table_id").dataTable({
-            "bFilter": true
-        });
-
-        var oTable;
-        oTable = $('#table_id').dataTable();
-
-
-        $('#table_id_select').change( function() {
-            oTable.fnFilter( $(this).val() );
-        });
-    }
-</script>
-
 <?php
 
     echo '<h2>'.$title.'</h2>';
@@ -21,7 +5,7 @@
 ?>
 
 <table id="table_id" class="display">
-
+    <p>Table shows participants from all events. To view a specific event, select an event from the drop down menu.</p>
     <p>Filter by Event:
         <select id="table_id_select">
             <option></option>
@@ -65,4 +49,5 @@
     endforeach ?>
     </tbody>
 </table>
+
 
