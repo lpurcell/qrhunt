@@ -82,7 +82,7 @@ $route['events_all'] = 'admin/event/index';
 $route['event/create']= 'admin/event/create';
 
 //Labels
-$route['labels'] = 'Labels/index/labels';
+$route['admin/labels'] = 'Labels/index/labels';
 
 //other routes
 $route['css/get/(:any)'] = 'css/get/$1';
