@@ -43,6 +43,7 @@ $route['browser/totals']='user_agent/index_browser';
 
 //scans table
 $route['scan/scanned_most']='scan/view_most_scanned';
+$route['admin/scan/scanned_most']='scan/view_most_scanned';
 $route['scan/delete_cookies'] = 'scan/delete_cookies';
 $route['scanned_by/(:any)']='scan/view_reverse/$1';
 $route['admin/scanned_by/(:any)'] = 'scan/view_reverse/$1';

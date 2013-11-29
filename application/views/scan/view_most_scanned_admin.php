@@ -50,7 +50,7 @@
                 <?php foreach($events as $event):
 
 
-                        echo "<option value='".$event->Event_ID."'>".$event->Event_Name."</option>";
+                    echo "<option value='".$event->Event_ID."'>".$event->Event_Name."</option>";
 
 
                 endforeach;
@@ -58,31 +58,31 @@
                 ?>
             </select>
 
-        <thead>
-        <tr>
-            <th>Event</th>
-            <th>QR Code</th>
-            <th>Name</th>
-            <th>Total Scans</th>
-            <th>Admin</th>
-
-        </tr>
-        </thead>
-        <tbody>
-
-        <?php foreach ($scans as $scan): ?>
-
+            <thead>
             <tr>
-               <td><?php echo $scan->Event_ID ?></td>
-               <td><a href="<?php echo site_url('participant/'.$scan->QRCode)?>"  id="view"><?php echo $scan->QRCode ?></a></td>
-               <td><?php echo $scan->Participant_FName." ".$scan->Participant_LName ?></td>
-               <td><?php echo $scan->Number_of_Scans ?></td>
-               <td><a href="<?php echo site_url('scan_view/'.$scan->Participant_ID)?>" id="view">View Each Player's Scan</a> / <a href="<?php echo site_url('admin/scanned_by/'.$scan->QRCode)?>" id="view">View Who Scanned Player</a></td>
-             </tr>
+                <th>Event</th>
+                <th>QR Code</th>
+                <th>Name</th>
+                <th>Total Scans</th>
+                <th>Admin</th>
 
-        <?php endforeach ?>
+            </tr>
+            </thead>
+            <tbody>
 
-        </tbody>
+            <?php foreach ($scans as $scan): ?>
+
+                <tr>
+                    <td><?php echo $scan->Event_ID ?></td>
+                    <td><a href="<?php echo site_url('participant/'.$scan->QRCode)?>"  id="view"><?php echo $scan->QRCode ?></a></td>
+                    <td><?php echo $scan->Participant_FName." ".$scan->Participant_LName ?></td>
+                    <td><?php echo $scan->Number_of_Scans ?></td>
+                    <td><a href="<?php echo site_url('admin/scanned_by/'.$scan->QRCode)?>" id="view">View Who Scanned QR Code</a> / <a href="<?php echo site_url('scan_view/'.$scan->Participant_ID)?>" id="view">View Scans by Player</a></td>
+                </tr>
+
+            <?php endforeach ?>
+
+            </tbody>
     </table>
 </div>
 

@@ -125,6 +125,18 @@ class Scan_model extends CI_Model
         return $this->db->get()->result();
     }
 
+    /*find out who was scanned the most
+     1 is subtracted from each player to exclude the first scan the player made to set their cookie
+    */
+    public function scanned_most_all(){
+        $this->db->select("participant.Participant_LName, participant.Participant_FName, participant.QRCode, participant.Participant_ID, scan.Event_ID, (count(scan.QR_Scanned)-1) as Number_of_Scans");
+        $this->db->from('scan');
+        $this->db->join('participant', 'participant.QRCode = scan.QR_Scanned');
+        $this->db->group_by("scan.QR_Scanned");
+
+        return $this->db->get()->result();
+    }
+
     //delete individual scan
     public function delete($participant_id, $qrcode_scanned){
         $this->db->delete('scan', array('Participant_ID'=>$participant_id, 'QR_Scanned'=>$qrcode_scanned));
