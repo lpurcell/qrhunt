@@ -13,13 +13,7 @@
     <tr>
         <th>QR Code Scanned</th>
         <th>Name</th>
-        <!--if cookie is not set, show the admin functions-->
-        <?php if (! get_cookie('participant_id')){
-        echo "<th>Admin</th>";
-        }
-        ?>
-
-     </tr>
+    </tr>
     </thead>
     <tbody>
 
@@ -39,10 +33,6 @@
                     }
 
                endforeach;
-
-                if (!get_cookie('participant_id')){?>
-                    <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("scan_edit/".$participant_item->Participant_ID)."/".$participant_item->QR_Scanned?>'" class="editor_edit">Edit</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("scan_delete/".$participant_item->Participant_ID."/".$participant_item->QR_Scanned)?>'" class="editor_remove">Delete</a></td>
-                <?php }
 
         echo '</tr>';
          }
