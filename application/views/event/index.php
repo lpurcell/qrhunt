@@ -27,7 +27,7 @@
                 <td><?php
                     if ($event_item->Event_Logo === "0" || $event_item->Event_Logo === ""){
                        echo "Default Chosen";
-                   
+
                     }else{
                        echo $event_item->Event_Logo;
                     }

@@ -11,6 +11,8 @@ echo anchor('organization_all', 'View all Organizations', 'title="View all Organ
 echo anchor('events_all', 'View all Events', 'title="View all Events"')."<br/>";
 echo anchor('admin/scan/totals', 'View Game Points', 'title="View Scan Totals"')."<br/>";
 echo anchor('admin/scan/scanned_most', 'View Most Scanned QR Codes', 'title="View Most Scanned QR Codes"')."<br/>";
+echo anchor('admin/mobile/totals', 'View Mobile Agent Totals', 'title="View Mobile Agent Totals"')."<br/>";
+echo anchor('admin/browser/totals', 'View Broswer Agent Totals(non mobile players)', 'title="View Browser Agent Totals"')."<br/>";
 echo anchor('scan/delete_cookies', 'Delete Cookie', 'title="Delete Cookie"')."<br/>";
 echo anchor('admin/user/logout', '<i class="icon-off"></i> Logout'); 
 
