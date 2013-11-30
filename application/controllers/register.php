@@ -122,47 +122,86 @@ class Register extends CI_Controller {
     public function edit($slug){
         $participant = $this->register_model->find_by_id($slug);
 
-        $CI =& get_instance();
-        $CI->load->model('event_model');
-        $data['event'] = $CI->event_model->event_names();
-       
         $data['Participant'] = $participant;
         $original_picture = $participant->Participant_Picture;
 
+        //check if admin is logged in
+        if (!$this->session->userdata("id")) {
+
         $data['title'] = 'Edit Your Profile';
 
+            if ($this->form_validation->run() === FALSE){
+                $this->load->view('templates/header', $data);
+                $this->load->view('register/edit', $data);
+                $this->load->view('templates/footer');
 
-        if ($this->form_validation->run() === FALSE){
-            $this->load->view('templates/header', $data);
-            $this->load->view('register/edit', $data);
-            $this->load->view('templates/footer');
-
-        }else{
-            $new_data = array(
-                'Participant_ID' => $this->input->post('PARTICIPANT_ID'),
-                'Event_ID' => $this ->input->post('Event_ID'),
-                'Participant_LName' => $this->input->post('Participant_LName'),
-                'Participant_FName' => $this->input->post('Participant_FName'),
-                'Participant_Email' => $this->input->post('Participant_Email'),
-                'QRCode' => $this->input->post('QRCode'),
-                'MISC1' => $this->input->post('MISC1'),
-                'MISC2' => $this->input->post('MISC2'),
-                'MISC3' => $this->input->post('MISC3')
-            );
-
-            $new_picture = $this->input->post('userfile');
-
-            if ($new_picture === "0" || $new_picture == ""){
-                $new_data['Participant_Picture'] = $original_picture;
             }else{
-                $new_data['Participant_Picture'] = $new_picture;
+                $new_data = array(
+                    'Participant_ID' => $this->input->post('PARTICIPANT_ID'),
+                    'Event_ID' => $this ->input->post('Event_ID'),
+                    'Participant_LName' => $this->input->post('Participant_LName'),
+                    'Participant_FName' => $this->input->post('Participant_FName'),
+                    'Participant_Email' => $this->input->post('Participant_Email'),
+                    'QRCode' => $this->input->post('QRCode'),
+                    'MISC1' => $this->input->post('MISC1'),
+                    'MISC2' => $this->input->post('MISC2'),
+                    'MISC3' => $this->input->post('MISC3')
+                );
+
+                $new_picture = $this->input->post('userfile');
+
+                if ($new_picture === "0" || $new_picture == ""){
+                    $new_data['Participant_Picture'] = $original_picture;
+                }else{
+                    $new_data['Participant_Picture'] = $new_picture;
+                }
+
+                $this->register_model->update($new_data);
+
+                $this->load->view('templates/header', $data);
+                $this->load->view('news/success');
+                $this->load->view('templates/footer');
+            }
+        }else{
+            $data['title'] = "Edit Player's Profile";
+
+            $CI =& get_instance();
+            $CI->load->model('event_model');
+            $data['events'] = $CI->event_model->event_names();
+
+            if ($this->form_validation->run() === FALSE){
+                $this->load->view('templates/header', $data);
+                $this->load->view('register/edit_admin', $data);
+                $this->load->view('templates/footer');
+
+            }else{
+                $new_data = array(
+                    'Participant_ID' => $this->input->post('PARTICIPANT_ID'),
+                    'Event_ID' => $this->input->post('Event_ID'),
+                    'Participant_LName' => $this->input->post('Participant_LName'),
+                    'Participant_FName' => $this->input->post('Participant_FName'),
+                    'Participant_Email' => $this->input->post('Participant_Email'),
+                    'QRCode' => $this->input->post('QRCode'),
+                    'MISC1' => $this->input->post('MISC1'),
+                    'MISC2' => $this->input->post('MISC2'),
+                    'MISC3' => $this->input->post('MISC3')
+                );
+
+                $new_picture = $this->input->post('userfile');
+
+                if ($new_picture === "0" || $new_picture == ""){
+                    $new_data['Participant_Picture'] = $original_picture;
+                }else{
+                    $new_data['Participant_Picture'] = $new_picture;
+                }
+                
+                $this->register_model->update($new_data);
+
+                $this->load->view('templates/header', $data);
+                $this->load->view('news/success');
+                $this->load->view('templates/footer');
             }
 
-            $this->register_model->update($new_data);
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('news/success');
-            $this->load->view('templates/footer');
         }
 
     }

@@ -59,12 +59,13 @@ $route['scan/(:any)'] = 'scan/insert/$1';
 //participant table
 $route['participant_delete/(:any)'] = 'register/delete/$1';
 $route['participant_edit/(:any)']= 'register/edit/$1';
+$route['admin/participant_edit/(:any)']= 'register/edit/$1';
 //view one participant with qrcode
 $route['participant/(:any)'] = 'register/view/$1';
 //view all participants in the table
 $route['participants_all'] = 'register/index';
 //Add participants
-$route['register/create'] = 'register/create';
+$route['admin/register/create'] = 'register/create';
 $route['register/multCreate'] = 'multRegister/create/multCreate';
 
 //organization table

@@ -54,7 +54,7 @@
                         </td>
 
                         <?php if (!get_cookie('participant_id')) { ?>
-                        <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("participant_edit/".$participant_item->Participant_ID)?>'" class="editor_edit">Edit</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("participant_delete/".$participant_item->Participant_ID)?>'" class="editor_remove">Delete</a></td>
+                        <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("admin/participant_edit/".$participant_item->Participant_ID)?>'" class="editor_edit">Edit</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("participant_delete/".$participant_item->Participant_ID)?>'" class="editor_remove">Delete</a></td>
                         <?php
                         }
                         ?>

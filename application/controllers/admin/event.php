@@ -69,14 +69,13 @@ class Event extends CI_Controller {
                 $config2['image_library'] = 'gd2';
                 $config2['source_image'] = $this->upload->upload_path.$this->upload->file_name;;
                 $config2['maintain_ratio'] = TRUE;
-                $config2['width'] = 215;
-                $config2['height'] = 194;
+                $config2['width'] = 800;
+                $config2['height'] = 400;
                 $config2['overwrite'] = TRUE;
 
                 $this->load->library('image_lib', $config2);
                 $this->image_lib->resize();
 
-                echo "done";
                 return true;
 
             }else{
