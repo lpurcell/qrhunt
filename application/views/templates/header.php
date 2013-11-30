@@ -20,6 +20,7 @@
 
     <div class="header">
         <div class = "logo">
+            <div class ="resize"></div>
 
          </div>
     </div>

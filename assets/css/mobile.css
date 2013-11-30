@@ -35,7 +35,10 @@
         background-position: center;
         background-image:url('../images/QRHuntLogo5.jpg');
         background-repeat:no-repeat;
-
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size:cover;
         border: none;
         height:25%;
     }
