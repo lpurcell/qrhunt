@@ -9,7 +9,7 @@
         <img src= "<?= base_url();?>assets/images/<?= $Event->Event_Logo ?>">
     <?php } ?>
 </p>
-<?php echo form_open_multipart('event_edit/'.$Event->Event_ID) ?>
+<?php echo form_open_multipart('admin/event_edit/'.$Event->Event_ID) ?>
 
 <input type ="hidden" name="EVENT_ID" value="<?php echo $Event->Event_ID ?>">
 

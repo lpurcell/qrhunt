@@ -10,7 +10,7 @@
         <img src= "<?= base_url();?>uploads/<?= $Participant->Participant_Picture; ?>">
     <?php } ?>
 </p>
-<?php echo form_open_multipart('participant_edit/'.$Participant->Participant_ID) ?>
+<?php echo form_open_multipart('admin/participant_edit/'.$Participant->Participant_ID) ?>
 
 <label for="Event_ID">Choose the Event:</label>
 <select name="Event_ID">

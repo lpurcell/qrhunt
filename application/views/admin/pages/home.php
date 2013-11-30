@@ -4,16 +4,17 @@ echo "<br/>" . anchor('admin/user/user', 'View QR Users', 'title="View QR Users"
 echo  anchor('admin/organization/create', 'Register an Organization', 'title="Register an Organization"') . "<br/>";
 echo anchor('admin/event/create', 'Register an Event', 'title="Register an Event"') . "<br/>";
 echo anchor('admin/register/create', 'Register a Participant', 'title="Register a Participant"')."<br/>";
+echo anchor('admin/register/multCreate', 'Register Multiple Participants', 'title="Register Multiple Participants"')."<br/>";
 echo anchor('admin/labels', 'Generate Labels', 'title="Generate Labels"')."<br/>";
 //echo anchor('scan/create', 'Create a Scan Manually', 'title="Create a Scan Manually"')."<br/>";
-echo anchor('participants_all', 'View all Participants', 'title="View all Participants"')."<br/>";
-echo anchor('organization_all', 'View all Organizations', 'title="View all Organizations"')."<br/>";
-echo anchor('events_all', 'View all Events', 'title="View all Events"')."<br/>";
+echo anchor('admin/participants_all', 'View all Participants', 'title="View all Participants"')."<br/>";
+echo anchor('admin/organization_all', 'View all Organizations', 'title="View all Organizations"')."<br/>";
+echo anchor('admin/events_all', 'View all Events', 'title="View all Events"')."<br/>";
 echo anchor('admin/scan/totals', 'View Game Points', 'title="View Scan Totals"')."<br/>";
 echo anchor('admin/scan/scanned_most', 'View Most Scanned QR Codes', 'title="View Most Scanned QR Codes"')."<br/>";
 echo anchor('admin/mobile/totals', 'View Mobile Agent Totals', 'title="View Mobile Agent Totals"')."<br/>";
-echo anchor('admin/browser/totals', 'View Broswer Agent Totals(non mobile players)', 'title="View Browser Agent Totals"')."<br/>";
-echo anchor('scan/delete_cookies', 'Delete Cookie', 'title="Delete Cookie"')."<br/>";
+echo anchor('admin/browser/totals', 'View Broswer Agent Totals<br/>(non mobile players)', 'title="View Browser Agent Totals"')."<br/>";
+echo anchor('admin/scan/delete_cookies', "Delete Player's Cookie", "title='Delete Player/'s Cookie'")."<br/>";
 echo anchor('admin/user/logout', '<i class="icon-off"></i> Logout'); 
 
 ?>

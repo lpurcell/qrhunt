@@ -57,31 +57,31 @@ $route['scan/create']= 'scan/create';
 $route['scan/(:any)'] = 'scan/insert/$1';
 
 //participant table
-$route['participant_delete/(:any)'] = 'register/delete/$1';
+$route['admin/participant_delete/(:any)'] = 'register/delete/$1';
 $route['participant_edit/(:any)']= 'register/edit/$1';
 $route['admin/participant_edit/(:any)']= 'register/edit/$1';
 //view one participant with qrcode
 $route['participant/(:any)'] = 'register/view/$1';
 //view all participants in the table
-$route['participants_all'] = 'register/index';
+$route['admin/participants_all'] = 'register/index';
 //Add participants
 $route['admin/register/create'] = 'register/create';
-$route['register/multCreate'] = 'multRegister/create/multCreate';
+$route['admin/register/multCreate'] = 'multRegister/create/multCreate';
 
 //organization table
-$route['organization_delete/(:any)']='admin/organization/delete/$1';
-$route['organization_all']= 'admin/organization/index';
+$route['admin/organization_delete/(:any)']='organization/delete/$1';
+$route['admin/organization_all']= 'organization/index';
 //code needs to be fixed
-$route['organization/(:any)']= 'admin/organization/view/$1';
-$route['organization_edit/(:any)']= 'admin/organization/edit/$1';
-$route['organization/create']= 'admin/organization/create';
+$route['admin/organization/(:any)']= 'organization/view/$1';
+$route['admin/organization_edit/(:any)']= 'organization/edit/$1';
+$route['admin/organization/create']= 'organization/create';
 
 //event table
-$route['event_delete/(:any)'] = 'admin/event/delete/$1';
-$route['event_edit/(:any)']= 'admin/event/edit/$1';
-$route['event/(:any)'] = 'admin/event/view/$1';
-$route['events_all'] = 'admin/event/index';
-$route['event/create']= 'admin/event/create';
+$route['admin/event_delete/(:any)'] = 'event/delete/$1';
+$route['admin/event_edit/(:any)']= 'event/edit/$1';
+$route['admin/event/(:any)'] = 'event/view/$1';
+$route['admin/events_all'] = 'event/index';
+$route['admin/event/create']= 'event/create';
 
 //Labels
 $route['admin/labels'] = 'Labels/index/labels';

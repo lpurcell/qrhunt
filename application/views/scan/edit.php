@@ -1,7 +1,7 @@
 <h2>Edit a Scan</h2>
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('scan_edit/'.$scan->Participant_ID.'/'.$scan->QR_Scanned) ?>
+<?php echo form_open('admin/scan_edit/'.$scan->Participant_ID.'/'.$scan->QR_Scanned) ?>
 
 <label for="Participant_ID">Participant ID:</label>
 <input type="input" name="Participant_ID" value="<?php echo $scan->Participant_ID ?>"/><br />

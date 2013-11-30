@@ -1,6 +1,6 @@
 <div id = "main">
 
-    <a href= "" onclick="javascript:window.location.href='<?php echo site_url('event/create')?>'" class="editor_create">Create a New Event</a>
+    <a href= "" onclick="javascript:window.location.href='<?php echo site_url('event/create'); ?>'" class="editor_create">Create a New Event</a>
 
     <table id="table_id" class="display">
 
@@ -16,8 +16,8 @@
     </tr>
     </thead>
     <tbody>
-        <?php $datestring = '%m-%d-%Y'; ?>
-        <?php foreach ($event as $event_item): ?>
+        <?php $datestring = '%m-%d-%Y';
+         foreach ($event as $event_item): ?>
             <tr>
                 <td><a href="<?php echo site_url('event/'.$event_item->Event_ID)?>"  id="view"><?php echo $event_item->Event_Name ?></a></td>
                 <td><?php echo mdate($datestring, strtotime($event_item->Event_Date)); ?></td>
@@ -33,9 +33,9 @@
                     }
                     ?>
                 </td>
-                <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("event_edit/".$event_item->Event_ID)?>'" class="editor_edit">Edit</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("event_delete/".$event_item->Event_ID)?>'" class="editor_remove">Delete</a></td>
+                <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("admin/event_edit/".$event_item->Event_ID)?>'" class="editor_edit">Edit</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("admin/event_delete/".$event_item->Event_ID)?>'" class="editor_remove">Delete</a></td>
 
-                ?>
+
             </tr>
         <?php endforeach ?>
     </tbody>

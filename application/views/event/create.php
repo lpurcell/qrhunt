@@ -2,7 +2,7 @@
 
 <?php echo validation_errors(); ?>
 
-<?php echo form_open_multipart('event/create') ?>
+<?php echo form_open_multipart('admin/event/create') ?>
 <h2>Register your Event</h2>
 <label for="Organization_ID">Choose your Organization:</label>
 <select name="Organization_ID">

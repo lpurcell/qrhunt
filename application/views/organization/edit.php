@@ -1,7 +1,7 @@
 <h2>Edit Organization</h2>
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('organization_edit/'.$Organization->Organization_ID) ?>
+<?php echo form_open('admin/organization_edit/'.$Organization->Organization_ID) ?>
 
 <input type ="hidden" name="ORGANIZATION_ID" value="<?php echo $Organization->Organization_ID ?>">
 
