@@ -34,7 +34,7 @@
 </script>
             <div id = "main">
 
-                <a href= "" onclick="javascript:window.location.href='<?php echo site_url('register/create')?>'" class="editor_create">Create new record</a>
+                <a href= "javascript:window.location.href='<?php echo site_url('admin/register/create')?>'" id="view">Register a New Participant</a>
                 <table id="table_id" class="display">
 
                     <p>Table shows participants from all events. To view a specific event, select an event from the drop down menu.</p>

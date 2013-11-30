@@ -1,6 +1,6 @@
 <div id = "main">
 
-    <a href= "" onclick="javascript:window.location.href='<?php echo site_url('organization/create')?>'" class="editor_create">Create a New Organization</a>
+    <a href= "" onclick="javascript:window.location.href='<?php echo site_url('admin/organization/create')?>'" class="editor_create">Create a New Organization</a>
 
     <table id="table_id" class="display">
 

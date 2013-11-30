@@ -1,6 +1,6 @@
 <div id = "main">
 
-    <a href= "" onclick="javascript:window.location.href='<?php echo site_url('event/create'); ?>'" class="editor_create">Create a New Event</a>
+    <a href= "" onclick="javascript:window.location.href='<?php echo site_url('admin/event/create'); ?>'" class="editor_create">Create a New Event</a>
 
     <table id="table_id" class="display">
 

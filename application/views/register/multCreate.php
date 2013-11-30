@@ -10,7 +10,7 @@
 
 <?php echo validation_errors(); ?>
 
-<?php echo form_open_multipart('register/multCreate') ?>
+<?php echo form_open_multipart('admin/register/multCreate') ?>
 
 <h2>Register a Group</h2>
 <p>Register a group of participants in three easy steps.</p>
