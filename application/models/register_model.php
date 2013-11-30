@@ -28,7 +28,7 @@ class Register_model extends CI_Model {
     public function get_participants($slug = FALSE){
 
         if($slug === FALSE){
-            $this->db->select('Participant_ID, Participant_LName, Participant_FName, Participant_Email, MISC1, MISC2, MISC3, QRCode, Participant_Picture');
+            $this->db->select('Event_ID, Participant_ID, Participant_LName, Participant_FName, Participant_Email, MISC1, MISC2, MISC3, QRCode, Participant_Picture');
             $this->db->from('participant');
             //need to filter data
             //$this->db->where('')

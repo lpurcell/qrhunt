@@ -94,7 +94,12 @@ class Register extends CI_Controller {
             $data['participant'] = $this->register_model->get_participants();
             $data['title'] = 'List of Participants';
 
-            $this->load->view('templates/header_tables', $data);
+            $CI =& get_instance();
+            $CI->load->model('event_model');
+
+            $data['events'] = $CI->event_model-> event_names();
+
+            $this->load->view('templates/header_tables_plain', $data);
             $this->load->view('register/index', $data);
             $this->load->view('templates/footer');
          }
