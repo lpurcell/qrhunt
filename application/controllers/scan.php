@@ -212,31 +212,60 @@ class Scan extends CI_Controller
     public function view($slug){
         $CI =& get_instance();
         $CI->load->model('register_model');
+
         $data['participant'] = $this->scan_model->get_scans($slug);
         $result = $data['participant'];
         $data['participant_info'] = array();
 
-        if(count($data['participant'])== 1){//user only has 1 scan which is the initial scan
-            $message['error'] = "You haven't scanned any QR Codes yet! Go scan some!!";
+        //check if admin is logged in
+        if (!$this->session->userdata("id")) { //not an admin
 
-            $this->load->view('templates/header', $data);
-            $this->load->view('news/participant_redirect', $message);
-            $this->load->view('templates/footer');
-        }else{
+            if(count($data['participant'])== 1){//user only has 1 scan which is the initial scan
+                $message['error'] = "You haven't scanned any QR Codes yet! Go scan some!!";
 
-            foreach($result as $row){
-                $qr_scanned = $row->QR_Scanned;
+                $this->load->view('templates/header', $data);
+                $this->load->view('news/participant_redirect', $message);
+                $this->load->view('templates/footer');
+            }else{
 
-                $result2[] = $CI->register_model->get_name($qr_scanned);
+                foreach($result as $row){
+                    $qr_scanned = $row->QR_Scanned;
 
-                $data['participant_info'] = $result2;
+                    $result2[] = $CI->register_model->get_name($qr_scanned);
 
+                    $data['participant_info'] = $result2;
+
+                }
+                $data['title'] = 'Scans by You';
+
+                $this->load->view('templates/header_tables', $data);
+                $this->load->view('scan/view', $data);
+                $this->load->view('templates/footer');
             }
-            $data['title'] = 'Scans by You';
+        }else{ //show admin view
+            if(count($data['participant'])== 1){//user only has 1 scan which is the initial scan
+                $message['error'] = "This person has not scanned any QR Codes yet.";
 
-            $this->load->view('templates/header_tables', $data);
-            $this->load->view('scan/view', $data);
-            $this->load->view('templates/footer');
+                $this->load->view('templates/header', $data);
+                $this->load->view('news/scan_notice', $message);
+                $this->load->view('templates/footer');
+            }else{
+
+                foreach($result as $row){
+                    $qr_scanned = $row->QR_Scanned;
+
+                    $result2[] = $CI->register_model->get_name($qr_scanned);
+
+                    $data['participant_info'] = $result2;
+
+                }
+                $data['title'] = 'Scans by '.$slug;
+                $data['participant_id']=$slug;
+
+                $this->load->view('templates/header_tables', $data);
+                $this->load->view('scan/view_admin', $data);
+                $this->load->view('templates/footer');
+            }
         }
     }
 

@@ -77,7 +77,7 @@
                     <td><a href="<?php echo site_url('participant/'.$scan->QRCode)?>"  id="view"><?php echo $scan->QRCode ?></a></td>
                     <td><?php echo $scan->Participant_FName." ".$scan->Participant_LName ?></td>
                     <td><?php echo $scan->Number_of_Scans ?></td>
-                    <td><a href="<?php echo site_url('admin/scanned_by/'.$scan->QRCode)?>" id="view">View Who Scanned QR Code</a> / <a href="<?php echo site_url('scan_view/'.$scan->Participant_ID)?>" id="view">View Scans by Player</a></td>
+                    <td><a href="<?php echo site_url('admin/scanned_by/'.$scan->QRCode)?>" id="view">View Who Scanned QR Code</a> / <a href="<?php echo site_url('admin/scan_view/'.$scan->Participant_ID)?>" id="view">View Scans by Player</a></td>
                 </tr>
 
             <?php endforeach ?>
