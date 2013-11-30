@@ -37,12 +37,11 @@
                 <?php
                 }
                 ?>
-
-
+        background-position: center;
         background-repeat:no-repeat;
-        margin-left:30px;
-
-        height:180px;
+        background-radius:20px;
+        border: none;
+        height:30%;
         }
         .footer{
         padding-top:3%;

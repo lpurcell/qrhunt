@@ -6,7 +6,7 @@
     <?php if ($Event->Event_Logo === "0" || $Event->Event_Logo === ""){ ?>
         <img src="<?php echo base_url(); ?>assets/images/default_logo.jpg">
     <?php }else{ ?>
-        <img src= "<?= base_url();?>uploads/<?= $Event->Event_Logo ?>">
+        <img src= "<?= base_url();?>assets/images/<?= $Event->Event_Logo ?>">
     <?php } ?>
 </p>
 <?php echo form_open_multipart('event_edit/'.$Event->Event_ID) ?>

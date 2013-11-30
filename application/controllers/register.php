@@ -194,7 +194,7 @@ class Register extends CI_Controller {
                 }else{
                     $new_data['Participant_Picture'] = $new_picture;
                 }
-                
+
                 $this->register_model->update($new_data);
 
                 $this->load->view('templates/header', $data);

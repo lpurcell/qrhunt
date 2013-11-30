@@ -12,12 +12,8 @@
         <th>Event Coordinator</th>
         <th>Email</th>
         <th>Event Logo</th>
-        <?php if (!get_cookie('participant_id')){ ?>
         <th>Admin</th>
-        <?php
-        }
-        ?>
-     </tr>
+    </tr>
     </thead>
     <tbody>
         <?php $datestring = '%m-%d-%Y'; ?>
@@ -30,20 +26,15 @@
                 <td><?php echo $event_item->Event_Email ?></td>
                 <td><?php
                     if ($event_item->Event_Logo === "0" || $event_item->Event_Logo === ""){
-                        ?>
-                        <img src="<?php echo base_url(); ?>assets/images/default_logo.jpg ?>">
-                    <?php
+                       echo "Default Chosen";
+                   
                     }else{
-                        ?>
-                        <img src= "<?= base_url();?>assets/images/<?= $event_item->Event_Logo?>">
-                    <?php
+                       echo $event_item->Event_Logo;
                     }
                     ?>
                 </td>
-                <?php if (!get_cookie('participant_id')){ ?>
                 <td><a href="" onclick="javascript:window.location.href='<?php echo site_url("event_edit/".$event_item->Event_ID)?>'" class="editor_edit">Edit</a> / <a href="" onclick="javascript:window.location.href='<?php echo site_url("event_delete/".$event_item->Event_ID)?>'" class="editor_remove">Delete</a></td>
-                <?php
-                }
+
                 ?>
             </tr>
         <?php endforeach ?>
