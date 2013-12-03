@@ -109,22 +109,22 @@ class Scan extends CI_Controller
                     array(
                         'name' => 'participant_id',
                         'value' => $scanning_participant_id,
-                        'expire' => '3600', //cookie will last for one hour
+                        'expire' => '86400', //cookie will last for one hour
                     ),
                     array(
                         'name' => 'event_id',
                         'value' => $scanning_eventid,
-                        'expire' => '3600',
+                        'expire' => '86400',
                     ),
                     array(
                         'name' => 'qrcode',
                         'value' => $scanning_qrcode,
-                        'expire' => '3600',
+                        'expire' => '86400',
                     ),
                     array(
                         'name' => 'participant_name',
                         'value' => $scanning_name,
-                        'expire' => '3600',
+                        'expire' => '86400',
                     )
                 );
 
