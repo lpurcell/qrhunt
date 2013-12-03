@@ -27,8 +27,11 @@ var generateForPDF = function(participants, event) {
     var imgHeight=0;
     var labelCount = 0;
 
+
+
     for (var i=0; i<participants.length; i++) {
         for (var key in participants[i]) {
+            console.log(key);
             for(var vals in participants[i][key]){
                 value += participants[i][key][vals];
             }
@@ -49,7 +52,7 @@ var generateForPDF = function(participants, event) {
                 default:
                     break;
             }
-            if(count > 4) {
+            if(count >= 4) {
                 count = 0;
             }
             value = '';
