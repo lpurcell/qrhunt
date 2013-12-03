@@ -22,17 +22,12 @@
     foreach ($scan_info as $info):
 
        if ($info->QRCode == get_cookie('qrcode')){ //if user clicks their own qrcode in the table, it will take them to their profile
-           //skip the user's own record that was created from the initial scan that is in the scan table
-           //echo '<td><a href="'.site_url('participant_edit/'.get_cookie('participant_id')).'"  id="view">'.$info->QRCode.'</a></td>';
+           echo '<td><a href="'.site_url('participant_edit/'.get_cookie('participant_id')).'"  id="view">'.$info->QRCode.'</a></td>';
        }else{
             echo '<td><a href="'. site_url('participant/'.$info->QRCode).'"  id="view">'.$info->QRCode.'</a></td>';
        }
-
-        if ($info->Participant_FName." ".$info->Participant_LName == get_cookie('participant_name')){
-            //skip user's own record that was created from the initial scan that is in the scan table
-        }else{
             echo '<td>'.$info->Participant_FName." ".$info->Participant_LName.'</td>';
-        }
+
     echo '</tr>';
     endforeach ?>
     </tbody>

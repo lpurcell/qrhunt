@@ -10,7 +10,7 @@
 
     foreach ($participant as $participant_item):
         echo '<h2>'.$participant_item->QRCode.'</h2>';
-            if ($participant_item->Participant_Picture === "0" || $participant_item->Participant_Picture === ""){
+            if ($participant_item->Participant_Picture === "0" || $participant_item->Participant_Picture === "" || $participant_item->Participant_Picture === null){
         ?>
             <img src="<?php echo base_url(); ?>assets/images/avatar.jpg">
         <?php
