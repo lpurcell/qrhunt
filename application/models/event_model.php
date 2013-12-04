@@ -19,14 +19,17 @@ class Event_model extends CI_Model {
             'Event_Logo' => $this->input->post('userfile'),
             'Event_Maincolor' => $this->input->post('Event_Maincolor'),
             'Event_Textcolor' => $this->input->post('Event_Textcolor'),
-            'Event_Headercolor' => $this->input->post('Event_Headercolor')
+            'Event_Headercolor' => $this->input->post('Event_Headercolor'),
+            'Event_Logobackground' => $this->input->post('Event_Logobackground'),
+            'Event_Footer' => $this->input->post('Event_Footer'),
+            'Event_Twitter' => $this->input->post('Event_Twitter')
         );
 
         return $this->db->insert('event', $data);
     }
     //used in edit()
     public function find_by_id($event_id){
-        $this->db->select('Event_ID, Organization_ID, Event_Name, Event_Location, Event_Date, Event_Coordinator, Event_Email, Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor');
+        $this->db->select('Event_ID, Organization_ID, Event_Name, Event_Location, Event_Date, Event_Coordinator, Event_Email, Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor, Event_Logobackground, Event_Footer, Event_Twitter');
         $this->db->from('event');
         $this->db->where('Event_Id', $event_id);
         return $this->db->get()->row(0);
@@ -43,13 +46,13 @@ class Event_model extends CI_Model {
     public function get_events($slug = FALSE){
 
         if($slug === FALSE){
-            $this->db->select("Event_ID, Event_Name, Event_Location, Event_Date, Event_Coordinator, Event_Email, Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor");
+            $this->db->select("Event_ID, Event_Name, Event_Location, Event_Date, Event_Coordinator, Event_Email, Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor, Event_Logobackground, Event_Footer, Event_Twitter");
             $this->db->from('event');
             //need to filter data
             //$this->db->where('')
             return $this->db->get()->result();
         }
-        $this->db->select('Event_ID, Event_Name, Event_Location, Event_Date, Event_Coordinator, Event_Email, Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor');
+        $this->db->select('Event_ID, Event_Name, Event_Location, Event_Date, Event_Coordinator, Event_Email, Event_Logo, Event_Maincolor, Event_Textcolor, Event_Headercolor, Event_Logobackground, Event_Footer, Event_Twitter');
         $this->db->from('event');
         $this->db->where('Event_ID', $slug);
         return $this->db->get()->result();

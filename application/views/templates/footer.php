@@ -1,6 +1,10 @@
 
 <div class="footer">
-    <p>Created by AITP Chapter at <a href="http://www.missouriwestern.edu/csmp/">Missouri Western State University</a> <strong>&copy; 2013</strong></p>
-</div>
+     <!--  <a href="https://twitter.com/something" class="twitter-follow-button" data-show-count="false"></a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+                if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+                    fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> -->
+
+    </br><strong>&copy; 2013</strong></div></div>
 </body>
 </html>

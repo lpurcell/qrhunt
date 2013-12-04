@@ -7,9 +7,10 @@ body {
     color:#000000;
     margin-left: 20%;
     text-align:center;
+
+
 }
 .wrap{
-    margin-top:5%;
     width: 70%;
     background:#0C9BD7;
     border-radius:15px;
@@ -23,9 +24,13 @@ body {
 background-position: center;
 background-image:url('../images/QRHuntLogo5.jpg');
 background-repeat:no-repeat;
-background-radius:20px;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size:cover;
 border: none;
 height:25%;
+
 }
 
 .footer{
@@ -46,7 +51,7 @@ margin: 0px;
 
 .menu li{
 border-top: 3px;
-box-shadow:0px 0px 15px 5px #888888;
+list-style: none;
 }
 
 .menu a{
@@ -75,19 +80,64 @@ text-decoration:none;
 padding: 1px;
 }
 
+.viewpart h4{
+border-bottom: 1px solid #0C9BD7;
+border-top: 1px solid #0C9BD7;
+color: black;
+background-color: White;
+border-radius: 5px;
+}
+
+.viewpart img{
+position: relative;
+top: 20%;
+width: 10%;
+border-radius: 20px;
+}
+.viewpart ul{
+list-style: none;
+border: 2px solid black;
+background-color:#4A4A4A;
+width: 30%;
+position: relative;
+top: 60%;
+left: 35%;
+border-radius: 10px;
+}
+.viewpart li{
+list-style: none;
+color: #0C9BD7;
+
+
+}
+
+.viewpart input{
+border: 1px solid #0C9BD7;
+border-radius: 5px;
+padding: 3px;
+margin-top: 5px;
+outline: none;
+}
+
 .participants {
 padding: 0px;
 margin: 0px;
-width: 40%;
-margin-left: auto;
-margin-right: auto;
+margin-left: 35%;
 
+}
+.participants img{
+background-color: #0C9BD7;
+position: relative;
+top: 50%;
+right: 25%;
 }
 .participants form{
 background-color: #4A4A4A;
 padding: 15px;
 border-radius: 20px;
 border: 2px solid white;
+margin-top: 25px;
+width: 50%;
 
 }
 .participants p{
@@ -163,9 +213,8 @@ outline: none;
 .organization {
 padding: 0px;
 margin: 0px;
-width: 40%;
-margin-left: auto;
-margin-right: auto;
+width: 30%;
+margin-left: 35%;
 
 }
 .organization form{
@@ -173,6 +222,8 @@ background-color: #4A4A4A;
 padding: 15px;
 border-radius: 20px;
 border: 2px solid white;
+margin-top:50px;
+margin-bottom:50px;
 
 }
 .organization p{
@@ -248,8 +299,7 @@ outline: none;
 padding: 0px;
 margin: 0px;
 width: 40%;
-margin-left: auto;
-margin-right: auto;
+margin-left: 35%;
 
 }
 .event form{
@@ -257,6 +307,9 @@ background-color: #4A4A4A;
 padding: 15px;
 border-radius: 20px;
 border: 2px solid white;
+margin-top:50px;
+margin-bottom:50px;
+width: 50%;
 
 }
 .event p{
@@ -327,7 +380,95 @@ padding: 3px;
 margin-top: 5px;
 outline: none;
 
+}
 
+
+
+.QRmanual {
+padding: 0px;
+margin: 0px;
+width: 30%;
+margin-left: 35%;
+
+}
+.QRmanual form{
+background-color: #4A4A4A;
+padding: 15px;
+border-radius: 20px;
+border: 2px solid white;
+margin-top:50px;
+margin-bottom:50px;
+
+}
+.QRmanual p{
+color: red;
+background-color: white;
+border-radius: 5px;
+padding: 2px;
+}
+
+.QRmanual h2{
+background-color: #4A4A4A;
+Color: white;
+font-weight: bold;
+margin: 10px;
+border-bottom: 2px solid #0C9BD7;
+
+}
+.QRmanual label{
+color: white;
+border-bottom: 1px solid #0C9BD7;
+font-weight: bold;
+
+
+}
+
+.QRmanual input{
+border: 1px solid #0C9BD7;
+border-radius: 5px;
+padding: 3px;
+margin-top: 5px;
+outline: none;
+
+}
+.QRmanual input[type=button]{
+border: 3px solid #0C9BD7;
+font-weight: bold;
+border-radius: 20px;
+padding: 3px;
+margin-top: 5px;
+outline: none;
+
+}
+.QRmanual input[type=submit]{
+border: 1px solid #0C9BD7;
+font-weight: bold;
+border-radius: 15px;
+padding: 5px;
+margin-top: 5px;
+outline: none;
+
+
+}
+
+.QRmanual input[type=file]{
+border: 1px solid #0C9BD7;
+font-weight: bold;
+border-radius: 5px;
+padding: 3px;
+margin-top: 5px;
+outline: none;
+}
+
+.QRmanual select{
+border: 2px solid #0C9BD7;
+font-weight: bold;
+border-radius: 5px;
+padding: 3px;
+margin-top: 5px;
+outline: none;
+
+}
 
 label{
     width: 100%;
@@ -351,4 +492,9 @@ a:hover
 {
 
 background-color:#4A4A4A;
+}
+.footer{
+margin-top: 25px;
+background-color: white;
+border-radius: 0px 0px 15px 15px;
 }

@@ -33,7 +33,7 @@
     } );
 </script>
             <div id = "main">
-
+    <div class="viewpart">
                 <a href= "javascript:window.location.href='<?php echo site_url('admin/register/create')?>'" id="view">Register a New Participant</a>
                 <table id="table_id" class="display">
 
@@ -103,4 +103,4 @@
 
                 </tbody>
                 </table>
-                </div>
+                </div></div>

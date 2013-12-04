@@ -1,4 +1,4 @@
-<?php
+<div class="viewpart"><?php
  if (get_cookie('participant_id')){ ?>
    <ul>
         <li><a href="<?php echo site_url('participant_edit/'.get_cookie('participant_id'))?>">Back to Profile</a></li>
@@ -22,10 +22,10 @@
             }
         ?>
 
-        <ul>
-            <li>Name: <?php echo $participant_item->Participant_FName. " " . $participant_item->Participant_LName ?></li>
-            <li>Email: <?php echo $participant_item->Participant_Email ?></li>
-            <li>Misc 1:
+          <ul>
+            <li><h4>Name:</h4> <?php echo $participant_item->Participant_FName. " " . $participant_item->Participant_LName ?></li>
+            <li><h4>Email:</h4> <?php echo $participant_item->Participant_Email ?></li>
+            <li><h4>Misc 1:</h4>
                 <?php
                 if ($participant_item->MISC1 === "" || $participant_item->MISC1 === null || $participant_item->MISC1 === 0){
                     echo "not provided";
@@ -35,7 +35,7 @@
                 ?>
             </li>
 
-            <li>Misc 2:
+            <li><h4>Misc 2:</h4>
                 <?php
                 if ($participant_item->MISC2 === "" || $participant_item->MISC2 === null || $participant_item->MISC2 === 0){
                     echo "not provided";
@@ -45,7 +45,7 @@
                 ?>
             </li>
 
-            <li>Misc 3:
+            <li><h4>Misc 3:</h4>
                 <?php
                 if ($participant_item->MISC3 === "" || $participant_item->MISC3 === null || $participant_item->MISC3 === 0){
                     echo "not provided";
@@ -55,7 +55,7 @@
                 ?>
             </li>
         </ul>
-
+</div>
 <?php
     endforeach
 ?>

@@ -12,12 +12,11 @@
     <link rel="stylesheet" media="screen" type="text/css" href="<?php echo base_url()?>assets/css/jquery.minicolors.css" />
 
     <?php if (!get_cookie('event_id')){ ?>
-        <link rel="stylesheet" type="text/css" media="screen and (min-width:799px)" href="<?php echo base_url("assets/css/default.php");?>"/>
-        <link href="<?php echo base_url("assets/css/styles.css"); ?>" rel="stylesheet" type="text/css" media="screen and (min-width:799px)"/>
-        <link rel="stylesheet" type="text/css" media="screen and (min-device-width:320px)" href="<?php echo base_url("assets/css/mobile.css");?>"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url("assets/css/default.php");?>"/>
+
     <?php }else{ ?>
-        <link rel="stylesheet" type="text/css" media="screen and (min-width:799px)" href="<?php echo site_url("css/get");?>"/>
-        <link rel="stylesheet" type="text/css" media="screen and (min-device-width:320px)" href="<?php echo base_url("assets/css/mobile.css");?>"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo site_url("css/get");?>"/>
+
     <?php } ?>
 
     <script type="text/javascript">
@@ -32,15 +31,26 @@
                     theme: 'no theme'
                 });
 
+            $('INPUT[type=minicolors_Logo]').minicolors({
+                defaultValue: '#ffffff',
+                theme: 'no theme'
+            });
+
             $('INPUT[type=minicolors_text]').minicolors({
-                defaultValue: '#FFFFFF',
+                defaultValue: '#000000',
                 theme: 'no theme'
             });
 
             $('INPUT[type=minicolors_header]').minicolors({
-                defaultValue: '#000000',
+                defaultValue: '#82817b',
                 theme: 'no theme'
             });
+
+            $('INPUT[type=minicolors_footer]').minicolors({
+                defaultValue: '#ffffff',
+                theme: 'no theme'
+            });
+
         });
     </script>
 

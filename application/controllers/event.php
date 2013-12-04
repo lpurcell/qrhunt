@@ -24,6 +24,9 @@ class Event extends CI_Controller {
         $this->form_validation->set_rules('Event_Maincolor', 'Main Color: ');
         $this->form_validation->set_rules('Event_Textcolor', 'Text Color:');
         $this->form_validation->set_rules('Event_Headercolor', 'Header Color:');
+        $this->form_validation->set_rules('Event_Logobackground', 'Logo Background:');
+        $this->form_validation->set_rules('Event_Footer', 'Footer Color:');
+        $this->form_validation->set_rules('Event_Twitter', 'Event Twitter:','max_length[45]');
 
     }
 
@@ -173,7 +176,10 @@ class Event extends CI_Controller {
                     'Event_Email' => $this->input->post('Event_Email'),
                     'Event_Maincolor' => $this->input->post('Event_Maincolor'),
                     'Event_Textcolor' => $this->input->post('Event_Textcolor'),
-                    'Event_Headercolor' => $this->input->post('Event_Headercolor')
+                'Event_Headercolor' => $this->input->post('Event_Headercolor'),
+                'Event_Logobackground' => $this->input->post('Event_Logobackground'),
+                'Event_Footer' => $this->input->post('Event_Footer'),
+                'Event_Twitter' => $this->input->post('Event_Twitter')
                 );
 
                 $new_picture = $this->input->post('userfile');

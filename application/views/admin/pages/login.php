@@ -24,7 +24,7 @@
 			?>
 		</tr></td>
 	
-		<tr><td><td><?php echo form_submit('submit', 'Log in', 'class="btn btn-primary"'); ?></td></td>
+		<tr><td><td><?php echo form_submit('submit', 'Log in', 'class="btn btn-primary"'); ?></td>
 	</table>
 	
 	 <?=form_close()?>
