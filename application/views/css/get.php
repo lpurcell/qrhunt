@@ -91,6 +91,45 @@ text-decoration:none;
 padding: 1px;
 }
 
+.viewpart h4{
+border-bottom: 1px solid #0C9BD7;
+border-top: 1px solid #0C9BD7;
+color: black;
+background-color: White;
+border-radius: 5px;
+}
+
+.viewpart img{
+position: relative;
+top: 20%;
+width: 10%;
+border-radius: 20px;
+}
+.viewpart ul{
+list-style: none;
+border: 2px solid black;
+background-color:#4A4A4A;
+width: 30%;
+position: relative;
+top: 60%;
+left: 35%;
+border-radius: 10px;
+}
+.viewpart li{
+list-style: none;
+color: #0C9BD7;
+
+
+}
+
+.viewpart input{
+border: 1px solid #0C9BD7;
+border-radius: 5px;
+padding: 3px;
+margin-top: 5px;
+outline: none;
+}
+
 .participants {
 padding: 0px;
 margin: 0px;
@@ -114,7 +153,7 @@ padding: 2px;
 }
 
 .participants h2{
-background-color: <?=$Event_Mcolor?>;
+background-color: <?=$Event_Maincolor?>;
 Color: <?=$Event_Textcolor?>;
 font-weight: bold;
 margin: 10px;

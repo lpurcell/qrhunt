@@ -164,5 +164,5 @@ var create_qrcode = function(text, typeNumber, errorCorrectLevel, table) {
 var update_qrcode = function() {
     var text = document.getElementById('QRField').value.
         replace(/^[\s\u3000]+|[\s\u3000]+$/g, '');
-    document.getElementById('codeArea').innerHTML = create_qrcode(("qrhunt.org/qrhunt/index.php/participant/" + text),10,'H');
+    document.getElementById('codeArea').innerHTML = create_qrcode(("qrhunt.org/qrhunt/index.php/scan/" + text),10,'H');
 };
