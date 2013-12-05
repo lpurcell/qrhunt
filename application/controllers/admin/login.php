@@ -97,9 +97,9 @@
 						$pwsql = "SELECT * FROM users WHERE username = ? and pwchange = '1'";
 						$pwquery = $this->db->query($pwsql, array($db_username,));
 						if ($pwquery->num_rows() > 0) {
-							redirect(base_url()."admin/user/updatepass");							
+							redirect(site_url()."/admin/user/updatepass");
 						} else {							
-							redirect(base_url()."admin/dashboard"); //Replace with a controller of choice.
+							redirect(site_url()."/admin/dashboard"); //Replace with a controller of choice.
 						}
 						
 						
@@ -107,7 +107,7 @@
 						//Incorrect Password
 						$this->session->set_flashdata("pw_error", "Sorry, the password you entered is incorrect!");
 						$this->session->set_flashdata("tf_account", $input);
-						redirect(base_url()."admin/login");
+						redirect(site_url()."/admin/login");
 					}
 				}
 			}

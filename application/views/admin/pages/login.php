@@ -1,6 +1,6 @@
 <div class="content">
 	<h1><?php echo $title; ?></h1>
-	<?=form_open(base_url()."admin/login")?>
+	<?=form_open(site_url()."/admin/login")?>
 	
 	<table cellspacing="3" cellpadding="3">
 		
