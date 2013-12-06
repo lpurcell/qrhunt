@@ -59,7 +59,7 @@ var generateForPDF = function(participants, event) {
         }
 
         //Generate the image - returns as gif
-        var qrImage = create_qrcode(("qrhunt.org/qrhunt/index.php/participant/" + qrcode),10,'H');
+        var qrImage = create_qrcode(("qrhunt.org/qrhunt/index.php/scan/" + qrcode),10,'H');
 
         //convert image to jpeg
         var canvas = document.getElementById("myCanvas");
