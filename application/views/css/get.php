@@ -39,12 +39,14 @@
                 <?php
                 }
                 ?>
-
-        background-position: center;
-        background-repeat:no-repeat;
-        background-radius:20px;
-        border: none;
-        height:30%;
+background-position: center;
+background-repeat:no-repeat;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size:cover;
+border: none;
+height:25%;
         }
 
 
@@ -63,6 +65,7 @@ margin: 0px;
 
 .menu li{
 border-top: 3px;
+padding: 5px;
 
 }
 
