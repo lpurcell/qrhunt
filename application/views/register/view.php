@@ -1,6 +1,6 @@
 <?php
  if (get_cookie('participant_id')){ ?>
-   <div class="participants">
+   <div class="menu">
      <ul>
         <li><a href="<?php echo site_url('participant_edit/'.get_cookie('participant_id'))?>">Back to Profile</a></li>
         <li><a href="<?php echo site_url('scanned_by/'.get_cookie('qrcode'))?>">See Who Scanned You</a></li>

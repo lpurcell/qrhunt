@@ -1,5 +1,6 @@
 <div class="content">
 	<h1><?php echo $title; ?></h1>
+    <div class="participants">
 	<?=form_open(site_url()."/admin/login")?>
 	
 	<table cellspacing="3" cellpadding="3">

@@ -6,6 +6,7 @@
              $Event_Textcolor = $event_item->Event_Textcolor;
              $Event_Headercolor = $event_item->Event_Headercolor;
              $Event_Logobackground = $event_item->Event_Logobackground;
+             $Event_Footer = $event_item->Event_Footer;
         }
         ?>
         *{
@@ -30,7 +31,7 @@
         }
         .logo{
         background-image:url('<?php
-                if ($Event_Logo === "0"){
+                if ($Event_Logo === "0" || $Event_Logo === "" || $Event_Logo === null){
                     echo base_url()?>assets/images/QRHuntLogo5.jpg');
                 <?php
                 }else{
@@ -73,7 +74,7 @@ text-decoration: none;
 width: 100%;
 font-weight: bold;
 border-radius: 20px;
-border: 2px solid #4A4A4A;
+border: 2px solid <?=$Event_Maincolor?>;
 }
 
 .menu a:hover {
@@ -90,12 +91,11 @@ border: 2px solid white;
 text-decoration:none;
 padding: 1px;
 }
-
 .viewpart h4{
-border-bottom: 1px solid #0C9BD7;
-border-top: 1px solid #0C9BD7;
-color: black;
-background-color: White;
+border-bottom: 1px solid <?=$Event_Textcolor?>;
+border-top: 1px solid<?=$Event_Textcolor?>;
+color: <?=$Event_Logobackground?>;
+background-color: <?=$Event_Maincolor?>;
 border-radius: 5px;
 }
 
@@ -107,9 +107,9 @@ border-radius: 20px;
 }
 .viewpart ul{
 list-style: none;
-border: 2px solid black;
-background-color:#4A4A4A;
-width: 30%;
+border: 2px solid <?=$Event_Textcolor?>;
+background-color:<?=$Event_Logobackground?>;
+width: 25%;
 position: relative;
 top: 60%;
 left: 35%;
@@ -117,18 +117,19 @@ border-radius: 10px;
 }
 .viewpart li{
 list-style: none;
-color: #0C9BD7;
+color: <?=$Event_Textcolor?>;
 
 
 }
 
 .viewpart input{
-border: 1px solid #0C9BD7;
+border: 1px solid <?=$Event_Maincolor?>;
 border-radius: 5px;
 padding: 3px;
 margin-top: 5px;
 outline: none;
 }
+
 
 .participants {
 padding: 0px;
@@ -222,7 +223,7 @@ margin-left: 35%;
 
 }
 .organization form{
-background-color: #4A4A4A;
+background-color: <?=$Event_Maincolor?>;
 padding: 15px;
 border-radius: 20px;
 border: 2px solid white;
@@ -231,30 +232,30 @@ margin-bottom:50px;
 
 }
 .organizaiton p{
-color: red;
+color: <?=$Event_Textcolor?>;
 background-color: white;
 border-radius: 5px;
 padding: 2px;
 }
 
 .organization h2{
-background-color: #4A4A4A;
+background-color: <?=$Event_Maincolor?>;
 Color:<?=$Event_Textcolor?>;
 font-weight: bold;
 margin: 10px;
-border-bottom: 2px solid #0C9BD7;
+border-bottom: 2px solid <?=$Event_Headercolor?>;
 
 }
 .organization label{
 color: <?=$Event_Textcolor?>;
-border-bottom: 1px solid #0C9BD7;
+border-bottom: 1px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 
 
 }
 
 .organization input{
-border: 1px solid #0C9BD7;
+border: 1px solid <?=$Event_Headercolor?>;
 border-radius: 5px;
 padding: 3px;
 margin-top: 5px;
@@ -262,7 +263,7 @@ outline: none;
 
 }
 .organization input[type=button]{
-border: 3px solid #0C9BD7;
+border: 3px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 border-radius: 20px;
 padding: 3px;
@@ -271,7 +272,7 @@ outline: none;
 
 }
 .organization input[type=submit]{
-border: 1px solid #0C9BD7;
+border: 1px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 border-radius: 15px;
 padding: 5px;
@@ -282,7 +283,7 @@ outline: none;
 }
 
 .organization input[type=file]{
-border: 1px solid #0C9BD7;
+border: 1px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 border-radius: 5px;
 padding: 3px;
@@ -291,7 +292,7 @@ outline: none;
 }
 
 .organization select{
-border: 2px solid #0C9BD7;
+border: 2px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 border-radius: 5px;
 padding: 3px;
@@ -307,7 +308,7 @@ margin-left: 35%;
 
 }
 .event form{
-background-color: #4A4A4A;
+background-color: <?=$Event_Maincolor?>;
 padding: 15px;
 border-radius: 20px;
 border: 2px solid white;
@@ -318,29 +319,29 @@ width: 50%;
 }
 .event p{
 color: <?=$Event_Textcolor?>;
-background-color: white;
+background-color: <?=$Event_Headercolor?>;
 border-radius: 5px;
 padding: 2px;
 }
 
 .event h2{
-background-color: #4A4A4A;
+background-color: <?=$Event_Maincolor?>;
 Color: <?=$Event_Textcolor?>;
 font-weight: bold;
 margin: 10px;
-border-bottom: 2px solid #0C9BD7;
+border-bottom: 2px solid <?=$Event_Headercolor?>;
 
 }
 .event label{
 color: white;
-border-bottom: 1px solid #0C9BD7;
+border-bottom: 1px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 
 
 }
 
 .event input{
-border: 1px solid #0C9BD7;
+border: 1px solid <?=$Event_Headercolor?>;
 border-radius: 5px;
 padding: 3px;
 margin-top: 5px;
@@ -348,7 +349,7 @@ outline: none;
 
 }
 .event input[type=button]{
-border: 3px solid #0C9BD7;
+border: 3px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 border-radius: 20px;
 padding: 3px;
@@ -357,7 +358,7 @@ outline: none;
 
 }
 .event input[type=submit]{
-border: 1px solid #0C9BD7;
+border: 1px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 border-radius: 15px;
 padding: 5px;
@@ -368,7 +369,7 @@ outline: none;
 }
 
 .event input[type=file]{
-border: 1px solid #0C9BD7;
+border: 1px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 border-radius: 5px;
 padding: 3px;
@@ -377,7 +378,7 @@ outline: none;
 }
 
 .event select{
-border: 2px solid #0C9BD7;
+border: 2px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 border-radius: 5px;
 padding: 3px;
@@ -396,7 +397,7 @@ margin-left: 35%;
 
 }
 .QRmanual form{
-background-color: #4A4A4A;
+background-color: <?=$Event_Maincolor?>;
 padding: 15px;
 border-radius: 20px;
 border: 2px solid white;
@@ -405,30 +406,30 @@ margin-bottom:50px;
 
 }
 .QRmanual p{
-color: red;
+color: <?=$Event_Textcolor?>;
 background-color: white;
 border-radius: 5px;
 padding: 2px;
 }
 
 .QRmanual h2{
-background-color: #4A4A4A;
-Color: white;
+background-color: <?=$Event_Maincolor?>;
+Color: <?=$Event_Textcolor?>;
 font-weight: bold;
 margin: 10px;
-border-bottom: 2px solid #0C9BD7;
+border-bottom: 2px solid <?=$Event_Headercolor?>;
 
 }
 .QRmanual label{
-color: white;
-border-bottom: 1px solid #0C9BD7;
+color: <?=$Event_Textcolor?>;
+border-bottom: 1px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 
 
 }
 
 .QRmanual input{
-border: 1px solid #0C9BD7;
+border: 1px solid <?=$Event_Headercolor?>;
 border-radius: 5px;
 padding: 3px;
 margin-top: 5px;
@@ -436,7 +437,7 @@ outline: none;
 
 }
 .QRmanual input[type=button]{
-border: 3px solid #0C9BD7;
+border: 3px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 border-radius: 20px;
 padding: 3px;
@@ -445,7 +446,7 @@ outline: none;
 
 }
 .QRmanual input[type=submit]{
-border: 1px solid #0C9BD7;
+border: 1px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 border-radius: 15px;
 padding: 5px;
@@ -456,7 +457,7 @@ outline: none;
 }
 
 .QRmanual input[type=file]{
-border: 1px solid #0C9BD7;
+border: 1px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 border-radius: 5px;
 padding: 3px;
@@ -465,7 +466,7 @@ outline: none;
 }
 
 .QRmanual select{
-border: 2px solid #0C9BD7;
+border: 2px solid <?=$Event_Headercolor?>;
 font-weight: bold;
 border-radius: 5px;
 padding: 3px;
@@ -484,7 +485,7 @@ h1{
 padding: 5px;
 }
 h1 a, h1 a:hover {
-color: white;
+color: <?=$Event_Textcolor?>;
 
 
 
@@ -492,6 +493,6 @@ color: white;
 }
 .footer{
 margin-top: 25px;
-background-color: white;
+background-color: <?=$Event_Footer?>;
 border-radius: 0px 0px 15px 15px;
         }

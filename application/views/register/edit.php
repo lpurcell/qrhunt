@@ -1,4 +1,4 @@
-<h2>Edit your Profile</h2>
+
 
 <div class="menu">
     <ul>
@@ -19,7 +19,7 @@
     <?php }else{ ?>
         <img src= "<?= base_url();?>uploads/<?= $Participant->Participant_Picture; ?>">
     <?php } ?>
-</p>
+</p><div class="participants">
 <?php echo form_open_multipart('participant_edit/'.$Participant->Participant_ID) ?>
 
 <input type ="hidden" name="Event_ID" value="<?php echo $Participant->Event_ID; ?>"/>
@@ -54,3 +54,4 @@
 <input type="submit" name="submit" value="Edit Your Profile" />
 
 </form>
+</div>
