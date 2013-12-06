@@ -1,6 +1,6 @@
 <?php
 echo validation_errors();
-echo form_open_multipart('labels/labels') ?>
+echo form_open_multipart('admin/labels/labels') ?>
 
 <h2>Create Participant Labels</h2>
 
