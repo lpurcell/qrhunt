@@ -6,12 +6,12 @@
  * Date: 10/15/13
  * Time: 2:03 PM
  */
-class MultRegister extends CI_Controller {
+class Mult_register extends CI_Controller {
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('multRegister_model');
+        $this->load->model('mult_register_model');
         $this->load->helper(array('form', 'html', 'file', 'url', 'cookie'));
         $this->load->library('form_validation');
 
@@ -44,7 +44,7 @@ class MultRegister extends CI_Controller {
         }
         else
         {
-            $this->multRegister_model->register(); //or you can do $this->upload->do_upload
+            $this->mult_register_model->register(); //or you can do $this->upload->do_upload
             $this->load->view('templates/header', $data);
             $this->load->view('news/success');
             $this->load->view('templates/footer');
