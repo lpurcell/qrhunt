@@ -1,0 +1,9 @@
+Current issues that need to be fixed
+
+-Cookies seem to not be working on iphone Safari. It seems that some will add, but not all 4. This needs further testing
+
+-CSV file upload is not complete
+
+-CSS on the mobile needs to be fixed. The wrapper needs to be bigger and the background smaller
+
+-Twitter functionality not complete
