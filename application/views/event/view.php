@@ -1,13 +1,13 @@
 <?php
 foreach ($event as $event_item):
     echo '<h2>'.$event_item->Event_Name.'</h2>';
-    if ($event_item->Event_Logo === "0" || $event_item->Event_Logo === ""){
+    if ($event_item->Event_Logo === "0" || $event_item->Event_Logo === "" || $event_item->Event_Logo === null){
         ?>
-        <img src="<?php echo base_url(); ?>assets/images/default_logo.jpg">
+        <img src="<?php echo base_url(); ?>assets/images/QRHuntLogo5.jpg" height="100" width="200">
     <?php
     }else{
         ?>
-        <img src= "<?= base_url();?>assets/images/<?= $event_item->Event_Logo?>">
+        <img src= "<?= base_url();?>assets/images/<?= $event_item->Event_Logo?>" height="100" width="200">
 
     <?php
     }
